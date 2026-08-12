@@ -1,157 +1,117 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { MapPin, Phone, Mail, Globe, Share2 } from 'lucide-react';
+import logo from '../img/Vortexx.png';
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#131b2e] w-full py-[100px]">
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-16 max-w-[1280px] mx-auto px-8">
-        <div className="col-span-1 md:col-span-5 flex flex-col gap-8">
-          <div className="flex items-center gap-4">
-            <div className="w-12 h-12 flex items-center justify-center transition-all duration-500 hover:scale-110 drop-shadow-lg">
-              <img 
-                alt="VORTEXX Logo" 
-                className="w-full h-full object-contain filter brightness-110 contrast-110" 
-                src="/src/img/Vortexx.png"
-              />
+    <footer className="site-footer">
+      <div className="wrap">
+        <div className="footer-top">
+          <div className="footer-brand">
+            <Link to="/" className="logo">
+              <span className="mark">
+                <img src={logo} alt="Vortexx logo" />
+              </span>
+              <span className="logo-text">
+                VORTE<span className="x">XX</span>
+              </span>
+            </Link>
+            <p>
+              Transforming businesses through innovative technology solutions and exceptional
+              digital experiences.
+            </p>
+            <div className="footer-social">
+              <a href="#" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M6.94 5a2 2 0 11-4-.002 2 2 0 014 .002zM7 8.48H3V21h4V8.48zm6.32 0H9.34V21h3.94v-6.57c0-3.66 4.77-4 4.77 0V21H22v-7.93c0-6.17-7.06-5.94-8.68-2.91V8.48z" />
+                </svg>
+              </a>
+              <a href="#" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                  <rect x="3" y="3" width="18" height="18" rx="5" />
+                  <circle cx="12" cy="12" r="4" />
+                  <circle cx="17.2" cy="6.8" r="0.6" fill="currentColor" stroke="none" />
+                </svg>
+              </a>
+              <a href="#" aria-label="X (Twitter)" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M17.53 3H21l-7.5 8.57L22 21h-6.9l-5.4-6.62L3.5 21H0l8.03-9.18L1 3h7.06l4.87 6.05L17.53 3zm-1.21 16.17h1.9L7.77 4.73H5.73l10.59 14.44z" />
+                </svg>
+              </a>
+              <a
+                href="https://wa.me/256745231430"
+                aria-label="WhatsApp"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
+                  <path
+                    d="M21 11.5C21 16.19 16.97 20 12 20C10.6 20 9.28 19.7 8.1 19.16L3 20L4.4 15.8C3.53 14.55 3 13.08 3 11.5C3 6.81 7.03 3 12 3C16.97 3 21 6.81 21 11.5Z"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </a>
             </div>
-            <span className="text-3xl font-black tracking-tight bg-gradient-to-r from-[#00668a] via-[#3abef9] to-[#7cd0ff] bg-clip-text text-transparent animate-gradient drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)] filter brightness-125 contrast-125">
-              VORTEXX
-            </span>
           </div>
-          <p className="text-gray-300 text-base font-light leading-relaxed pr-8 max-w-md">
-            Transforming businesses through innovative technology solutions and exceptional digital experiences.
-          </p>
-          <div className="flex gap-3 mt-2">
-            <a 
-              className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-300 hover:bg-blue-600 hover:text-white transition-all duration-300 border border-white/10 hover:border-transparent hover:-translate-y-1" 
-              href="#"
-              aria-label="Website"
-            >
-              <Globe size={18} />
-            </a>
-            <a 
-              className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-300 hover:bg-blue-600 hover:text-white transition-all duration-300 border border-white/10 hover:border-transparent hover:-translate-y-1" 
-              href="#"
-              aria-label="Share"
-            >
-              <Share2 size={18} />
-            </a>
+
+          <div className="footer-cols">
+            <div className="footer-col">
+              <h4>Services</h4>
+              <Link to="/services#web-design">Web Design</Link>
+              <Link to="/services#systems-development">Systems Development</Link>
+              <Link to="/services#graphics-design">Graphics Design</Link>
+              <Link to="/services#digital-marketing">Digital Marketing</Link>
+              <Link to="/services#infrastructure">Infrastructure Management</Link>
+              <Link to="/services#ai-agents">AI Agents</Link>
+            </div>
+            <div className="footer-col">
+              <h4>Company</h4>
+              <Link to="/about">About Us</Link>
+              <Link to="/about#team">Our Team</Link>
+              <Link to="/careers">Careers</Link>
+              <Link to="/contact">Contact Us</Link>
+            </div>
+            <div className="footer-col">
+              <h4>Contact Us</h4>
+              <p>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0116 0z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+                Bukasa-Bugiri, Kawuku
+              </p>
+              <a href="tel:+256745231430">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                  <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" />
+                </svg>
+                (+256) 745-231430
+              </a>
+              <a href="tel:+256790956548">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                  <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" />
+                </svg>
+                (+256) 790-956548
+              </a>
+              <a href="mailto:thevortexxinfo@gmail.com">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                  <path d="M22 6l-10 7L2 6" />
+                  <rect x="2" y="4" width="20" height="16" rx="2" />
+                </svg>
+                thevortexxinfo@gmail.com
+              </a>
+            </div>
           </div>
         </div>
-        
-        <div className="col-span-1 md:col-span-2">
-          <h4 className="text-white font-bold mb-6 text-xs uppercase tracking-[0.2em]">Services</h4>
-          <ul className="flex flex-col gap-4 text-sm">
-            <li>
-              <Link 
-                className="text-gray-300 hover:text-blue-400 hover:translate-x-1 transition-all duration-300 block w-max font-light" 
-                to="/services"
-              >
-                Web Design
-              </Link>
-            </li>
-            <li>
-              <Link 
-                className="text-gray-300 hover:text-blue-400 hover:translate-x-1 transition-all duration-300 block w-max font-light" 
-                to="/services"
-              >
-                Systems Development
-              </Link>
-            </li>
-            <li>
-              <Link 
-                className="text-gray-300 hover:text-blue-400 hover:translate-x-1 transition-all duration-300 block w-max font-light" 
-                to="/services"
-              >
-                Graphics Design
-              </Link>
-            </li>
-            <li>
-              <Link 
-                className="text-gray-300 hover:text-blue-400 hover:translate-x-1 transition-all duration-300 block w-max font-light" 
-                to="/services"
-              >
-                Digital Marketing
-              </Link>
-            </li>
-          </ul>
-        </div>
-        
-        <div className="col-span-1 md:col-span-2">
-          <h4 className="text-white font-bold mb-6 text-xs uppercase tracking-[0.2em]">Company</h4>
-          <ul className="flex flex-col gap-4 text-sm">
-            <li>
-              <Link 
-                className="text-gray-300 hover:text-blue-400 hover:translate-x-1 transition-all duration-300 block w-max font-light" 
-                to="/about"
-              >
-                About Us
-              </Link>
-            </li>
-            <li>
-              <Link 
-                className="text-gray-300 hover:text-blue-400 hover:translate-x-1 transition-all duration-300 block w-max font-light" 
-                to="/about"
-              >
-                Our Team
-              </Link>
-            </li>
-            <li>
-              <Link 
-                className="text-gray-300 hover:text-blue-400 hover:translate-x-1 transition-all duration-300 block w-max font-light" 
-                to="/careers"
-              >
-                Careers
-              </Link>
-            </li>
-            <li>
-              <Link 
-                className="text-gray-300 hover:text-blue-400 hover:translate-x-1 transition-all duration-300 block w-max font-light" 
-                to="/contact"
-              >
-                Contact Us
-              </Link>
-            </li>
-          </ul>
-        </div>
-        
-        <div className="col-span-1 md:col-span-3">
-          <h4 className="text-white font-bold mb-6 text-xs uppercase tracking-[0.2em]">Contact Us</h4>
-          <ul className="flex flex-col gap-5 text-sm text-gray-300 font-light">
-            <li className="flex items-start gap-3 group cursor-pointer hover:text-blue-400 transition-colors">
-              <MapPin className="text-blue-400 mt-0.5 flex-shrink-0 group-hover:scale-110 transition-transform" size={18} />
-              <span>Bukasa-Bugiri, Kawuku</span>
-            </li>
-            <li className="flex items-start gap-3 group cursor-pointer hover:text-blue-400 transition-colors">
-              <Phone className="text-blue-400 mt-0.5 flex-shrink-0 group-hover:scale-110 transition-transform" size={18} />
-              <span>(+256) 745-231430<br/>(+256) 790-956548</span>
-            </li>
-            <li className="flex items-start gap-3 group cursor-pointer hover:text-blue-400 transition-colors">
-              <Mail className="text-blue-400 mt-0.5 flex-shrink-0 group-hover:scale-110 transition-transform" size={18} />
-              <span>thevortexxinfo@gmail.com</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-      
-      <div className="max-w-[1280px] mx-auto px-8 mt-20 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6 text-xs">
-        <p className="text-gray-400">© {currentYear} VORTEXX Technologies. All rights reserved.</p>
-        <div className="flex gap-6">
-          <Link 
-            className="text-gray-400 hover:text-white transition-colors duration-200 uppercase tracking-wider" 
-            to="/privacy"
-          >
-            Privacy Policy
-          </Link>
-          <Link 
-            className="text-gray-400 hover:text-white transition-colors duration-200 uppercase tracking-wider" 
-            to="/terms"
-          >
-            Terms of Service
-          </Link>
+
+        <div className="footer-bottom">
+          <span>© {currentYear} VORTEXX Technologies. All rights reserved.</span>
+          <div className="legal">
+            <Link to="/privacy">Privacy Policy</Link>
+            <Link to="/terms">Terms of Service</Link>
+          </div>
         </div>
       </div>
     </footer>
