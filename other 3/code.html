@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Contact VORTEXX</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "text-main": "#1E293B",
+                      "on-primary": "#ffffff",
+                      "surface-container-high": "#e6e8ea",
+                      "on-secondary-fixed-variant": "#3f465c",
+                      "on-primary-fixed-variant": "#004c69",
+                      "secondary-fixed": "#dae2fd",
+                      "secondary-fixed-dim": "#bec6e0",
+                      "background": "#f7f9fb",
+                      "outline-variant": "#bdc8d1",
+                      "outline": "#6e7980",
+                      "on-primary-fixed": "#001e2c",
+                      "inverse-on-surface": "#eff1f3",
+                      "inverse-surface": "#2d3133",
+                      "surface-dim": "#d8dadc",
+                      "tertiary-container": "#f2a12c",
+                      "on-background": "#191c1e",
+                      "surface-container-lowest": "#ffffff",
+                      "error-container": "#ffdad6",
+                      "on-surface": "#191c1e",
+                      "surface-container-highest": "#e0e3e5",
+                      "tertiary": "#855300",
+                      "on-surface-variant": "#3e484f",
+                      "on-tertiary-container": "#623c00",
+                      "primary-fixed": "#c4e7ff",
+                      "on-error-container": "#93000a",
+                      "secondary": "#565e74",
+                      "on-tertiary-fixed": "#2a1700",
+                      "surface-bright": "#f7f9fb",
+                      "on-secondary-fixed": "#131b2e",
+                      "tertiary-fixed-dim": "#ffb95f",
+                      "on-secondary-container": "#5c647a",
+                      "surface-white": "#FFFFFF",
+                      "surface-container": "#eceef0",
+                      "primary-fixed-dim": "#7cd0ff",
+                      "error": "#ba1a1a",
+                      "primary": "#00668a",
+                      "on-primary-container": "#004a66",
+                      "text-muted": "#64748B",
+                      "primary-container": "#3abef9",
+                      "surface-variant": "#e0e3e5",
+                      "tertiary-fixed": "#ffddb8",
+                      "surface-tint": "#00668a",
+                      "on-secondary": "#ffffff",
+                      "border-subtle": "#E2E8F0",
+                      "inverse-primary": "#7cd0ff",
+                      "on-tertiary-fixed-variant": "#653e00",
+                      "surface-container-low": "#f2f4f6",
+                      "surface": "#f7f9fb",
+                      "secondary-container": "#dae2fd",
+                      "on-error": "#ffffff",
+                      "on-tertiary": "#ffffff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "section-padding": "120px",
+                      "stack-md": "16px",
+                      "stack-lg": "32px",
+                      "container-max": "1280px",
+                      "margin-x": "32px",
+                      "stack-sm": "8px",
+                      "gutter": "24px"
+              },
+              "fontFamily": {
+                      "label-md": [
+                              "Inter"
+                      ],
+                      "display-lg": [
+                              "Inter"
+                      ],
+                      "headline-xl": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Inter"
+                      ],
+                      "display-lg-mobile": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display-lg": [
+                              "72px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.04em",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "headline-xl": [
+                              "48px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "display-lg-mobile": [
+                              "40px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "800"
+                              }
+                      ]
+              }
+            }
+          }
+        }
+      </script>
+<style>
+        .mesh-bg {
+            background-image: radial-gradient(at 10% 20%, hsla(210,100%,74%,0.15) 0px, transparent 50%),
+                              radial-gradient(at 80% 0%, hsla(200,100%,56%,0.15) 0px, transparent 50%),
+                              radial-gradient(at 0% 50%, hsla(200,100%,56%,0.15) 0px, transparent 50%);
+        }
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .faq-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        
+        /* Submit Button Animation Styles */
+        .btn-loading {
+            pointer-events: none;
+            opacity: 0.9;
+        }
+        .btn-loading .loading-icon {
+            display: block;
+        }
+        .btn-success {
+            pointer-events: none;
+            background-color: #059669; /* Emerald 600 */
+            transform: scale(1.02);
+            box-shadow: 0 0 20px rgba(5, 150, 105, 0.4);
+        }
+        .btn-success .success-icon {
+            display: block;
+            animation: scaleIn 0.4s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        }
+        @keyframes scaleIn {
+            0% { transform: scale(0); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .particle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: white;
+            border-radius: 50%;
+            opacity: 0;
+            pointer-events: none;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+      </style>
+</head>
+<body class="bg-background text-text-main font-body-md antialiased min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<header class="bg-surface-white/80 dark:bg-inverse-surface/80 backdrop-blur-md shadow-sm border-b border-border-subtle/50 dark:border-outline-variant/20 fixed top-0 w-full z-50">
+<div class="flex justify-between items-center h-20 px-margin-x max-w-container-max mx-auto">
+<div class="text-headline-lg font-headline-lg font-extrabold tracking-tighter text-text-main dark:text-on-primary-fixed">VORTEXX</div>
+<nav class="hidden md:flex gap-8">
+<a class="text-on-surface-variant dark:text-surface-variant font-label-md text-label-md hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200" href="#">Expertise</a>
+<a class="text-on-surface-variant dark:text-surface-variant font-label-md text-label-md hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200" href="#">Work</a>
+<a class="text-on-surface-variant dark:text-surface-variant font-label-md text-label-md hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200" href="#">Agency</a>
+<a class="text-on-surface-variant dark:text-surface-variant font-label-md text-label-md hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200" href="#">Insights</a>
+</nav>
+<button class="font-label-md text-label-md bg-primary text-on-primary px-6 py-2 rounded uppercase hover:bg-primary/90 transition-colors hidden md:block">
+                GET IN TOUCH
+            </button>
+<button class="md:hidden text-text-main">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+</div>
+</header>
+<main class="flex-grow pt-20">
+<!-- Hero Section -->
+<section class="relative pt-section-padding pb-section-padding mesh-bg border-b border-border-subtle">
+<div class="max-w-container-max mx-auto px-margin-x relative z-10 text-center">
+<h1 class="font-display-lg text-display-lg md:text-display-lg font-display-lg-mobile text-display-lg-mobile text-text-main mb-stack-md reveal">Let's Create<br/>Something <span class="text-primary">Extraordinary</span>.</h1>
+<p class="font-body-lg text-body-lg text-text-muted max-w-2xl mx-auto mb-stack-lg reveal" style="transition-delay: 100ms;">Reach out to our global team of strategists and engineers. We're ready to transform your ideas into digital reality.</p>
+<div class="flex flex-wrap justify-center gap-stack-md reveal" style="transition-delay: 200ms;">
+<a class="bg-primary text-on-primary font-label-md text-label-md px-8 py-4 rounded uppercase shadow-lg shadow-primary/20 hover:scale-95 transition-transform duration-250" href="#inquiry-form">Start a Project</a>
+<a class="bg-surface-white text-text-main border border-border-subtle font-label-md text-label-md px-8 py-4 rounded uppercase hover:bg-surface-container-low transition-colors duration-250" href="#offices">View Global Offices</a>
+</div>
+</div>
+</section>
+<!-- Project Inquiry Form -->
+<section class="py-section-padding bg-surface-white" id="inquiry-form">
+<div class="max-w-container-max mx-auto px-margin-x">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-gutter">
+<div class="reveal">
+<h2 class="font-headline-xl text-headline-xl text-text-main mb-stack-md">Project Inquiry</h2>
+<p class="font-body-md text-body-md text-text-muted mb-stack-lg">Tell us about your challenges and goals. We'll get back to you within 24 hours to schedule a discovery call.</p>
+<div class="space-y-stack-md">
+<div class="flex items-center gap-4 p-4 rounded-lg bg-surface-container-low">
+<div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="mail">mail</span>
+</div>
+<div>
+<h3 class="font-label-md text-label-md text-text-main">Email Us Directly</h3>
+<p class="font-body-md text-body-md text-text-muted">hello@vortexx.digital</p>
+</div>
+</div>
+<div class="flex items-center gap-4 p-4 rounded-lg bg-surface-container-low">
+<div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="support_agent">support_agent</span>
+</div>
+<div>
+<h3 class="font-label-md text-label-md text-text-main">24/7 Support Desk</h3>
+<p class="font-body-md text-body-md text-text-muted">For existing clients</p>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-surface-white/80 backdrop-blur-md p-8 rounded-xl shadow-[0_4px_20px_rgba(30,41,59,0.05)] border border-border-subtle reveal" style="transition-delay: 100ms;">
+<form class="space-y-stack-md" id="contact-form">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-md">
+<div>
+<label class="block font-label-md text-[12px] uppercase tracking-widest text-text-muted mb-2" for="first-name">First Name</label>
+<input class="w-full bg-surface-white/80 backdrop-blur-md border border-border-subtle/50 rounded px-4 py-3 text-text-main focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 focus:shadow-[0_0_15px_rgba(0,102,138,0.1)] transition-all duration-250" id="first-name" placeholder="Jane" type="text"/>
+</div>
+<div>
+<label class="block font-label-md text-[12px] uppercase tracking-widest text-text-muted mb-2" for="last-name">Last Name</label>
+<input class="w-full bg-surface-white/80 backdrop-blur-md border border-border-subtle/50 rounded px-4 py-3 text-text-main focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 focus:shadow-[0_0_15px_rgba(0,102,138,0.1)] transition-all duration-250" id="last-name" placeholder="Doe" type="text"/>
+</div>
+</div>
+<div>
+<label class="block font-label-md text-[12px] uppercase tracking-widest text-text-muted mb-2" for="email">Work Email</label>
+<input class="w-full bg-surface-white/80 backdrop-blur-md border border-border-subtle/50 rounded px-4 py-3 text-text-main focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 focus:shadow-[0_0_15px_rgba(0,102,138,0.1)] transition-all duration-250" id="email" placeholder="jane@company.com" type="email"/>
+</div>
+<div>
+<label class="block font-label-md text-[12px] uppercase tracking-widest text-text-muted mb-2" for="company">Company</label>
+<input class="w-full bg-surface-white/80 backdrop-blur-md border border-border-subtle/50 rounded px-4 py-3 text-text-main focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 focus:shadow-[0_0_15px_rgba(0,102,138,0.1)] transition-all duration-250" id="company" placeholder="Company Inc." type="text"/>
+</div>
+<div>
+<label class="block font-label-md text-[12px] uppercase tracking-widest text-text-muted mb-2" for="message">Project Details</label>
+<textarea class="w-full bg-surface-white/80 backdrop-blur-md border border-border-subtle/50 rounded px-4 py-3 text-text-main focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 focus:shadow-[0_0_15px_rgba(0,102,138,0.1)] transition-all duration-250" id="message" placeholder="Briefly describe your needs..." rows="4"></textarea>
+</div>
+<button class="relative overflow-hidden flex items-center justify-center gap-2 w-full bg-primary text-on-primary font-label-md text-label-md py-4 rounded uppercase shadow-lg shadow-primary/20 hover:scale-[0.98] hover:bg-primary/95 transition-all duration-[400ms] ease-[cubic-bezier(0.25,1,0.5,1)]" id="submit-btn" type="submit">
+<span class="material-symbols-outlined hidden loading-icon animate-spin text-[20px]" data-icon="progress_activity">progress_activity</span>
+<span class="material-symbols-outlined hidden success-icon text-[20px]" data-icon="check_circle">check_circle</span>
+<span class="btn-text">Submit Inquiry</span>
+<div class="particles-container absolute inset-0 pointer-events-none"></div>
+</button>
+</form>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest dark:bg-on-background relative w-full">
+<div class="flex flex-col gap-stack-lg py-section-padding px-margin-x max-w-container-max mx-auto">
+<div class="text-headline-xl font-headline-xl font-black text-text-main dark:text-on-primary-fixed mb-8">VORTEXX</div>
+<div class="flex flex-wrap gap-8 justify-between border-t border-border-subtle pt-8">
+<p class="font-body-md text-body-md text-text-muted">© 2024 VORTEXX DIGITAL. TRANSFORMING IDEAS INTO REALITY.</p>
+<nav class="flex gap-6">
+<a class="font-body-md text-body-md text-text-muted dark:text-outline hover:text-text-main dark:hover:text-surface-white transition-opacity duration-250 ease-in-out" href="#">Privacy Policy</a>
+<a class="font-body-md text-body-md text-text-muted dark:text-outline hover:text-text-main dark:hover:text-surface-white transition-opacity duration-250 ease-in-out" href="#">Terms of Service</a>
+<a class="font-body-md text-body-md text-text-muted dark:text-outline hover:text-text-main dark:hover:text-surface-white transition-opacity duration-250 ease-in-out" href="#">Cookie Settings</a>
+<a class="font-body-md text-body-md text-text-muted dark:text-outline hover:text-text-main dark:hover:text-surface-white transition-opacity duration-250 ease-in-out" href="#">Global Offices</a>
+</nav>
+</div>
+</div>
+</footer>
+<script>
+        // Scroll Reveal Logic
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        reveal(); // Trigger on load
+
+        // Submit Button Animation Logic
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const btn = document.getElementById('submit-btn');
+            const btnText = btn.querySelector('.btn-text');
+            const particlesContainer = btn.querySelector('.particles-container');
+            
+            // Loading State
+            btn.classList.add('btn-loading');
+            btn.classList.add('scale-[0.98]');
+            btnText.textContent = 'SENDING...';
+            
+            // Simulate Network Request
+            setTimeout(() => {
+                // Success State
+                btn.classList.remove('btn-loading');
+                btn.classList.remove('scale-[0.98]');
+                btn.classList.add('btn-success');
+                btnText.textContent = 'MESSAGE SENT';
+                
+                // Create Particle Burst
+                particlesContainer.innerHTML = '';
+                for (let i = 0; i < 16; i++) {
+                    const particle = document.createElement('div');
+                    particle.className = 'particle';
+                    
+                    const angle = (i / 16) * Math.PI * 2;
+                    const velocity = 40 + Math.random() * 30;
+                    const tx = Math.cos(angle) * velocity;
+                    const ty = Math.sin(angle) * velocity;
+                    
+                    particlesContainer.appendChild(particle);
+                    
+                    particle.animate([
+                        { transform: 'translate(-50%, -50%) scale(1)', opacity: 1 },
+                        { transform: `translate(calc(-50% + ${tx}px), calc(-50% + ${ty}px)) scale(0)`, opacity: 0 }
+                    ], {
+                        duration: 600 + Math.random() * 200,
+                        easing: 'cubic-bezier(0.25, 1, 0.5, 1)',
+                        fill: 'forwards'
+                    });
+                }
+                
+                // Reset after a few seconds (optional)
+                setTimeout(() => {
+                    btn.classList.remove('btn-success');
+                    btnText.textContent = 'Submit Inquiry';
+                    particlesContainer.innerHTML = '';
+                }, 4000);
+                
+            }, 1500);
+        });
+    </script>
+</body></html>

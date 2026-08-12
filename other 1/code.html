@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VORTEXX - About</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "text-main": "#1E293B",
+                      "on-primary": "#ffffff",
+                      "surface-container-high": "#e6e8ea",
+                      "on-secondary-fixed-variant": "#3f465c",
+                      "on-primary-fixed-variant": "#004c69",
+                      "secondary-fixed": "#dae2fd",
+                      "secondary-fixed-dim": "#bec6e0",
+                      "background": "#f7f9fb",
+                      "outline-variant": "#bdc8d1",
+                      "outline": "#6e7980",
+                      "on-primary-fixed": "#001e2c",
+                      "inverse-on-surface": "#eff1f3",
+                      "inverse-surface": "#2d3133",
+                      "surface-dim": "#d8dadc",
+                      "tertiary-container": "#f2a12c",
+                      "on-background": "#191c1e",
+                      "surface-container-lowest": "#ffffff",
+                      "error-container": "#ffdad6",
+                      "on-surface": "#191c1e",
+                      "surface-container-highest": "#e0e3e5",
+                      "tertiary": "#855300",
+                      "on-surface-variant": "#3e484f",
+                      "on-tertiary-container": "#623c00",
+                      "primary-fixed": "#c4e7ff",
+                      "on-error-container": "#93000a",
+                      "secondary": "#565e74",
+                      "on-tertiary-fixed": "#2a1700",
+                      "surface-bright": "#f7f9fb",
+                      "on-secondary-fixed": "#131b2e",
+                      "tertiary-fixed-dim": "#ffb95f",
+                      "on-secondary-container": "#5c647a",
+                      "surface-white": "#FFFFFF",
+                      "surface-container": "#eceef0",
+                      "primary-fixed-dim": "#7cd0ff",
+                      "error": "#ba1a1a",
+                      "primary": "#00668a",
+                      "on-primary-container": "#004a66",
+                      "text-muted": "#64748B",
+                      "primary-container": "#3abef9",
+                      "surface-variant": "#e0e3e5",
+                      "tertiary-fixed": "#ffddb8",
+                      "surface-tint": "#00668a",
+                      "on-secondary": "#ffffff",
+                      "border-subtle": "#E2E8F0",
+                      "inverse-primary": "#7cd0ff",
+                      "on-tertiary-fixed-variant": "#653e00",
+                      "surface-container-low": "#f2f4f6",
+                      "surface": "#f7f9fb",
+                      "secondary-container": "#dae2fd",
+                      "on-error": "#ffffff",
+                      "on-tertiary": "#ffffff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "section-padding": "120px",
+                      "stack-md": "16px",
+                      "stack-lg": "32px",
+                      "container-max": "1280px",
+                      "margin-x": "32px",
+                      "stack-sm": "8px",
+                      "gutter": "24px"
+              },
+              "fontFamily": {
+                      "label-md": ["Inter"],
+                      "display-lg": ["Inter"],
+                      "headline-xl": ["Inter"],
+                      "body-md": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "display-lg-mobile": ["Inter"]
+              },
+              "fontSize": {
+                      "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "display-lg": ["72px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "800"}],
+                      "headline-xl": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "headline-lg": ["32px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                      "display-lg-mobile": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+        .reveal-elem {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.25s ease-out, transform 0.25s ease-out;
+        }
+        .reveal-elem.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-background text-text-main font-body-md text-body-md antialiased overflow-x-hidden">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-surface-white/80 dark:bg-inverse-surface/80 backdrop-blur-md border-b border-border-subtle/50 dark:border-outline-variant/20 shadow-sm">
+<div class="flex justify-between items-center h-20 px-margin-x max-w-container-max mx-auto">
+<div class="flex items-center gap-2">
+<img alt="VORTEXX Logo" class="h-8 w-auto dark:invert" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmLeI0VVLc3eGuW67vvHiIiCWJrHj01IEaFZ5PeTXa8Tzxb2AnRGFeqLl6xbyTIOrak5tMDdX21nDI3rWT271QYQiOXqiwjzDvv6qUJAiA7B0Kolmd_Xc6wbhbiz6ry62gHXWRPEJ3X5XS7GLCWKJzruVLugZ5L99q9zxeht-NxKo22TBCDE4tSKZr-zc1Ul26vIiWZ5SckRhrFr3N_3udFZENStCyv3ewz8GebLVrBdxNZTxEFNyBDQ"/>
+</div>
+<div class="hidden md:flex gap-gutter font-label-md text-label-md">
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200" href="#">Expertise</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200" href="#">Work</a>
+<a class="text-primary dark:text-primary-fixed-dim border-b-2 border-primary pb-1" href="#">Agency</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200" href="#">Insights</a>
+</div>
+<button class="font-label-md text-label-md bg-primary text-on-primary px-6 py-3 rounded hover:bg-surface-tint transition-colors duration-200 uppercase">
+                GET IN TOUCH
+            </button>
+</div>
+</nav>
+<main class="pt-24 md:pt-32">
+<!-- Hero Section -->
+<section class="max-w-container-max mx-auto px-margin-x py-section-padding flex flex-col gap-stack-lg reveal-elem">
+<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg text-text-main max-w-4xl">
+                We are a creative agency driven by data.
+            </h1>
+<div class="w-full aspect-[1.34] rounded-xl overflow-hidden border border-border-subtle relative group shadow-[0_4px_20px_rgba(0,102,138,0.05)]">
+<img alt="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out" src="https://lh3.googleusercontent.com/aida/AP1WRLv4MGkPCuzO1vXyVL8b97zEe9Gaz_SrkcxFvwsQYBcMEjPoNfxzOdMCJ_cB0oFC96M2fx44bzNj-758IYwoi3Ee5XDAJuB3nLlHE1GsK8VN7H-wRRUynJ78s-zQhG43klVAJ7SiUCDPOOFiPrqbmVaSUyifI5nkeLeETHW8qjXwr3OJUzuBIEeudPtN9cByujwKnnTgEwbaZ_J_TbRQVJPLz7w-yfzpaa40HsZgN9Ugtfq3XqHeoI7vM9Oq"/>
+</div>
+</section>
+<!-- Our Story -->
+<section class="bg-surface-container-low border-y border-border-subtle py-section-padding relative overflow-hidden">
+<div class="max-w-container-max mx-auto px-margin-x flex flex-col md:flex-row gap-gutter items-center reveal-elem">
+<div class="md:w-1/2 relative z-10">
+<h2 class="font-headline-xl text-headline-xl text-text-main tracking-tighter leading-tight relative z-20 mix-blend-multiply opacity-90 -mr-12 mt-12 bg-surface-white/60 backdrop-blur p-4 rounded-lg shadow-sm border border-border-subtle">
+                        Forged in complexity.<br/>Refined by intent.
+                    </h2>
+</div>
+<div class="md:w-1/2 font-body-lg text-body-lg text-on-surface-variant">
+<p class="mb-stack-md">VORTEXX is a team of creatives, strategists, and technologists who believe in the power of data-driven design. We are passionate about helping brands navigate the complex digital landscape and create meaningful connections with their audiences.</p>
+<p>Our approach is holistic, blending strategic thinking with cutting-edge execution to deliver results that matter. We don't just build websites; we create digital ecosystems that drive growth and foster long-term success.</p>
+</div>
+</div>
+</section>
+<!-- Meet the Leaders -->
+<section class="max-w-container-max mx-auto px-margin-x py-section-padding">
+<div class="mb-stack-lg reveal-elem">
+<h2 class="font-headline-lg text-headline-lg text-text-main">Our Team</h2>
+<p class="font-body-md text-body-md text-text-muted mt-2">The architects behind the ecosystem.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter reveal-elem">
+<!-- Leader 1 -->
+<div class="bg-surface-container-lowest border border-border-subtle rounded-lg p-4 flex flex-col gap-stack-sm shadow-[0_4px_20px_rgba(0,102,138,0.05)] transition-transform hover:-translate-y-1">
+<div class="aspect-square rounded-md overflow-hidden bg-surface-dim">
+<img class="w-full h-full object-cover" data-alt="A striking portrait of a modern female tech CEO standing in a minimalist, light-filled office corridor. She wears a sharp, tailored navy blazer over a crisp white shirt, exuding confidence and high-end corporate professionalism. The background features subtle architectural lines of glass and brushed steel. The lighting is bright and even, highlighting her focused expression against the pristine, light-mode environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbfU9wZQ51IUd8rGMQ-CFUmqevo9KtfY-jbRHC_sTEvhEoM7aB8bhWppfdJnJtk8rSzVBPt6bVOnQm6P8V7yX5w8HPYvxNFqBIazPmGWxMHPK9awbWVG68YxwSIV63cUO_EosXL6ilh0kv_wTtYvxv0thjnl16H6NYmvHeqzG6mgMCz0TXnLY6GrU3_vqD8F8UAw-FK12YkPa4cC9NC_Uq7uaWEn5YZI0jHr6iDjRjwErQ6vmeAze8Aw"/>
+</div>
+<div class="mt-2">
+<h3 class="font-label-md text-label-md text-text-main uppercase tracking-widest">Elena Rostova</h3>
+<p class="font-body-md text-body-md text-primary mt-1">Chief Executive Officer</p>
+</div>
+</div>
+<!-- Leader 2 -->
+<div class="bg-surface-container-lowest border border-border-subtle rounded-lg p-4 flex flex-col gap-stack-sm shadow-[0_4px_20px_rgba(0,102,138,0.05)] transition-transform hover:-translate-y-1">
+<div class="aspect-square rounded-md overflow-hidden bg-surface-dim">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a male Chief Technology Officer in his late 30s, sitting in a high-tech meeting room. He has a neat beard and wears a sophisticated, dark slate sweater. Behind him is a blurred whiteboard with abstract technical diagrams. The lighting is cinematic yet bright, creating a clean, modern tech aesthetic suitable for a premium agency's leadership page." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9Mt-DNltUvZM2EdroqCL4CmexjomoiBcmsmfvXc1E4uPsfMFJF0UGHglLNluDeKDP5KeWBLAnM9DWE-VniqIaqy6P1tvgLDw05IzufzK14I34M1v_1mdTGjNyaSGOX3eYYN2T9i_g1Y_Vc1KTaegSFnXH6hB9LNV0NoRT42A_EajGEpVR-254MJzgiKMAe61I-x2P_I8Ak7_4JT_y2gAWPCFW-BVedeb6lKiFXNb2QGH00gb0WyuKPQ"/>
+</div>
+<div class="mt-2">
+<h3 class="font-label-md text-label-md text-text-main uppercase tracking-widest">Marcus Chen</h3>
+<p class="font-body-md text-body-md text-primary mt-1">Head of Engineering</p>
+</div>
+</div>
+<!-- Leader 3 -->
+<div class="bg-surface-container-lowest border border-border-subtle rounded-lg p-4 flex flex-col gap-stack-sm shadow-[0_4px_20px_rgba(0,102,138,0.05)] transition-transform hover:-translate-y-1">
+<div class="aspect-square rounded-md overflow-hidden bg-surface-dim">
+<img class="w-full h-full object-cover" data-alt="An editorial-style portrait of a creative director, a woman with stylish short hair, leaning against a clean white wall. She is wearing minimalist, avant-garde corporate attire in monochromatic tones. The environment is flooded with natural daylight, creating soft shadows and a high-key, pristine aesthetic. The mood is creative, sharp, and highly professional, fitting a top-tier digital design agency." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkuj3wBsYAC9EaUEYG0tXiE95kPJsULsqAyk4xvkHshHkTLUIJRucoiNtLmCwNH3u8XKmsszdP79JxkzZOO_wPzewraGRajiT-MCOnIk6VSgUROi-eZRQ-iCsnYTXrCz9-ZTb6JI_gYbsrGjWdul0qG1yetvy0N-fOev9ubvvf3CTcxdmbgTHx8fV8xnqcUtixNQoRXcgepDptYZHeSDU5utbqpQrpXginZ1gK5kLSwZhQV7kL70Oq_Q"/>
+</div>
+<div class="mt-2">
+<h3 class="font-label-md text-label-md text-text-main uppercase tracking-widest">Sarah Jenkins</h3>
+<p class="font-body-md text-body-md text-primary mt-1">Creative Director</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Values Bento -->
+<section class="bg-surface py-section-padding">
+<div class="max-w-container-max mx-auto px-margin-x reveal-elem">
+<h2 class="font-headline-lg text-headline-lg text-text-main mb-stack-lg">Our Values</h2>
+<div class="grid grid-cols-1 md:grid-cols-4 grid-rows-2 gap-stack-md h-auto md:h-[600px]">
+<!-- Large Feature -->
+<div class="md:col-span-2 md:row-span-2 bg-surface-white/80 backdrop-blur-md border border-border-subtle rounded-xl p-8 flex flex-col justify-between shadow-[0_10px_40px_rgba(0,102,138,0.05)] relative overflow-hidden group">
+<div class="relative z-10">
+<div class="w-12 h-12 rounded-full bg-primary-fixed/20 flex items-center justify-center mb-stack-md text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">architecture</span>
+</div>
+<h3 class="font-headline-lg text-headline-lg text-text-main mb-4">Innovation</h3>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-md">We are always looking for new and better ways to do things. We embrace change and are constantly pushing the boundaries of what is possible.</p>
+</div>
+<div class="absolute -bottom-20 -right-20 w-64 h-64 bg-primary-fixed rounded-full blur-3xl opacity-20 group-hover:opacity-40 transition-opacity duration-500"></div>
+</div>
+<!-- Small Features -->
+<div class="md:col-span-2 md:row-span-1 bg-surface-container-lowest border border-border-subtle rounded-xl p-6 shadow-sm flex flex-col justify-center relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4 opacity-10">
+<span class="material-symbols-outlined text-6xl">bolt</span>
+</div>
+<h4 class="font-label-md text-label-md text-text-main uppercase tracking-widest mb-2">Integrity</h4>
+<p class="font-body-md text-body-md text-text-muted">We are honest, transparent, and always do the right thing, even when no one is looking.</p>
+</div>
+<div class="md:col-span-1 md:row-span-1 bg-primary text-on-primary rounded-xl p-6 shadow-sm flex flex-col justify-between">
+<span class="material-symbols-outlined text-4xl opacity-80" style="font-variation-settings: 'FILL' 1;">visibility</span>
+<div>
+<h4 class="font-label-md text-label-md text-on-primary uppercase tracking-widest mb-1">Collaboration</h4>
+<p class="font-body-md text-body-md text-primary-fixed opacity-90 text-sm">Working together to achieve common goals.</p>
+</div>
+</div>
+<div class="md:col-span-1 md:row-span-1 bg-surface-container-lowest border border-border-subtle rounded-xl p-6 shadow-sm flex flex-col justify-between">
+<span class="material-symbols-outlined text-primary text-4xl" style="font-variation-settings: 'FILL' 1;">sync</span>
+<div>
+<h4 class="font-label-md text-label-md text-text-main uppercase tracking-widest mb-1">Excellence</h4>
+<p class="font-body-md text-body-md text-text-muted text-sm">Striving for greatness in everything we do.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="relative w-full bg-surface-container-lowest dark:bg-on-background">
+<div class="flex flex-col gap-stack-lg py-section-padding px-margin-x max-w-container-max mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-stack-md">
+<div class="flex items-center gap-2">
+<img alt="VORTEXX Logo" class="h-8 w-auto dark:invert" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1XvsQvixDOx_U1meoXG8voDdp3MwFyT89ti68rSB7i_rUNPFlly_7UwKENUal3Xxn-XCd_DsC6wm7v8Fm2fjoRNXOrndoja_w48lIPsO5Pzpk_PETFcaQtfQsS-1Zy-D-anpHm5GZrii_Y--P2XvgVuGaxRZvHK954oriziphqSrB2knKf3dJNMJ3ulz2urZP-WYCIAfjQqW7wqxHQw0XEMvA-A0TMvj0GAtGQ_cpISSf9ob5-orwCA"/>
+</div>
+<div class="flex flex-wrap gap-stack-md">
+<a class="font-body-md text-body-md text-text-muted dark:text-outline hover:text-text-main dark:hover:text-surface-white underline underline-offset-4 transition-opacity duration-250 ease-in-out" href="#">Privacy Policy</a>
+<a class="font-body-md text-body-md text-text-muted dark:text-outline hover:text-text-main dark:hover:text-surface-white underline underline-offset-4 transition-opacity duration-250 ease-in-out" href="#">Terms of Service</a>
+<a class="font-body-md text-body-md text-text-muted dark:text-outline hover:text-text-main dark:hover:text-surface-white underline underline-offset-4 transition-opacity duration-250 ease-in-out" href="#">Cookie Settings</a>
+<a class="font-body-md text-body-md text-text-muted dark:text-outline hover:text-text-main dark:hover:text-surface-white underline underline-offset-4 transition-opacity duration-250 ease-in-out" href="#">Global Offices</a>
+</div>
+</div>
+<div class="border-t border-border-subtle/50 pt-stack-md">
+<p class="font-body-md text-body-md text-text-muted dark:text-outline">© 2024 VORTEXX DIGITAL. TRANSFORMING IDEAS INTO REALITY.</p>
+</div>
+</div>
+</footer>
+<script>
+        // Simple Intersection Observer for scroll reveal animations
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target); // Run once
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            document.querySelectorAll('.reveal-elem').forEach((elem) => {
+                observer.observe(elem);
+            });
+        });
+    </script>
+</body></html>

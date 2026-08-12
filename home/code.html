@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VORTEXX - Transforming Ideas Into Digital Reality</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "inverse-on-surface": "#eff1f3",
+                "surface-container": "#eceef0",
+                "surface-container-high": "#e6e8ea",
+                "primary-fixed-dim": "#7cd0ff",
+                "secondary-fixed": "#dae2fd",
+                "on-tertiary": "#ffffff",
+                "surface-container-low": "#f2f4f6",
+                "primary-container": "#3abef9",
+                "primary": "#00668a",
+                "on-primary-fixed": "#001e2c",
+                "secondary-container": "#dae2fd",
+                "outline-variant": "#bdc8d1",
+                "inverse-surface": "#2d3133",
+                "on-background": "#191c1e",
+                "error-container": "#ffdad6",
+                "on-secondary-fixed": "#131b2e",
+                "on-tertiary-fixed-variant": "#653e00",
+                "tertiary-fixed": "#ffddb8",
+                "tertiary-fixed-dim": "#ffb95f",
+                "text-muted": "#64748B",
+                "on-error-container": "#93000a",
+                "primary-fixed": "#c4e7ff",
+                "on-surface-variant": "#3e484f",
+                "tertiary": "#855300",
+                "tertiary-container": "#f2a12c",
+                "surface": "#f7f9fb",
+                "surface-white": "#FFFFFF",
+                "on-secondary-container": "#5c647a",
+                "secondary": "#565e74",
+                "surface-bright": "#f7f9fb",
+                "on-tertiary-container": "#623c00",
+                "outline": "#6e7980",
+                "error": "#ba1a1a",
+                "surface-container-lowest": "#ffffff",
+                "on-primary-container": "#004a66",
+                "surface-variant": "#e0e3e5",
+                "on-surface": "#191c1e",
+                "border-subtle": "#E2E8F0",
+                "on-error": "#ffffff",
+                "surface-dim": "#d8dadc",
+                "inverse-primary": "#7cd0ff",
+                "on-secondary": "#ffffff",
+                "surface-tint": "#00668a",
+                "secondary-fixed-dim": "#bec6e0",
+                "background": "#f7f9fb",
+                "surface-container-highest": "#e0e3e5",
+                "on-primary-fixed-variant": "#004c69",
+                "text-main": "#1E293B",
+                "on-tertiary-fixed": "#2a1700",
+                "on-secondary-fixed-variant": "#3f465c",
+                "on-primary": "#ffffff"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+        },
+        "spacing": {
+                "stack-sm": "8px",
+                "stack-md": "16px",
+                "container-max": "1280px",
+                "stack-lg": "32px",
+                "margin-x": "32px",
+                "section-padding": "120px",
+                "gutter": "24px"
+        },
+        "fontFamily": {
+                "display-lg": [
+                        "Inter"
+                ],
+                "display-lg-mobile": [
+                        "Inter"
+                ],
+                "headline-xl": [
+                        "Inter"
+                ],
+                "body-lg": [
+                        "Inter"
+                ],
+                "body-md": [
+                        "Inter"
+                ],
+                "headline-lg": [
+                        "Inter"
+                ],
+                "label-md": [
+                        "Inter"
+                ]
+        },
+        "fontSize": {
+                "display-lg": [
+                        "72px",
+                        {
+                                "lineHeight": "1.1",
+                                "letterSpacing": "-0.04em",
+                                "fontWeight": "800"
+                        }
+                ],
+                "display-lg-mobile": [
+                        "40px",
+                        {
+                                "lineHeight": "1.2",
+                                "letterSpacing": "-0.02em",
+                                "fontWeight": "800"
+                        }
+                ],
+                "headline-xl": [
+                        "48px",
+                        {
+                                "lineHeight": "1.2",
+                                "letterSpacing": "-0.02em",
+                                "fontWeight": "700"
+                        }
+                ],
+                "body-lg": [
+                        "18px",
+                        {
+                                "lineHeight": "1.6",
+                                "fontWeight": "400"
+                        }
+                ],
+                "body-md": [
+                        "16px",
+                        {
+                                "lineHeight": "1.5",
+                                "fontWeight": "400"
+                        }
+                ],
+                "headline-lg": [
+                        "32px",
+                        {
+                                "lineHeight": "1.3",
+                                "fontWeight": "700"
+                        }
+                ],
+                "label-md": [
+                        "14px",
+                        {
+                                "lineHeight": "1.2",
+                                "letterSpacing": "0.05em",
+                                "fontWeight": "600"
+                        }
+                ]
+        }
+},
+    },
+  }
+</script>
+<style>
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* Respect prefers-reduced-motion */
+        @media (prefers-reduced-motion: no-preference) {
+            .animate-gradient-text {
+                background: linear-gradient(135deg, #001e2c 0%, #00668a 50%, #3abef9 100%);
+                background-size: 200% auto;
+                color: transparent;
+                -webkit-background-clip: text;
+                background-clip: text;
+                animation: gradientMove 5s ease infinite;
+            }
+            @keyframes gradientMove {
+                0% { background-position: 0% 50%; }
+                50% { background-position: 100% 50%; }
+                100% { background-position: 0% 50%; }
+            }
+            
+            /* Scroll reveal */
+            .reveal-on-scroll {
+                opacity: 0;
+                transform: translateY(40px);
+                transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            }
+            .reveal-on-scroll.is-visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            /* Mesh Gradient Animation */
+            .animate-mesh {
+                background-size: 400% 400%;
+                animation: meshMove 15s ease infinite;
+            }
+            @keyframes meshMove {
+                0% { background-position: 0% 50%; }
+                50% { background-position: 100% 50%; }
+                100% { background-position: 0% 50%; }
+            }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .animate-gradient-text {
+                background: linear-gradient(135deg, #001e2c 0%, #00668a 50%, #3abef9 100%);
+                color: transparent;
+                -webkit-background-clip: text;
+                background-clip: text;
+            }
+            .reveal-on-scroll {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05), inset 0 0 0 1px rgba(255, 255, 255, 0.4);
+        }
+        .glass-panel-dark {
+            background: rgba(25, 28, 30, 0.4);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
+        }
+        .hover-lift {
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .hover-lift:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 24px 48px -12px rgba(0, 102, 138, 0.15);
+        }
+        .hover-tilt {
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .hover-tilt:hover {
+            transform: perspective(1000px) rotateX(5deg) rotateY(-5deg) scale(1.02);
+        }
+        .bg-mesh-premium {
+            background-color: #f7f9fb;
+            background-image: 
+                radial-gradient(at 20% 0%, hsla(196,100%,89%,0.5) 0px, transparent 60%),
+                radial-gradient(at 80% 0%, hsla(196,100%,94%,0.5) 0px, transparent 60%),
+                radial-gradient(at 100% 80%, hsla(196,100%,89%,0.4) 0px, transparent 60%),
+                radial-gradient(at 0% 100%, hsla(196,100%,94%,0.5) 0px, transparent 60%),
+                radial-gradient(at 50% 50%, hsla(200, 100%, 97%, 0.6) 0px, transparent 50%);
+        }
+        .code-font {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        }
+        .text-outline {
+            color: transparent;
+            -webkit-text-stroke: 1.5px rgba(0, 102, 138, 0.3);
+        }
+        
+        /* Carousel Animations */
+        .carousel-slide {
+            opacity: 0;
+            transition: opacity 1.2s ease-in-out;
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .carousel-slide.active {
+            opacity: 1;
+            z-index: 10;
+            pointer-events: auto;
+        }
+        .carousel-slide .carousel-img {
+            transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+            transform: scale(1.05);
+        }
+        .carousel-slide.active .carousel-img {
+            transform: scale(1);
+        }
+        
+        .carousel-content {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
+        }
+        .carousel-slide.active .carousel-content {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Progress Bar Navigation */
+        .nav-progress {
+            width: 40px;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: width 0.3s ease;
+        }
+        .nav-progress.active {
+            width: 80px;
+        }
+        .nav-progress-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background: #fff;
+            width: 0%;
+        }
+        .nav-progress.active .nav-progress-bar {
+            animation: progressAnim 5s linear forwards;
+        }
+        @keyframes progressAnim {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
+        
+        .parallax-bg {
+            will-change: transform;
+        }
+    </style>
+<style>.reveal-on-scroll { transition: opacity 0.25s cubic-bezier(0.2, 1, 0.3, 1), transform 0.25s cubic-bezier(0.2, 1, 0.3, 1) !important; }</style></head>
+<body class="bg-surface text-on-surface font-body-md overflow-x-hidden selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TopNavBar Component -->
+<nav class="bg-white/70 backdrop-blur-xl docked full-width top-0 sticky z-50 border-b border-white/50 shadow-[0_4px_30px_rgba(0,0,0,0.03)] transition-all duration-300">
+<div class="flex justify-between items-center w-full px-margin-x max-w-container-max mx-auto h-24">
+<div class="flex items-center gap-4 group cursor-pointer">
+<div class="relative w-12 h-12 rounded-lg overflow-hidden shadow-sm group-hover:shadow-md transition-all duration-500 group-hover:scale-105 border border-border-subtle">
+<img alt="VORTEXX Logo" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AP1WRLtPt7eDsoR7mee9XEiQKcqeYYUbNq2qJjidSLHbIZ7KVu92TFhljTCLLjZ6clpStyETARSezpf9airJ8A3ZYIl54VDDkThoJTVX6aISNaJkhEC6ZxNwh26Lfq0tQvWZ21DV_BgS-mSv4oDS0fT6BiA_G3npTLFo3qz7_PzIKW_XfBx2ta9f-MV1PqCnRJqW-pOEXF_4rHwCNnXfq-O4xcPmo6xVkIScVpg-tO0X-uWkY50k7gf4Go_Oqa8"/>
+</div>
+<span class="font-display-lg-mobile text-2xl font-black tracking-tight text-on-surface group-hover:text-primary transition-colors duration-500">VORTEXX</span>
+</div>
+<div class="hidden md:flex items-center gap-10 font-label-md text-sm tracking-[0.15em] uppercase font-bold text-on-surface-variant">
+<a class="text-primary relative py-2 after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-full after:h-[2px] after:bg-primary" href="#">Home</a>
+<a class="hover:text-primary transition-colors duration-300 py-2 relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[2px] after:bg-primary hover:after:w-full after:transition-all after:duration-300" href="#">About</a>
+<a class="hover:text-primary transition-colors duration-300 py-2 relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[2px] after:bg-primary hover:after:w-full after:transition-all after:duration-300" href="#">Services</a>
+<a class="hover:text-primary transition-colors duration-300 py-2 relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[2px] after:bg-primary hover:after:w-full after:transition-all after:duration-300" href="#">Contact</a>
+</div>
+<button class="bg-on-surface text-surface-white px-8 py-3.5 rounded-full font-label-md hover:bg-primary transition-all duration-500 shadow-[0_8px_20px_rgba(25,28,30,0.15)] hover:shadow-[0_12px_24px_rgba(0,102,138,0.25)] hover:-translate-y-1 active:translate-y-0 tracking-wider">
+                Get in Touch
+            </button>
+</div>
+</nav>
+<!-- Hero Carousel Section -->
+<section class="relative h-[95vh] min-h-[700px] w-full overflow-hidden bg-on-surface parallax-container" id="hero-carousel">
+<!-- Slide 1 -->
+<div class="carousel-slide active w-full h-full">
+<div class="absolute inset-0 z-0 h-[120%] -top-[10%]">
+<img alt="High-end tech interface" class="carousel-img w-full h-full object-cover object-center opacity-70 parallax-bg" data-speed="0.5" src="https://lh3.googleusercontent.com/FwzO5n72xXJ8sFqL3y-bZ4N-R5_V24L3t-E0m7a78zQ2XjG06j68M793jH46K08_X81K83G014p56I3GZ62_P07T_F20w5w3R1Z7"/>
+<div class="absolute inset-0 bg-gradient-to-r from-on-surface/90 via-on-surface/60 to-transparent"></div>
+</div>
+<div class="relative z-10 w-full h-full max-w-container-max mx-auto px-margin-x flex flex-col justify-center reveal-on-scroll">
+<div class="max-w-4xl carousel-content relative">
+<div class="glass-panel-dark absolute -inset-6 md:-inset-10 -z-10 rounded-2xl opacity-60"></div>
+<div class="inline-flex items-center gap-3 px-5 py-2.5 rounded-full border border-white/20 text-white font-label-md text-xs tracking-widest uppercase mb-8 backdrop-blur-xl">
+<span class="relative flex h-2.5 w-2.5">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-fixed opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary-fixed"></span>
+</span>
+                        Enterprise Solutions
+                    </div>
+<h1 class="font-display-lg-mobile lg:text-[96px] text-white leading-[0.95] tracking-tighter mb-8 font-black">
+                        Transforming<br/>
+<span class="font-light italic text-white/90">Ideas Into</span>
+<span class="animate-gradient-text inline-block block -mt-2">Digital Reality</span>
+</h1>
+<p class="font-body-lg text-xl lg:text-2xl text-secondary-fixed-dim max-w-2xl leading-relaxed font-light mb-10">
+                        We architect full-service technology solutions, driving innovation and scale through uncompromising engineering and design.
+                    </p>
+<div class="flex flex-col sm:flex-row gap-5">
+<button class="bg-primary-fixed text-on-primary-fixed px-10 py-5 rounded-full font-label-md text-base hover:bg-white transition-all duration-500 shadow-[0_0_30px_rgba(196,231,255,0.2)] hover:shadow-[0_0_40px_rgba(255,255,255,0.3)] hover:-translate-y-1 flex items-center justify-center gap-3 group">
+                            Explore Services
+                            <span class="material-symbols-outlined group-hover:translate-x-2 transition-transform duration-300">east</span>
+</button>
+<button class="glass-panel-dark text-white px-10 py-5 rounded-full font-label-md text-base hover:bg-white/10 transition-all duration-500 shadow-sm hover:shadow-md hover:-translate-y-1">
+                            Book a Demo
+                        </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Slide 2 -->
+<div class="carousel-slide w-full h-full">
+<div class="absolute inset-0 z-0 h-[120%] -top-[10%]">
+<img alt="Modern microprocessor" class="carousel-img w-full h-full object-cover object-center opacity-70 parallax-bg" data-speed="0.5" src="https://lh3.googleusercontent.com/973L1V6pX2Q1uG5zZ3m6V5t1oP4_3M1xT3K4C13g1k7G7b3X41_N13a7c64r3z9F7_N9z7m0r3C4Y1G3y25C13_Q1y6n3F0F4r9Q"/>
+<div class="absolute inset-0 bg-gradient-to-r from-on-surface/90 via-on-surface/60 to-transparent"></div>
+</div>
+<div class="relative z-10 w-full h-full max-w-container-max mx-auto px-margin-x flex flex-col justify-center reveal-on-scroll">
+<div class="max-w-4xl carousel-content relative">
+<div class="glass-panel-dark absolute -inset-6 md:-inset-10 -z-10 rounded-2xl opacity-60"></div>
+<div class="inline-flex items-center gap-3 px-5 py-2.5 rounded-full border border-white/20 text-white font-label-md text-xs tracking-widest uppercase mb-8 backdrop-blur-xl">
+<span class="relative flex h-2.5 w-2.5">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-fixed opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary-fixed"></span>
+</span>
+                        Systems Architecture
+                    </div>
+<h1 class="font-display-lg-mobile lg:text-[96px] text-white leading-[0.95] tracking-tighter mb-8 font-black">
+                        Engineered for<br/>
+<span class="font-light italic text-white/90">Unmatched</span>
+<span class="text-primary-fixed inline-block block -mt-2">Performance</span>
+</h1>
+<p class="font-body-lg text-xl lg:text-2xl text-secondary-fixed-dim max-w-2xl leading-relaxed font-light mb-10">
+                        Building the robust infrastructure your business needs to scale effortlessly and securely.
+                    </p>
+<div class="flex flex-col sm:flex-row gap-5">
+<button class="bg-primary-fixed text-on-primary-fixed px-10 py-5 rounded-full font-label-md text-base hover:bg-white transition-all duration-500 shadow-[0_0_30px_rgba(196,231,255,0.2)] hover:shadow-[0_0_40px_rgba(255,255,255,0.3)] hover:-translate-y-1 flex items-center justify-center gap-3 group">
+                            Our Approach
+                            <span class="material-symbols-outlined group-hover:translate-x-2 transition-transform duration-300">east</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Slide 3 -->
+<div class="carousel-slide w-full h-full">
+<div class="absolute inset-0 z-0 h-[120%] -top-[10%]">
+<img alt="Tech collaboration" class="carousel-img w-full h-full object-cover object-center opacity-70 parallax-bg" data-speed="0.5" src="https://lh3.googleusercontent.com/0g4q81_h8c5kL9b8W4q7G9k0Z51N46p2L7n9_b1q9_C99Z218H7h0J873Z1K87z0c15N29Y3F7z8M6n7z1Q61x2M7r8f9_M3L5p2"/>
+<div class="absolute inset-0 bg-gradient-to-r from-on-surface/90 via-on-surface/60 to-transparent"></div>
+</div>
+<div class="relative z-10 w-full h-full max-w-container-max mx-auto px-margin-x flex flex-col justify-center reveal-on-scroll">
+<div class="max-w-4xl carousel-content relative">
+<div class="glass-panel-dark absolute -inset-6 md:-inset-10 -z-10 rounded-2xl opacity-60"></div>
+<div class="inline-flex items-center gap-3 px-5 py-2.5 rounded-full border border-white/20 text-white font-label-md text-xs tracking-widest uppercase mb-8 backdrop-blur-xl">
+<span class="relative flex h-2.5 w-2.5">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-fixed opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary-fixed"></span>
+</span>
+                        Expert Collaboration
+                    </div>
+<h1 class="font-display-lg-mobile lg:text-[96px] text-white leading-[0.95] tracking-tighter mb-8 font-black">
+                        The Team Behind<br/>
+<span class="font-light italic text-white/90">Your Future</span>
+<span class="text-primary-fixed inline-block block -mt-2">Success</span>
+</h1>
+<p class="font-body-lg text-xl lg:text-2xl text-secondary-fixed-dim max-w-2xl leading-relaxed font-light mb-10">
+                        Partner with a dedicated team of engineers and designers committed to realizing your vision.
+                    </p>
+<div class="flex flex-col sm:flex-row gap-5">
+<button class="bg-primary-fixed text-on-primary-fixed px-10 py-5 rounded-full font-label-md text-base hover:bg-white transition-all duration-500 shadow-[0_0_30px_rgba(196,231,255,0.2)] hover:shadow-[0_0_40px_rgba(255,255,255,0.3)] hover:-translate-y-1 flex items-center justify-center gap-3 group">
+                            Meet the Team
+                            <span class="material-symbols-outlined group-hover:translate-x-2 transition-transform duration-300">east</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Carousel Navigation -->
+<div class="absolute bottom-10 left-0 w-full z-20">
+<div class="max-w-container-max mx-auto px-margin-x flex gap-3">
+<div class="nav-progress active" data-slide="0"><div class="nav-progress-bar"></div></div>
+<div class="nav-progress" data-slide="1"><div class="nav-progress-bar"></div></div>
+<div class="nav-progress" data-slide="2"><div class="nav-progress-bar"></div></div>
+</div>
+</div>
+<!-- Decorative Elements -->
+<div class="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/20 rounded-full blur-[120px] mix-blend-screen pointer-events-none z-10"></div>
+</section>
+<div class="py-12 border-b border-border-subtle bg-surface-white reveal-on-scroll">
+<div class="max-w-container-max mx-auto px-margin-x">
+<p class="text-center text-xs font-bold text-on-surface-variant uppercase tracking-[0.3em] mb-12">Trusted by forward-thinking teams</p>
+<div class="flex flex-wrap justify-center md:justify-between items-center gap-12 opacity-50 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-700">
+<div class="text-2xl lg:text-3xl font-black font-display-lg text-on-surface tracking-tighter hover:text-primary transition-colors cursor-pointer">ACME Corp</div>
+<div class="text-2xl lg:text-3xl font-black font-display-lg text-on-surface tracking-tighter hover:text-primary transition-colors cursor-pointer">GlobalTech</div>
+<div class="text-2xl lg:text-3xl font-black font-display-lg text-on-surface tracking-tighter hover:text-primary transition-colors cursor-pointer">Nexus Ind.</div>
+<div class="text-2xl lg:text-3xl font-black font-display-lg text-on-surface tracking-tighter hover:text-primary transition-colors cursor-pointer">Stark Sys.</div>
+</div>
+</div>
+</div>
+<!-- Tech Craftsmanship (Replaces Expertise Section) -->
+<section class="py-[160px] bg-surface relative z-20 overflow-hidden parallax-container">
+<div class="max-w-container-max mx-auto px-margin-x relative z-10">
+<div class="flex flex-col lg:flex-row items-center gap-16 lg:gap-0">
+<!-- Image side -->
+<div class="w-full lg:w-8/12 relative group reveal-on-scroll z-10">
+<div class="aspect-[16/9] rounded-[2rem] overflow-hidden shadow-2xl relative">
+<div class="absolute inset-0 h-[120%] -top-[10%]">
+<img alt="Tech Craftsmanship" class="w-full h-full object-cover transform transition-transform duration-1000 parallax-bg" data-speed="0.2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6Klue_m4Xvm9jYV4uAUzCy7aquruw7MAIL7PzgzqYl5LTEsikZ5DylE_vi8OKU77W5XMuym5PRZBF0oi6to8ZGUdazrOZzULcucj3IBV7FHyIV7t0HUadUJMjp0txCjF_oXvBfLozQTwLsNv67pewdjttRZFqkz8UrP5p1kllttzQeXE9PVGTapvNkjdQeRkUVJiuABO1WrREBSf8ztrUZDgSg9P8lVQ8go5pYBJ9fNviI4xPxy5P9g"/>
+</div>
+<div class="absolute inset-0 bg-gradient-to-r from-transparent to-surface/20 mix-blend-overlay group-hover:opacity-0 transition-opacity duration-700"></div>
+</div>
+</div>
+<!-- Overlapping Content -->
+<div class="w-full lg:w-5/12 lg:-ml-32 relative z-20 reveal-on-scroll mt-10 lg:mt-0">
+<div class="glass-panel-dark bg-on-surface/80 p-12 lg:p-16 rounded-[2.5rem] border border-white/10 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.3)] backdrop-blur-xl hover-tilt">
+<div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/20 text-primary-fixed font-label-md text-xs mb-8 uppercase tracking-[0.2em] font-bold">Tech Craftsmanship</div>
+<h2 class="font-headline-xl text-4xl lg:text-5xl font-black text-white mb-8 tracking-tighter leading-tight">Engineered for<br/><span class="italic font-light text-primary-fixed">Scale &amp; Precision</span></h2>
+<div class="space-y-8">
+<div class="border-l-2 border-primary-fixed/50 pl-6 hover:border-primary-fixed transition-colors">
+<h3 class="font-headline-lg text-2xl font-bold mb-2 text-white">Systems Development</h3>
+<p class="font-body-md text-secondary-fixed-dim text-sm font-light leading-relaxed">Custom infrastructure designed for flawless integration and high performance.</p>
+</div>
+<div class="border-l-2 border-white/20 pl-6 hover:border-primary-fixed transition-colors">
+<h3 class="font-headline-lg text-2xl font-bold mb-2 text-white">Digital Design</h3>
+<p class="font-body-md text-secondary-fixed-dim text-sm font-light leading-relaxed">Immersive, conversion-optimized interfaces that capture brand essence.</p>
+</div>
+</div>
+<a class="mt-12 inline-flex items-center gap-4 text-primary-fixed font-bold text-sm uppercase tracking-wider group/link" href="#">
+                    Explore Capabilities
+                    <div class="w-10 h-10 rounded-full border border-primary-fixed/30 flex items-center justify-center group-hover/link:bg-primary-fixed group-hover/link:text-on-surface transition-all">
+<span class="material-symbols-outlined text-sm">east</span>
+</div>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Engineered Collaboration (Replaces About Section) -->
+<section class="relative min-h-[900px] flex items-end pb-32 overflow-hidden parallax-container">
+<div class="absolute inset-0 z-0 h-[120%] -top-[10%]">
+<img alt="Engineered Collaboration" class="w-full h-full object-cover parallax-bg" data-speed="0.4" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJ1IxZ-yyxeQ1-idhSFwkV43Y0Kw7wAWl2ZoIPh9oyN1HD32Ej8NylCPkSJBDHRNrqccf30sd7GlV4LCxOSggEeSvQphH-QrGVC5xaZQP0TU3ZRlt-TifL0VJWaAQwhKa6wEsBWX1yIYThjSmmKceXgWEumo9YKLNOBqePehVKuN86c-9Yym7Qc9VmAhqBFpl4rf6KPEDGaKoQ6edVTSnyTEiDXmhx3qAqY-Rbce1By2U8UDYcCvWsXA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface via-on-surface/60 to-transparent"></div>
+</div>
+<div class="max-w-container-max mx-auto px-margin-x relative z-10 w-full reveal-on-scroll">
+<div class="max-w-3xl glass-panel-dark p-10 lg:p-14 rounded-[2.5rem] border border-white/10 backdrop-blur-md">
+<div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/20 text-white font-label-md text-xs mb-6 uppercase tracking-[0.2em] font-bold">
+            Engineered Collaboration
+        </div>
+<h2 class="font-headline-xl text-5xl lg:text-[64px] font-black text-white leading-[1.05] mb-8 tracking-tighter">
+            The Engine Behind <br/><span class="italic font-light text-primary-fixed">Your Success</span>
+</h2>
+<p class="font-body-lg text-xl text-white/80 font-light mb-10 max-w-xl leading-relaxed">
+            Our expert teams work in seamless synergy, translating complex challenges into elegant, robust digital solutions. We don't just build software; we architect the future of your business.
+        </p>
+<button class="bg-primary-fixed text-on-primary-fixed px-10 py-4 rounded-full font-label-md text-base hover:bg-white transition-all duration-500 shadow-lg font-bold uppercase tracking-widest flex items-center gap-3">
+            Meet The Team
+            <span class="material-symbols-outlined">east</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Impact Section (High-Fidelity Data Visualizations) -->
+<section class="relative py-[120px] bg-on-surface overflow-hidden border-t border-white/10">
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-primary/10 rounded-full blur-[100px] mix-blend-screen pointer-events-none z-0"></div>
+<div class="max-w-container-max mx-auto px-margin-x relative z-10">
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-10">
+<!-- Metric 1 -->
+<div class="glass-panel-dark p-8 rounded-[2rem] flex flex-col justify-between h-[220px] group border border-white/5 reveal-on-scroll hover-tilt">
+<div class="flex items-center gap-3 mb-4">
+<div class="text-secondary-fixed-dim font-label-md uppercase tracking-[0.15em] text-xs font-bold">Happy Clients</div>
+</div>
+<div class="mt-auto">
+<div class="font-display-lg text-5xl lg:text-6xl font-black text-white flex items-baseline gap-1">
+                            50<span class="text-primary-fixed text-3xl">+</span>
+</div>
+</div>
+</div>
+<!-- Metric 2 -->
+<div class="glass-panel-dark p-8 rounded-[2rem] flex flex-col justify-between h-[220px] group border border-white/5 reveal-on-scroll hover-tilt" style="transition-delay: 50ms;">
+<div class="flex items-center gap-3 mb-4">
+<div class="text-secondary-fixed-dim font-label-md uppercase tracking-[0.15em] text-xs font-bold">Projects Delivered</div>
+</div>
+<div class="mt-auto">
+<div class="font-display-lg text-5xl lg:text-6xl font-black text-white flex items-baseline gap-1">
+                            100<span class="text-primary-fixed text-3xl">+</span>
+</div>
+</div>
+</div>
+<!-- Metric 3 -->
+<div class="glass-panel-dark p-8 rounded-[2rem] flex flex-col justify-between h-[220px] group border border-white/5 reveal-on-scroll hover-tilt" style="transition-delay: 100ms;">
+<div class="flex items-center gap-3 mb-4">
+<div class="text-secondary-fixed-dim font-label-md uppercase tracking-[0.15em] text-xs font-bold">Years Experience</div>
+</div>
+<div class="mt-auto">
+<div class="font-display-lg text-5xl lg:text-6xl font-black text-white flex items-baseline gap-1">
+                            2<span class="text-primary-fixed text-2xl font-light italic">yrs</span>
+</div>
+</div>
+</div>
+<!-- Metric 4 -->
+<div class="glass-panel-dark p-8 rounded-[2rem] flex flex-col justify-between h-[220px] group border border-white/5 reveal-on-scroll hover-tilt" style="transition-delay: 150ms;">
+<div class="flex items-center gap-3 mb-4">
+<div class="text-secondary-fixed-dim font-label-md uppercase tracking-[0.15em] text-xs font-bold">Satisfaction Rate</div>
+</div>
+<div class="mt-auto">
+<div class="font-display-lg text-5xl lg:text-6xl font-black text-white flex items-baseline gap-1">
+                            98<span class="text-primary-fixed text-3xl">%</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Premium Testimonial Spotlight (Editorial) -->
+<section class="py-[160px] bg-surface px-margin-x overflow-hidden relative">
+<div class="max-w-container-max mx-auto relative z-10">
+<div class="relative max-w-6xl mx-auto">
+<div class="flex flex-col md:flex-row items-center gap-12 lg:gap-24 reveal-on-scroll">
+<!-- Editorial Image -->
+<div class="w-full md:w-2/5 relative hover-tilt">
+<div class="aspect-[3/4] rounded-[2.5rem] overflow-hidden relative shadow-2xl">
+<img alt="Jennifer Kasuku" class="w-full h-full object-cover filter contrast-[1.1]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVUfxwUaXOuwQ6JWLb78uQJSTnyHL1XHfurLX9d1oiu1ZwzbkeeoZDtNh6ib0ZU4E8QTnE1wOA1a-BQGdqiYiENbq1HbcuZpXAR6E39LAZlyd-M-DarO4H-OPzPQKoKWwcNP_8vL4aQU99Qo58hRQ9Pv9OnPuk5Jz8Yd4VX_JottQSQhRIcsvizeFCKm9j9JJKQ9mCnhuL1dQXaG4yyN-Nlm1BcPEgoChikyvqbmyvlfFB3JeBg9ElZw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent mix-blend-overlay"></div>
+</div>
+</div>
+<!-- Quote Content -->
+<div class="w-full md:w-3/5 text-center md:text-left pt-8 md:pt-0">
+<div class="flex gap-1 justify-center md:justify-start mb-8 text-primary">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-headline-lg text-3xl lg:text-5xl font-black text-on-surface leading-[1.2] mb-10 tracking-tight text-balance">
+                            "VORTEXX's expertise in systems development has been invaluable. They helped us migrate to a more robust infrastructure that fundamentally supports our scale."
+                        </p>
+<div class="flex flex-col sm:flex-row items-center gap-6 justify-center md:justify-start">
+<div class="text-center sm:text-left">
+<h4 class="font-bold text-on-surface text-xl uppercase tracking-wider">Jennifer Kasuku</h4>
+<p class="text-on-surface-variant text-base font-light mt-1">Operations Director, TechFlow</p>
+</div>
+<div class="w-12 h-[1px] bg-border-subtle hidden sm:block mx-4"></div>
+<div class="flex gap-3">
+<button class="w-12 h-12 rounded-full border border-border-subtle flex items-center justify-center hover:bg-surface hover:text-primary transition-all duration-300 hover:border-transparent group">
+<span class="material-symbols-outlined group-hover:-translate-x-1 transition-transform">arrow_back</span>
+</button>
+<button class="w-12 h-12 rounded-full bg-on-surface text-white flex items-center justify-center hover:bg-primary transition-all duration-300 shadow-md group">
+<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Trusted By Logo Cloud -->
+</div>
+</section>
+<!-- Refined CTA Section -->
+<section class="py-[120px] px-margin-x bg-surface relative overflow-hidden">
+<div class="max-w-container-max mx-auto reveal-on-scroll">
+<div class="bg-on-surface rounded-[3rem] p-12 md:p-24 text-center relative overflow-hidden shadow-2xl border border-white/10 group backdrop-blur-sm hover-tilt">
+<!-- Premium Mesh Background -->
+<div class="absolute inset-0 bg-mesh-premium opacity-20 mix-blend-overlay pointer-events-none animate-mesh"></div>
+<div class="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/30 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/4 mix-blend-screen pointer-events-none transition-transform duration-1000"></div>
+<div class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary-fixed/10 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/4 mix-blend-screen pointer-events-none transition-transform duration-1000"></div>
+<div class="relative z-10 max-w-4xl mx-auto">
+<div class="inline-flex items-center gap-3 px-6 py-2 rounded-full glass-panel-dark text-primary-fixed font-label-md text-xs mb-10 uppercase tracking-[0.3em] font-bold border border-white/10 shadow-lg">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-fixed opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-primary-fixed"></span>
+</span>
+Start Your Journey
+</div>
+<h2 class="font-display-lg-mobile md:text-7xl lg:text-8xl font-black text-white mb-10 leading-[1] tracking-tighter">
+Ready to <span class="text-outline text-white/20 italic font-light">Transform</span><br/> Your Business?
+</h2>
+<p class="font-body-lg text-xl lg:text-2xl text-secondary-fixed-dim/90 mb-16 font-light max-w-2xl mx-auto leading-relaxed">
+Partner with VORTEXX to unlock your full digital potential. Our expert team is ready to help you navigate the technology landscape.
+</p>
+<div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+<button class="bg-primary-fixed text-on-primary-fixed px-12 py-6 rounded-full font-label-md text-lg hover:bg-white transition-all duration-500 shadow-[0_20px_40px_-10px_rgba(0,102,138,0.3)] hover:shadow-[0_25px_50px_-12px_rgba(0,102,138,0.5)] hover:-translate-y-2 font-bold uppercase tracking-widest flex items-center gap-3">
+Schedule Consultation
+<span class="material-symbols-outlined">calendar_today</span>
+</button>
+<button class="glass-panel-dark border-white/20 text-white px-12 py-6 rounded-full font-label-md text-lg hover:bg-white/10 transition-all duration-500 flex items-center justify-center gap-4 font-bold uppercase tracking-widest group/btn hover:-translate-y-1">
+Explore Services 
+<div class="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center group-hover/btn:bg-white group-hover/btn:text-on-surface transition-all">
+<span class="material-symbols-outlined text-sm group-hover/btn:translate-x-1 transition-transform">east</span>
+</div>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer Component -->
+<footer class="bg-on-secondary-fixed dark:bg-on-surface full-width py-[100px] reveal-on-scroll">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-16 max-w-container-max mx-auto px-margin-x">
+<div class="col-span-1 md:col-span-5 flex flex-col gap-8">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-[1rem] bg-white p-1 overflow-hidden shadow-lg">
+<img alt="VORTEXX Logo" class="w-full h-full object-cover rounded-[0.75rem]" src="https://lh3.googleusercontent.com/aida/AP1WRLtPt7eDsoR7mee9XEiQKcqeYYUbNq2qJjidSLHbIZ7KVu92TFhljTCLLjZ6clpStyETARSezpf9airJ8A3ZYIl54VDDkThoJTVX6aISNaJkhEC6ZxNwh26Lfq0tQvWZ21DV_BgS-mSv4oDS0fT6BiA_G3npTLFo3qz7_PzIKW_XfBx2ta9f-MV1PqCnRJqW-pOEXF_4rHwCNnXfq-O4xcPmo6xVkIScVpg-tO0X-uWkY50k7gf4Go_Oqa8"/>
+</div>
+<span class="font-headline-lg text-3xl font-black tracking-tight text-white">VORTEXX</span>
+</div>
+<p class="text-secondary-fixed-dim font-body-lg text-base font-light leading-relaxed pr-8 max-w-md">
+                    Transforming businesses through innovative technology solutions and exceptional digital experiences.
+                </p>
+<div class="flex gap-3 mt-2">
+<a class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-secondary-fixed-dim hover:bg-primary hover:text-white transition-all duration-300 border border-white/10 hover:border-transparent hover:-translate-y-1" href="#"><span class="material-symbols-outlined text-lg">public</span></a>
+<a class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-secondary-fixed-dim hover:bg-primary hover:text-white transition-all duration-300 border border-white/10 hover:border-transparent hover:-translate-y-1" href="#"><span class="material-symbols-outlined text-lg">share</span></a>
+</div>
+</div>
+<div class="col-span-1 md:col-span-2">
+<h4 class="text-white font-bold mb-6 text-xs uppercase tracking-[0.2em]">Services</h4>
+<ul class="flex flex-col gap-4 font-body-md text-sm">
+<li><a class="text-secondary-fixed-dim hover:text-primary-fixed hover:translate-x-1 transition-all duration-300 block w-max font-light" href="#">Web Design</a></li>
+<li><a class="text-secondary-fixed-dim hover:text-primary-fixed hover:translate-x-1 transition-all duration-300 block w-max font-light" href="#">Systems Development</a></li>
+<li><a class="text-secondary-fixed-dim hover:text-primary-fixed hover:translate-x-1 transition-all duration-300 block w-max font-light" href="#">Graphics Design</a></li>
+<li><a class="text-secondary-fixed-dim hover:text-primary-fixed hover:translate-x-1 transition-all duration-300 block w-max font-light" href="#">Digital Marketing</a></li>
+</ul>
+</div>
+<div class="col-span-1 md:col-span-2">
+<h4 class="text-white font-bold mb-6 text-xs uppercase tracking-[0.2em]">Company</h4>
+<ul class="flex flex-col gap-4 font-body-md text-sm">
+<li><a class="text-secondary-fixed-dim hover:text-primary-fixed hover:translate-x-1 transition-all duration-300 block w-max font-light" href="#">About Us</a></li>
+<li><a class="text-secondary-fixed-dim hover:text-primary-fixed hover:translate-x-1 transition-all duration-300 block w-max font-light" href="#">Our Team</a></li>
+<li><a class="text-secondary-fixed-dim hover:text-primary-fixed hover:translate-x-1 transition-all duration-300 block w-max font-light" href="#">Careers</a></li>
+<li><a class="text-secondary-fixed-dim hover:text-primary-fixed hover:translate-x-1 transition-all duration-300 block w-max font-light" href="#">Contact Us</a></li>
+</ul>
+</div>
+<div class="col-span-1 md:col-span-3">
+<h4 class="text-white font-bold mb-6 text-xs uppercase tracking-[0.2em]">Contact Us</h4>
+<ul class="flex flex-col gap-5 font-body-md text-sm text-secondary-fixed-dim font-light">
+<li class="flex items-start gap-3 group cursor-pointer hover:text-primary-fixed transition-colors">
+<span class="material-symbols-outlined text-primary-fixed mt-0.5 text-lg group-hover:scale-110 transition-transform">location_on</span>
+<span>Bukasa-Bugiri, Kawuku</span>
+</li>
+<li class="flex items-start gap-3 group cursor-pointer hover:text-primary-fixed transition-colors">
+<span class="material-symbols-outlined text-primary-fixed mt-0.5 text-lg group-hover:scale-110 transition-transform">call</span>
+<span>(+256) 745-231430<br/>(+256) 790-956548</span>
+</li>
+<li class="flex items-start gap-3 group cursor-pointer hover:text-primary-fixed transition-colors">
+<span class="material-symbols-outlined text-primary-fixed mt-0.5 text-lg group-hover:scale-110 transition-transform">mail</span>
+<span>thevortexxinfo@gmail.com</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="max-w-container-max mx-auto px-margin-x mt-20 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6 text-xs font-body-md">
+<p class="text-secondary-fixed-dim/50">© 2024 VORTEXX Technologies. All rights reserved.</p>
+<div class="flex gap-6">
+<a class="text-secondary-fixed-dim/50 hover:text-white transition-colors duration-200 uppercase tracking-wider" href="#">Privacy Policy</a>
+<a class="text-secondary-fixed-dim/50 hover:text-white transition-colors duration-200 uppercase tracking-wider" href="#">Terms of Service</a>
+</div>
+</div>
+</footer>
+<script>
+        // Intersection observer for scroll reveal animations
+        document.addEventListener('DOMContentLoaded', () => {
+            // Check for prefers-reduced-motion
+            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            
+            if (!prefersReducedMotion) {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-visible');
+                            // Optional: Stop observing once revealed
+                            // observer.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.1,
+                    rootMargin: "0px 0px 50px 0px"
+                });
+
+                document.querySelectorAll('.reveal-on-scroll').forEach((el) => {
+                    observer.observe(el);
+                });
+
+                // Parallax Effect
+                const parallaxBgs = document.querySelectorAll('.parallax-bg');
+                
+                window.addEventListener('scroll', () => {
+                    const scrollY = window.scrollY;
+                    
+                    parallaxBgs.forEach(bg => {
+                        const speed = bg.getAttribute('data-speed') || 0.5;
+                        const container = bg.closest('.parallax-container');
+                        if(container) {
+                            const rect = container.getBoundingClientRect();
+                            // Only animate if in viewport
+                            if (rect.top <= window.innerHeight && rect.bottom >= 0) {
+                                const yPos = (rect.top * speed);
+                                bg.style.transform = `translateY(${yPos}px)`;
+                            }
+                        }
+                    });
+                });
+            } else {
+                // If reduced motion, immediately reveal everything
+                document.querySelectorAll('.reveal-on-scroll').forEach((el) => {
+                    el.classList.add('is-visible');
+                });
+            }
+
+            // Carousel Logic
+            const slides = document.querySelectorAll('.carousel-slide');
+            const navItems = document.querySelectorAll('.nav-progress');
+            let currentSlide = 0;
+            let slideInterval;
+
+            function showSlide(index) {
+                slides.forEach(slide => slide.classList.remove('active'));
+                navItems.forEach(item => item.classList.remove('active'));
+                
+                slides[index].classList.add('active');
+                navItems[index].classList.add('active');
+                currentSlide = index;
+            }
+
+            function nextSlide() {
+                let next = (currentSlide + 1) % slides.length;
+                showSlide(next);
+            }
+
+            function startSlideShow() {
+                if (slideInterval) clearInterval(slideInterval);
+                slideInterval = setInterval(nextSlide, 5000);
+            }
+
+            navItems.forEach((item, index) => {
+                item.addEventListener('click', () => {
+                    showSlide(index);
+                    startSlideShow(); // reset timer
+                });
+            });
+
+            startSlideShow();
+        });
+    </script>
+<script>(function() { const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); } }); }, { threshold: 0.05, rootMargin: '0px 0px 100px 0px' }); document.querySelectorAll('.reveal-on-scroll').forEach((el) => { observer.observe(el); }); })();</script></body></html>
