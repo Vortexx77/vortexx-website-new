@@ -1,345 +1,260 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { 
-  Briefcase, 
-  MapPin, 
-  Clock, 
-  Users, 
-  Laptop, 
-  Code, 
-  Palette, 
-  LineChart, 
-  Server,
-  Search
-} from 'lucide-react';
+import { MapPin, Briefcase, Clock, Search, ChevronDown, ArrowRight, Laptop, Users, Timer } from 'lucide-react';
+
+const departments = [
+  { id: 'all',            name: 'All Departments' },
+  { id: 'development',    name: 'Development' },
+  { id: 'design',         name: 'Design' },
+  { id: 'marketing',      name: 'Marketing' },
+  { id: 'infrastructure', name: 'Infrastructure' },
+];
+
+const positions = [
+  {
+    id: 1, title: 'Senior Full Stack Developer', department: 'development',
+    location: 'Kampala, Uganda', type: 'Full-time', experience: '5+ years',
+    description: "We're looking for an experienced Full Stack Developer to join our team and help build innovative solutions for our clients.",
+    responsibilities: ['Design and implement scalable web applications', 'Write clean, maintainable, and efficient code', 'Collaborate with cross-functional teams', 'Mentor junior developers'],
+    requirements: ['Experience with React, Node.js, and TypeScript', 'Strong understanding of web technologies and best practices', 'Experience with cloud platforms (AWS/GCP)', 'Excellent problem-solving skills'],
+  },
+  {
+    id: 2, title: 'UI/UX Designer', department: 'design',
+    location: 'Remote', type: 'Full-time', experience: '3+ years',
+    description: "Join our design team to create beautiful and intuitive user experiences for our clients' digital products.",
+    responsibilities: ['Create user-centered designs', 'Develop UI mockups and prototypes', 'Conduct user research and testing', 'Collaborate with developers'],
+    requirements: ['Strong portfolio demonstrating UI/UX skills', 'Proficiency in design tools (Figma, Adobe XD)', 'Understanding of design systems', 'Experience with user research'],
+  },
+  {
+    id: 3, title: 'Digital Marketing Manager', department: 'marketing',
+    location: 'Kampala, Uganda', type: 'Full-time', experience: '4+ years',
+    description: 'Lead our digital marketing initiatives and help clients achieve their marketing goals through data-driven strategies.',
+    responsibilities: ['Develop marketing strategies', 'Manage social media campaigns', 'Analyze marketing metrics', 'Create content strategies'],
+    requirements: ['Experience in digital marketing', 'Knowledge of SEO and analytics', 'Strong communication skills', 'Project management experience'],
+  },
+  {
+    id: 4, title: 'DevOps Engineer', department: 'infrastructure',
+    location: 'Kampala, Uganda', type: 'Full-time', experience: '3+ years',
+    description: 'Help us build and maintain robust infrastructure solutions for our growing client base.',
+    responsibilities: ['Manage cloud infrastructure', 'Implement CI/CD pipelines', 'Monitor system performance', 'Ensure security compliance'],
+    requirements: ['Experience with AWS/GCP', 'Knowledge of Docker and Kubernetes', 'Scripting and automation skills', 'Security best practices'],
+  },
+];
 
 const Careers: React.FC = () => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedDept, setSelectedDept] = useState('all');
+  const [expanded, setExpanded] = useState<number | null>(null);
+
   useEffect(() => {
-    document.title = 'Careers | VORTEX';
+    document.title = 'Careers | VORTEXX';
+    const io = new IntersectionObserver(
+      (entries) => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('is-visible'); }),
+      { threshold: 0.06, rootMargin: '0px 0px -50px 0px' }
+    );
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    return () => io.disconnect();
   }, []);
 
-  const [searchTerm, setSearchTerm] = useState('');
-  const [selectedDepartment, setSelectedDepartment] = useState('all');
-
-  const departments = [
-    { id: 'all', name: 'All Departments' },
-    { id: 'development', name: 'Development', icon: Code },
-    { id: 'design', name: 'Design', icon: Palette },
-    { id: 'marketing', name: 'Marketing', icon: LineChart },
-    { id: 'infrastructure', name: 'Infrastructure', icon: Server }
-  ];
-
-  const positions = [
-    {
-      id: 1,
-      title: 'Senior Full Stack Developer',
-      department: 'development',
-      location: 'San Francisco, CA',
-      type: 'Full-time',
-      experience: '5+ years',
-      description: 'We\'re looking for an experienced Full Stack Developer to join our team and help build innovative solutions for our clients.',
-      responsibilities: [
-        'Design and implement scalable web applications',
-        'Write clean, maintainable, and efficient code',
-        'Collaborate with cross-functional teams',
-        'Mentor junior developers'
-      ],
-      requirements: [
-        'Experience with React, Node.js, and TypeScript',
-        'Strong understanding of web technologies and best practices',
-        'Experience with cloud platforms (AWS/GCP)',
-        'Excellent problem-solving skills'
-      ]
-    },
-    {
-      id: 2,
-      title: 'UI/UX Designer',
-      department: 'design',
-      location: 'Remote',
-      type: 'Full-time',
-      experience: '3+ years',
-      description: 'Join our design team to create beautiful and intuitive user experiences for our clients\' digital products.',
-      responsibilities: [
-        'Create user-centered designs',
-        'Develop UI mockups and prototypes',
-        'Conduct user research and testing',
-        'Collaborate with developers'
-      ],
-      requirements: [
-        'Strong portfolio demonstrating UI/UX skills',
-        'Proficiency in design tools (Figma, Adobe XD)',
-        'Understanding of design systems',
-        'Experience with user research'
-      ]
-    },
-    {
-      id: 3,
-      title: 'Digital Marketing Manager',
-      department: 'marketing',
-      location: 'New York, NY',
-      type: 'Full-time',
-      experience: '4+ years',
-      description: 'Lead our digital marketing initiatives and help clients achieve their marketing goals through data-driven strategies.',
-      responsibilities: [
-        'Develop marketing strategies',
-        'Manage social media campaigns',
-        'Analyze marketing metrics',
-        'Create content strategies'
-      ],
-      requirements: [
-        'Experience in digital marketing',
-        'Knowledge of SEO and analytics',
-        'Strong communication skills',
-        'Project management experience'
-      ]
-    },
-    {
-      id: 4,
-      title: 'DevOps Engineer',
-      department: 'infrastructure',
-      location: 'Austin, TX',
-      type: 'Full-time',
-      experience: '3+ years',
-      description: 'Help us build and maintain robust infrastructure solutions for our growing client base.',
-      responsibilities: [
-        'Manage cloud infrastructure',
-        'Implement CI/CD pipelines',
-        'Monitor system performance',
-        'Ensure security compliance'
-      ],
-      requirements: [
-        'Experience with AWS/GCP',
-        'Knowledge of Docker and Kubernetes',
-        'Scripting and automation skills',
-        'Security best practices'
-      ]
-    }
-  ];
-
-  const filteredPositions = positions.filter(position => {
-    const matchesSearch = position.title.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesDepartment = selectedDepartment === 'all' || position.department === selectedDepartment;
-    return matchesSearch && matchesDepartment;
+  const filtered = positions.filter(p => {
+    const matchSearch = p.title.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchDept = selectedDept === 'all' || p.department === selectedDept;
+    return matchSearch && matchDept;
   });
 
+  const inputCls = 'w-full bg-gray-950 border border-white/10 rounded-xl text-white placeholder:text-gray-600 px-4 py-3 text-sm focus:outline-none focus:border-sky-500/60 transition-colors';
+
   return (
-    <div className="pt-20">
-      {/* Hero section */}
-      <section 
-        className="bg-primary-900 py-20 text-white"
+    <div className="overflow-x-hidden">
+
+      {/* ── HERO ── */}
+      <section
+        className="relative bg-gray-950 pt-36 pb-24 overflow-hidden"
         style={{
-          backgroundImage: 'linear-gradient(to right, rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.9)), url(https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2)',
+          backgroundImage: 'url(https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1920)',
           backgroundSize: 'cover',
-          backgroundPosition: 'center'
+          backgroundPosition: 'center',
         }}
       >
-        <div className="container">
-          <div className="mx-auto max-w-3xl text-center">
-            <h1 className="mb-6 text-5xl font-bold text-white">Join Our Team</h1>
-            <p className="mb-8 text-xl text-gray-300">
-              Be part of a team that's shaping the future of technology. We're always 
-              looking for talented individuals who share our passion for innovation.
-            </p>
-          </div>
+        <div className="absolute inset-0 bg-gray-950/85" />
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-sky-600/10 rounded-full blur-[130px] pointer-events-none z-10" />
+        <div className="max-w-[1152px] mx-auto px-8 relative z-20">
+          <p className="text-[11px] font-mono text-sky-400 tracking-[0.2em] uppercase mb-6">Join Our Team</p>
+          <h1 className="font-black text-white leading-none tracking-tight mb-7" style={{ fontSize: 'clamp(42px, 5.5vw, 74px)' }}>
+            Work that matters.<br />
+            <span className="text-sky-400">Team that delivers.</span>
+          </h1>
+          <p className="text-white/50 text-lg leading-relaxed max-w-xl font-light">
+            We're always looking for talented individuals who share our passion for technology,
+            craft, and building things that genuinely help businesses grow.
+          </p>
         </div>
+        <div className="absolute bottom-0 inset-x-0 h-16 bg-gradient-to-t from-gray-900 to-transparent pointer-events-none z-10" />
       </section>
 
-      {/* Why join us section */}
-      <section className="section bg-gray-50">
-        <div className="container">
-          <div className="mb-12 text-center">
-            <span className="mb-2 inline-block rounded-full bg-primary-100 px-3 py-1 text-sm font-medium text-primary-800">
-              Why VORTEX?
-            </span>
-            <h2 className="mb-4 text-4xl font-bold">Benefits & Culture</h2>
-            <p className="mx-auto max-w-2xl text-lg text-gray-600">
-              We offer competitive benefits and foster a culture of innovation, 
-              collaboration, and continuous learning.
-            </p>
+      {/* ── WHY JOIN US ── */}
+      <section className="bg-gray-900 border-y border-white/10 py-20">
+        <div className="max-w-[1152px] mx-auto px-8">
+          <div className="reveal mb-12">
+            <p className="text-[11px] font-mono text-sky-400 tracking-[0.2em] uppercase mb-4">Why VORTEXX?</p>
+            <h2 className="font-black text-white" style={{ fontSize: 'clamp(26px, 3vw, 40px)', letterSpacing: '-0.025em' }}>Benefits & Culture</h2>
           </div>
-
-          <div className="grid gap-6 md:grid-cols-3">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {[
-              {
-                icon: <Laptop className="h-8 w-8" />,
-                title: 'Modern Tech Stack',
-                description: 'Work with cutting-edge technologies and tools'
-              },
-              {
-                icon: <Users className="h-8 w-8" />,
-                title: 'Collaborative Culture',
-                description: 'Join a team that values creativity and teamwork'
-              },
-              {
-                icon: <Clock className="h-8 w-8" />,
-                title: 'Flexible Hours',
-                description: 'Balance your work and personal life'
-              }
-            ].map((benefit, index) => (
-              <div key={index} className="card p-6">
-                <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-lg bg-primary-100 text-primary-600">
-                  {benefit.icon}
+              { Icon: Laptop, title: 'Modern Tech Stack',     desc: 'Work with cutting-edge technologies and tools that actually make a difference.' },
+              { Icon: Users,  title: 'Collaborative Culture', desc: 'Join a team that values creativity, honest feedback, and shared ownership.' },
+              { Icon: Timer,  title: 'Flexible Hours',        desc: 'We care about output and ownership, not when you clocked in.' },
+            ].map(({ Icon, title, desc }, i) => (
+              <div key={i} className="reveal bg-gray-950 border border-white/10 rounded-2xl p-7" style={{ ['--reveal-delay' as string]: `${i * 70}ms` }}>
+                <div className="w-10 h-10 rounded-xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center mb-5">
+                  <Icon size={18} className="text-sky-400" />
                 </div>
-                <h3 className="mb-2 text-xl font-bold">{benefit.title}</h3>
-                <p className="text-gray-600">{benefit.description}</p>
+                <h3 className="font-bold text-white text-base mb-2" style={{ fontFamily: 'Manrope, Inter, system-ui' }}>{title}</h3>
+                <p className="text-gray-500 text-sm leading-relaxed">{desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Open positions section */}
-      <section className="section">
-        <div className="container">
-          <div className="mb-12 text-center">
-            <span className="mb-2 inline-block rounded-full bg-primary-100 px-3 py-1 text-sm font-medium text-primary-800">
-              Open Positions
-            </span>
-            <h2 className="mb-4 text-4xl font-bold">Current Opportunities</h2>
-            <p className="mx-auto max-w-2xl text-lg text-gray-600">
-              Find your next career opportunity at VORTEX
-            </p>
+      {/* ── OPEN POSITIONS ── */}
+      <section className="bg-gray-950 py-20">
+        <div className="max-w-[1152px] mx-auto px-8">
+          <div className="reveal flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-10">
+            <div>
+              <p className="text-[11px] font-mono text-sky-400 tracking-[0.2em] uppercase mb-3">Open Positions</p>
+              <h2 className="font-black text-white" style={{ fontSize: 'clamp(26px, 3vw, 40px)', letterSpacing: '-0.025em' }}>Current opportunities.</h2>
+            </div>
           </div>
 
-          {/* Search and filter */}
-          <div className="mb-8 grid gap-4 md:grid-cols-2">
+          {/* search + filter */}
+          <div className="reveal grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400" />
+              <Search size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-500" />
               <input
                 type="text"
-                placeholder="Search positions..."
+                placeholder="Search positions…"
                 value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full rounded-lg border border-gray-300 py-3 pl-10 pr-4 focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/50"
+                onChange={e => setSearchTerm(e.target.value)}
+                className={`${inputCls} pl-10`}
               />
             </div>
-            <select
-              value={selectedDepartment}
-              onChange={(e) => setSelectedDepartment(e.target.value)}
-              className="rounded-lg border border-gray-300 px-4 py-3 focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/50"
-            >
-              {departments.map(dept => (
-                <option key={dept.id} value={dept.id}>
-                  {dept.name}
-                </option>
-              ))}
-            </select>
+            <div className="relative">
+              <select
+                value={selectedDept}
+                onChange={e => setSelectedDept(e.target.value)}
+                className={`${inputCls} appearance-none pr-9`}
+              >
+                {departments.map(d => <option key={d.id} value={d.id}>{d.name}</option>)}
+              </select>
+              <ChevronDown size={14} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none" />
+            </div>
           </div>
 
-          {/* Position listings */}
-          <div className="space-y-6">
-            {filteredPositions.map(position => (
-              <div key={position.id} className="card overflow-hidden">
-                <div className="border-b border-gray-100 bg-white p-6">
-                  <div className="mb-4 flex items-start justify-between">
+          {/* listings */}
+          <div className="reveal space-y-4">
+            {filtered.map(pos => (
+              <div key={pos.id} className="bg-gray-900 border border-white/10 rounded-2xl overflow-hidden">
+                {/* top */}
+                <div className="p-7">
+                  <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
                     <div>
-                      <h3 className="mb-2 text-xl font-bold">{position.title}</h3>
-                      <div className="flex flex-wrap gap-3">
-                        <span className="flex items-center text-sm text-gray-600">
-                          <MapPin className="mr-1 h-4 w-4" /> {position.location}
-                        </span>
-                        <span className="flex items-center text-sm text-gray-600">
-                          <Briefcase className="mr-1 h-4 w-4" /> {position.type}
-                        </span>
-                        <span className="flex items-center text-sm text-gray-600">
-                          <Clock className="mr-1 h-4 w-4" /> {position.experience}
-                        </span>
+                      <h3 className="font-bold text-white text-lg mb-3" style={{ fontFamily: 'Manrope, Inter, system-ui' }}>{pos.title}</h3>
+                      <div className="flex flex-wrap gap-2">
+                        {[
+                          { Icon: MapPin,    text: pos.location },
+                          { Icon: Briefcase, text: pos.type },
+                          { Icon: Clock,     text: pos.experience },
+                        ].map(({ Icon, text }) => (
+                          <span key={text} className="inline-flex items-center gap-1.5 text-xs font-mono text-gray-400 border border-white/10 bg-gray-950 px-3 py-1.5 rounded-full">
+                            <Icon size={11} className="text-sky-400" /> {text}
+                          </span>
+                        ))}
                       </div>
                     </div>
                     <Link
-                      to={`/contact?position=${encodeURIComponent(position.title)}`}
-                      className="btn btn-primary"
+                      to={`/contact?position=${encodeURIComponent(pos.title)}`}
+                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-sky-500 text-white text-sm font-bold hover:bg-sky-400 transition-colors shrink-0"
                     >
-                      Apply Now
+                      Apply Now <ArrowRight size={14} />
                     </Link>
                   </div>
-                  <p className="text-gray-600">{position.description}</p>
+                  <p className="text-gray-400 text-sm leading-relaxed mt-4">{pos.description}</p>
                 </div>
-                <div className="bg-gray-50 p-6">
-                  <div className="grid gap-6 md:grid-cols-2">
-                    <div>
-                      <h4 className="mb-3 font-semibold">Responsibilities</h4>
-                      <ul className="space-y-2">
-                        {position.responsibilities.map((item, index) => (
-                          <li key={index} className="flex items-start">
-                            <span className="mr-2 mt-1 text-primary-600">•</span>
-                            <span>{item}</span>
-                          </li>
-                        ))}
-                      </ul>
+
+                {/* expandable details */}
+                <div className="border-t border-white/10">
+                  <button
+                    className="w-full flex items-center justify-between px-7 py-4 text-sm text-gray-500 hover:text-white transition-colors"
+                    onClick={() => setExpanded(expanded === pos.id ? null : pos.id)}
+                  >
+                    <span className="font-mono text-[11px] tracking-widest uppercase">
+                      {expanded === pos.id ? 'Hide details' : 'View details'}
+                    </span>
+                    <ChevronDown size={15} className={`transition-transform ${expanded === pos.id ? 'rotate-180' : ''}`} />
+                  </button>
+                  {expanded === pos.id && (
+                    <div className="bg-gray-950 px-7 pb-7 grid grid-cols-1 sm:grid-cols-2 gap-8">
+                      <div>
+                        <h4 className="text-white font-semibold text-sm mb-4" style={{ fontFamily: 'Manrope, Inter, system-ui' }}>Responsibilities</h4>
+                        <ul className="space-y-2">
+                          {pos.responsibilities.map(item => (
+                            <li key={item} className="flex items-start gap-2 text-sm text-gray-400">
+                              <span className="text-sky-400 mt-0.5 shrink-0">•</span>{item}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      <div>
+                        <h4 className="text-white font-semibold text-sm mb-4" style={{ fontFamily: 'Manrope, Inter, system-ui' }}>Requirements</h4>
+                        <ul className="space-y-2">
+                          {pos.requirements.map(item => (
+                            <li key={item} className="flex items-start gap-2 text-sm text-gray-400">
+                              <span className="text-sky-400 mt-0.5 shrink-0">•</span>{item}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                     </div>
-                    <div>
-                      <h4 className="mb-3 font-semibold">Requirements</h4>
-                      <ul className="space-y-2">
-                        {position.requirements.map((item, index) => (
-                          <li key={index} className="flex items-start">
-                            <span className="mr-2 mt-1 text-primary-600">•</span>
-                            <span>{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
+                  )}
                 </div>
               </div>
             ))}
+            {filtered.length === 0 && (
+              <div className="text-center py-16 text-gray-500">
+                <p className="text-base font-semibold text-white mb-2">No positions found.</p>
+                <p className="text-sm">Try different search terms or check back soon.</p>
+              </div>
+            )}
           </div>
-
-          {filteredPositions.length === 0 && (
-            <div className="rounded-lg bg-gray-50 p-8 text-center">
-              <p className="text-lg text-gray-600">
-                No positions found matching your criteria. Please try different search terms or filters.
-              </p>
-            </div>
-          )}
         </div>
       </section>
 
-      {/* Application process section */}
-      <section className="section bg-gray-50">
-        <div className="container">
-          <div className="mb-12 text-center">
-            <span className="mb-2 inline-block rounded-full bg-primary-100 px-3 py-1 text-sm font-medium text-primary-800">
-              How to Apply
-            </span>
-            <h2 className="mb-4 text-4xl font-bold">Application Process</h2>
-            <p className="mx-auto max-w-2xl text-lg text-gray-600">
-              Our hiring process is designed to be transparent and efficient
-            </p>
+      {/* ── APPLICATION PROCESS ── */}
+      <section className="bg-gray-900 border-t border-white/10 py-20">
+        <div className="max-w-[1152px] mx-auto px-8">
+          <div className="reveal mb-12">
+            <p className="text-[11px] font-mono text-sky-400 tracking-[0.2em] uppercase mb-4">How to apply</p>
+            <h2 className="font-black text-white" style={{ fontSize: 'clamp(26px, 3vw, 40px)', letterSpacing: '-0.025em' }}>Application Process</h2>
+            <p className="text-gray-500 text-base mt-3 max-w-lg leading-relaxed">Our hiring process is designed to be transparent, quick, and respectful of your time.</p>
           </div>
-
-          <div className="grid gap-6 md:grid-cols-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {[
-              {
-                step: '01',
-                title: 'Application',
-                description: 'Submit your application through our careers portal'
-              },
-              {
-                step: '02',
-                title: 'Initial Review',
-                description: 'Our team reviews your application and qualifications'
-              },
-              {
-                step: '03',
-                title: 'Interviews',
-                description: 'Technical and cultural fit interviews with the team'
-              },
-              {
-                step: '04',
-                title: 'Decision',
-                description: 'Final decision and offer discussion'
-              }
-            ].map((step, index) => (
-              <div key={index} className="card p-6">
-                <div className="mb-4 text-4xl font-bold text-primary-200">{step.step}</div>
-                <h3 className="mb-2 text-xl font-bold">{step.title}</h3>
-                <p className="text-gray-600">{step.description}</p>
+              { step: '01', title: 'Application',    desc: 'Submit your application through our careers portal or contact form.' },
+              { step: '02', title: 'Initial Review', desc: 'Our team reviews your application and qualifications within 3 days.' },
+              { step: '03', title: 'Interviews',     desc: 'Technical and cultural fit interviews with the team. No trick questions.' },
+              { step: '04', title: 'Decision',       desc: 'Final decision and offer discussion. Clear, no ghosting.' },
+            ].map((s, i) => (
+              <div key={i} className="reveal bg-gray-950 border border-white/10 rounded-2xl p-7" style={{ ['--reveal-delay' as string]: `${i * 70}ms` }}>
+                <div className="text-4xl font-black text-sky-400/30 mb-4" style={{ fontFamily: 'Manrope, Inter, system-ui' }}>{s.step}</div>
+                <h3 className="font-bold text-white text-base mb-2" style={{ fontFamily: 'Manrope, Inter, system-ui' }}>{s.title}</h3>
+                <p className="text-gray-500 text-sm leading-relaxed">{s.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
+
     </div>
   );
 };
