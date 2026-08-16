@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { ArrowRight, MapPin, Phone, Mail, Clock, ChevronDown } from 'lucide-react';
 
-// Configurable via VITE_CONTACT_ENDPOINT; falls back to the production backend.
 const CONTACT_ENDPOINT =
-  import.meta.env.VITE_CONTACT_ENDPOINT ?? 'https://thevortexx.com/backend/vortexx.php';
+  (import.meta as { env?: { VITE_CONTACT_ENDPOINT?: string } }).env?.VITE_CONTACT_ENDPOINT ??
+  'https://thevortexx.com/backend/vortexx.php';
 
-const services = [
+const serviceOptions = [
   'Web Design',
   'Systems Development',
   'Graphics Design',
@@ -36,15 +37,7 @@ const faqs = [
   },
 ];
 
-const initialForm = {
-  name: '',
-  email: '',
-  phone: '',
-  service: '',
-  subject: '',
-  message: '',
-};
-
+const initialForm = { name: '', email: '', phone: '', service: '', subject: '', message: '' };
 type Status = 'idle' | 'sending' | 'success' | 'error';
 
 const Contact: React.FC = () => {
@@ -54,20 +47,23 @@ const Contact: React.FC = () => {
 
   useEffect(() => {
     document.title = 'Contact | VORTEXX';
+    const io = new IntersectionObserver(
+      (entries) => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('is-visible'); }),
+      { threshold: 0.06, rootMargin: '0px 0px -50px 0px' }
+    );
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    return () => io.disconnect();
   }, []);
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
-  ) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
-    setForm((prev) => ({ ...prev, [name]: value }));
+    setForm(prev => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('sending');
     setErrorMsg('');
-
     try {
       const res = await fetch(CONTACT_ENDPOINT, {
         method: 'POST',
@@ -87,222 +83,154 @@ const Contact: React.FC = () => {
     }
   };
 
+  const inputCls = 'w-full bg-gray-950 border border-white/10 rounded-xl text-white placeholder:text-gray-600 px-4 py-3 text-sm focus:outline-none focus:border-sky-500/60 transition-colors';
+  const labelCls = 'block text-sm text-gray-400 font-medium mb-1.5';
+
   return (
-    <div className="vx-page">
-      {/* HERO */}
-      <section className="contact-hero">
-        <div className="wrap contact-hero-anim">
-          <p className="eyebrow center">Get in touch</p>
-          <h1>
-            Let's build <span className="accent">something great.</span>
+    <div className="overflow-x-hidden">
+
+      {/* ── HERO ── */}
+      <section className="relative bg-gray-950 pt-36 pb-20 overflow-hidden">
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-sky-600/10 rounded-full blur-[130px] pointer-events-none" />
+        <div className="max-w-[1152px] mx-auto px-8 relative z-10">
+          <p className="text-[11px] font-mono text-sky-400 tracking-[0.2em] uppercase mb-6">Get in touch</p>
+          <h1 className="font-black text-white leading-none tracking-tight mb-6" style={{ fontSize: 'clamp(44px, 6vw, 76px)' }}>
+            Let's build something <span className="text-sky-400">great.</span>
           </h1>
-          <p>
-            Tell us what you're working on. Our team will get back to you with next steps. No
-            lengthy sales process, just a conversation about what you need.
+          <p className="text-white/50 text-lg leading-relaxed max-w-xl font-light">
+            Tell us what you're working on. Our team will get back to you with next steps.
+            No lengthy sales process, just a conversation about what you need.
           </p>
         </div>
+        <div className="absolute bottom-0 inset-x-0 h-12 bg-gradient-to-t from-gray-900 to-transparent pointer-events-none" />
       </section>
 
-      {/* CONTACT GRID */}
-      <section style={{ paddingTop: 40 }}>
-        <div className="wrap">
-          <div className="contact-grid">
-            {/* INFO */}
-            <div className="contact-info reveal">
-              <div className="contact-info-card">
-                <div className="ci-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0116 0z" />
-                    <circle cx="12" cy="10" r="3" />
-                  </svg>
+      {/* ── CONTACT GRID ── */}
+      <section className="bg-gray-950 pt-10 pb-24">
+        <div className="max-w-[1152px] mx-auto px-8 grid grid-cols-1 lg:grid-cols-[1fr_1.6fr] gap-12">
+
+          {/* info column */}
+          <div className="reveal">
+            <h2 className="font-bold text-white text-xl mb-8" style={{ fontFamily: 'Manrope, Inter, system-ui' }}>Reach us directly</h2>
+            <div className="space-y-4">
+              {[
+                { Icon: MapPin, title: 'Location',      body: 'Bukasa-Bugiri, Kawuku\nKampala, Uganda' },
+                { Icon: Phone,  title: 'Phone',         body: '(+256) 745-231430\n(+256) 790-956548' },
+                { Icon: Mail,   title: 'Email',         body: 'thevortexxinfo@gmail.com' },
+                { Icon: Clock,  title: 'Working Hours', body: 'Mon – Fri: 9:00 AM – 6:00 PM\nSat: 10:00 AM – 4:00 PM · Sun: Closed' },
+              ].map(({ Icon, title, body }) => (
+                <div key={title} className="flex items-start gap-4 bg-gray-900 border border-white/10 rounded-xl p-5">
+                  <div className="w-9 h-9 bg-sky-500/10 border border-sky-500/20 rounded-lg flex items-center justify-center shrink-0 mt-0.5">
+                    <Icon size={16} className="text-sky-400" />
+                  </div>
+                  <div>
+                    <h3 className="text-white text-sm font-semibold mb-1" style={{ fontFamily: 'Manrope, Inter, system-ui' }}>{title}</h3>
+                    <p className="text-gray-400 text-sm leading-relaxed whitespace-pre-line">{body}</p>
+                  </div>
                 </div>
-                <div>
-                  <h3>Location</h3>
-                  <p>Bukasa-Bugiri, Kawuku, Kampala, Uganda</p>
-                </div>
-              </div>
-              <div className="contact-info-card">
-                <div className="ci-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-                    <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" />
-                  </svg>
-                </div>
-                <div>
-                  <h3>Phone</h3>
-                  <p>
-                    <a href="tel:+256745231430">(+256) 745-231430</a>
-                    <br />
-                    <a href="tel:+256790956548">(+256) 790-956548</a>
-                  </p>
-                </div>
-              </div>
-              <div className="contact-info-card">
-                <div className="ci-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-                    <path d="M22 6l-10 7L2 6" />
-                    <rect x="2" y="4" width="20" height="16" rx="2" />
-                  </svg>
-                </div>
-                <div>
-                  <h3>Email</h3>
-                  <p>
-                    <a href="mailto:thevortexxinfo@gmail.com">thevortexxinfo@gmail.com</a>
-                  </p>
-                </div>
-              </div>
-              <div className="contact-info-card">
-                <div className="ci-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-                    <circle cx="12" cy="12" r="9" />
-                    <path d="M12 7v5l3 2" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </div>
-                <div>
-                  <h3>Working Hours</h3>
-                  <p>
-                    Mon – Fri: 9:00 AM – 6:00 PM
-                    <br />
-                    Sat: 10:00 AM – 4:00 PM · Sun: Closed
-                  </p>
-                </div>
-              </div>
+              ))}
             </div>
 
-            {/* FORM */}
-            <form className="contact-form reveal" onSubmit={handleSubmit} noValidate>
+            <div className="mt-8 bg-gray-900 border border-white/10 rounded-xl p-5">
+              <p className="text-gray-500 text-xs font-mono uppercase tracking-widest mb-3">Prefer WhatsApp?</p>
+              <a
+                href="https://wa.me/256745231430"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-sky-400 text-sm font-semibold hover:text-sky-300 transition-colors"
+              >
+                Chat with us → <ArrowRight size={14} />
+              </a>
+            </div>
+          </div>
+
+          {/* form column */}
+          <div className="reveal">
+            <form onSubmit={handleSubmit} noValidate className="bg-gray-900 border border-white/10 rounded-2xl p-8">
+              <h2 className="font-bold text-white text-xl mb-8" style={{ fontFamily: 'Manrope, Inter, system-ui' }}>Send us a message</h2>
+
               {status === 'success' && (
-                <div className="form-alert success">
-                  Thanks for reaching out. Your message has been sent. We'll get back to you within
-                  24 hours.
+                <div className="bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 rounded-xl p-4 mb-6 text-sm">
+                  Thanks for reaching out. Your message has been sent. We'll get back to you within 24 hours.
                 </div>
               )}
-              {status === 'error' && <div className="form-alert error">{errorMsg}</div>}
+              {status === 'error' && (
+                <div className="bg-red-500/10 border border-red-500/30 text-red-400 rounded-xl p-4 mb-6 text-sm">{errorMsg}</div>
+              )}
 
-              <div className="form-grid">
-                <div className="field">
-                  <label htmlFor="name">Full Name *</label>
-                  <input
-                    id="name"
-                    name="name"
-                    type="text"
-                    value={form.name}
-                    onChange={handleChange}
-                    placeholder="Jane Doe"
-                    required
-                  />
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
+                <div>
+                  <label htmlFor="name" className={labelCls}>Full Name *</label>
+                  <input id="name" name="name" type="text" value={form.name} onChange={handleChange} placeholder="Jane Doe" required className={inputCls} />
                 </div>
-                <div className="field">
-                  <label htmlFor="email">Email Address *</label>
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    value={form.email}
-                    onChange={handleChange}
-                    placeholder="jane@company.com"
-                    required
-                  />
+                <div>
+                  <label htmlFor="email" className={labelCls}>Email Address *</label>
+                  <input id="email" name="email" type="email" value={form.email} onChange={handleChange} placeholder="jane@company.com" required className={inputCls} />
                 </div>
               </div>
 
-              <div className="form-grid">
-                <div className="field">
-                  <label htmlFor="phone">Phone</label>
-                  <input
-                    id="phone"
-                    name="phone"
-                    type="tel"
-                    value={form.phone}
-                    onChange={handleChange}
-                    placeholder="(+256) 700-000000"
-                  />
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
+                <div>
+                  <label htmlFor="phone" className={labelCls}>Phone</label>
+                  <input id="phone" name="phone" type="tel" value={form.phone} onChange={handleChange} placeholder="(+256) 700-000000" className={inputCls} />
                 </div>
-                <div className="field">
-                  <label htmlFor="service">Service Interested In</label>
-                  <select id="service" name="service" value={form.service} onChange={handleChange}>
-                    <option value="">Select a service</option>
-                    {services.map((s) => (
-                      <option key={s} value={s}>
-                        {s}
-                      </option>
-                    ))}
-                  </select>
+                <div>
+                  <label htmlFor="service" className={labelCls}>Service Interested In</label>
+                  <div className="relative">
+                    <select id="service" name="service" value={form.service} onChange={handleChange} className={`${inputCls} appearance-none pr-9`}>
+                      <option value="">Select a service</option>
+                      {serviceOptions.map(s => <option key={s} value={s}>{s}</option>)}
+                    </select>
+                    <ChevronDown size={14} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none" />
+                  </div>
                 </div>
               </div>
 
-              <div className="field">
-                <label htmlFor="subject">Subject *</label>
-                <input
-                  id="subject"
-                  name="subject"
-                  type="text"
-                  value={form.subject}
-                  onChange={handleChange}
-                  placeholder="Project inquiry"
-                  required
-                />
+              <div className="mb-5">
+                <label htmlFor="subject" className={labelCls}>Subject *</label>
+                <input id="subject" name="subject" type="text" value={form.subject} onChange={handleChange} placeholder="Project inquiry" required className={inputCls} />
               </div>
 
-              <div className="field">
-                <label htmlFor="message">Message *</label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={form.message}
-                  onChange={handleChange}
-                  placeholder="Tell us about your project or inquiry…"
-                  required
-                ></textarea>
+              <div className="mb-7">
+                <label htmlFor="message" className={labelCls}>Message *</label>
+                <textarea id="message" name="message" value={form.message} onChange={handleChange} placeholder="Tell us about your project or inquiry…" required rows={5} className={`${inputCls} resize-none`} />
               </div>
 
-              <button type="submit" className="btn btn-primary" disabled={status === 'sending'}>
-                {status === 'sending' ? (
-                  <>
-                    <span className="spin" aria-hidden="true"></span>
-                    Sending…
-                  </>
-                ) : (
-                  <>Send Message →</>
-                )}
+              <button
+                type="submit"
+                disabled={status === 'sending'}
+                className="w-full bg-sky-500 text-white py-3.5 rounded-xl font-bold text-sm hover:bg-sky-400 transition-colors disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+              >
+                {status === 'sending' ? 'Sending…' : <>Send Message <ArrowRight size={15} /></>}
               </button>
             </form>
           </div>
         </div>
       </section>
 
-      {/* FAQ */}
-      <section style={{ background: 'var(--bg-2)', borderTop: '1px solid var(--line)', borderBottom: '1px solid var(--line)' }}>
-        <div className="wrap">
-          <div className="sec-head center reveal">
-            <p className="eyebrow center">FAQ</p>
-            <h2>Frequently Asked Questions</h2>
-            <p>Find answers to common questions about our services and process.</p>
+      {/* ── FAQ ── */}
+      <section className="bg-gray-900 border-y border-white/10 py-20">
+        <div className="max-w-[1152px] mx-auto px-8 grid grid-cols-1 lg:grid-cols-[1fr_1.8fr] gap-16">
+          <div className="reveal">
+            <p className="text-[11px] font-mono text-sky-400 tracking-[0.2em] uppercase mb-5">FAQ</p>
+            <h2 className="font-black text-white" style={{ fontSize: 'clamp(24px, 3vw, 38px)', letterSpacing: '-0.025em' }}>
+              Common questions.
+            </h2>
           </div>
-          <div className="faq-list reveal">
-            {faqs.map((f) => (
-              <details className="faq-item" key={f.q}>
-                <summary>
-                  {f.q}
-                  <svg
-                    className="chev"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    width="18"
-                    height="18"
-                  >
-                    <path d="M6 9l6 6 6-6" />
-                  </svg>
+          <div className="reveal divide-y divide-white/10">
+            {faqs.map(f => (
+              <details key={f.q} className="group py-5">
+                <summary className="flex justify-between items-center cursor-pointer list-none gap-4">
+                  <span className="text-white font-semibold text-base leading-snug" style={{ fontFamily: 'Manrope, Inter, system-ui' }}>{f.q}</span>
+                  <ChevronDown size={16} className="text-gray-500 shrink-0 group-open:rotate-180 transition-transform" />
                 </summary>
-                <div className="faq-body">{f.a}</div>
+                <p className="text-gray-400 text-sm leading-relaxed pt-4">{f.a}</p>
               </details>
             ))}
           </div>
         </div>
       </section>
+
     </div>
   );
 };

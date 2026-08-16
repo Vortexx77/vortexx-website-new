@@ -2532,3 +2532,21 @@ ul {
     width: 100%;
   }
 }
+
+/* ============================================================
+   HOME PAGE — new reveal class with stagger support
+   Used by Home.tsx via className="reveal"
+   Delay is driven by the --reveal-delay CSS custom property
+   set inline on each element.
+   ============================================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition:
+    opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms),
+    transform 0.65s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}

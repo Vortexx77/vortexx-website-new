@@ -71,6 +71,7 @@ const Footer: React.FC = () => {
               <h4>Company</h4>
               <Link to="/about">About Us</Link>
               <Link to="/about#team">Our Team</Link>
+              <Link to="/portfolio">Portfolio</Link>
               <Link to="/careers">Careers</Link>
               <Link to="/contact">Contact Us</Link>
             </div>
