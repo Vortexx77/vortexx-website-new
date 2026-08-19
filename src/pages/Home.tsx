@@ -5,6 +5,7 @@ import {
   Server, Bot, Star, ChevronLeft, ChevronRight, Check,
   Users, Target, Award, TrendingUp, Phone,
 } from 'lucide-react';
+import { homeHero } from '../img/images';
 
 /* ─────────────────────────── data ─────────────────────────── */
 const services = [
@@ -88,7 +89,7 @@ const Home: React.FC = () => {
 
         {/* photo */}
         <img
-          src="https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=1920"
+          src={homeHero}
           alt=""
           aria-hidden="true"
           className="absolute inset-0 w-full h-full object-cover object-center opacity-40"

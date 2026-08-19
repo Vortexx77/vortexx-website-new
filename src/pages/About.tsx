@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
+import { innovationLab, dataSystems, futureAi, socialInstagram } from '../img/images';
 
 const teamMembers = [
   {
@@ -68,7 +69,11 @@ const About: React.FC = () => {
     <div className="overflow-x-hidden">
 
       {/* ── HERO ── */}
-      <section className="relative bg-gray-950 pt-36 pb-20 overflow-hidden">
+      <section
+        className="relative bg-gray-950 pt-36 pb-20 overflow-hidden"
+        style={{ backgroundImage: `url(${innovationLab})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+      >
+        <div className="absolute inset-0 bg-gray-950/85" />
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-sky-600/10 rounded-full blur-[140px] pointer-events-none" />
         <div className="max-w-[1152px] mx-auto px-8 relative z-10">
           <p className="text-[11px] font-mono text-sky-400 tracking-[0.2em] uppercase mb-6">About VORTEXX</p>
@@ -159,6 +164,35 @@ const About: React.FC = () => {
                 </div>
               ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── WHAT WE BUILD — image band ── */}
+      <section className="bg-gray-900 border-y border-white/10 py-20">
+        <div className="max-w-[1152px] mx-auto px-8">
+          <div className="reveal mb-10">
+            <p className="text-[11px] font-mono text-sky-400 tracking-[0.2em] uppercase mb-4">What we build</p>
+            <h2 className="font-black text-white" style={{ fontSize: 'clamp(26px, 3vw, 40px)', letterSpacing: '-0.025em' }}>
+              Technology with real impact.
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {[
+              { src: dataSystems,     title: 'Systems & Data',   desc: 'Information platforms that help teams move faster and decide with confidence.' },
+              { src: futureAi,        title: 'AI & Automation',  desc: 'Intelligent workflows and agents that take repetitive work off your plate.' },
+              { src: socialInstagram, title: 'Brand & Marketing', desc: 'Digital presence and campaigns that put you in front of the right people.' },
+            ].map((item, i) => (
+              <div key={i} className="reveal group rounded-2xl overflow-hidden border border-white/10 bg-gray-950" style={{ ['--reveal-delay' as string]: `${i * 70}ms` }}>
+                <div className="aspect-[4/3] overflow-hidden">
+                  <img src={item.src} alt={item.title} loading="lazy" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                </div>
+                <div className="p-6">
+                  <h3 className="font-bold text-white text-base mb-2" style={{ fontFamily: 'Manrope, Inter, system-ui' }}>{item.title}</h3>
+                  <p className="text-gray-500 text-sm leading-relaxed">{item.desc}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>

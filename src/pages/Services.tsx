@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Check } from 'lucide-react';
+import { aiAutomation, cyberSecurity, arVr, socialAutomation, forexVps, aiWorkforce } from '../img/images';
 
 const services = [
   {
-    id: 'web-design', num: '01', badge: 'Most Requested',
+    id: 'web-design', num: '01', badge: 'Most Requested', image: aiAutomation,
     title: 'Web Design & Development',
     desc: 'We create stunning, user-focused websites that engage visitors and drive conversions.',
     bestFor: 'businesses that need a fast, credible online presence or storefront.',
@@ -12,7 +13,7 @@ const services = [
     icon: <path d="M9 8L4 12L9 16M15 8L20 12L15 16" stroke="#38bdf8" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />,
   },
   {
-    id: 'systems-development', num: '02',
+    id: 'systems-development', num: '02', image: cyberSecurity,
     title: 'Systems Development',
     desc: 'Custom software solutions designed to streamline your operations and boost productivity.',
     bestFor: 'teams that have outgrown spreadsheets or off-the-shelf tools.',
@@ -20,7 +21,7 @@ const services = [
     icon: <><rect x="4" y="4" width="16" height="5" rx="1.2" stroke="#38bdf8" strokeWidth="1.8" /><rect x="4" y="14" width="16" height="6" rx="1.2" stroke="#38bdf8" strokeWidth="1.8" /><circle cx="7.2" cy="6.5" r="0.9" fill="#38bdf8" /><circle cx="7.2" cy="17" r="0.9" fill="#38bdf8" /></>,
   },
   {
-    id: 'graphics-design', num: '03',
+    id: 'graphics-design', num: '03', image: arVr,
     title: 'Graphics Design',
     desc: 'Eye-catching visuals that communicate your brand message and captivate your audience.',
     bestFor: 'brands that need a consistent, professional visual identity.',
@@ -28,7 +29,7 @@ const services = [
     icon: <path d="M17.5 3.5L20.5 6.5L8 19L4 20L5 16L17.5 3.5Z" stroke="#38bdf8" strokeWidth="1.8" strokeLinejoin="round" />,
   },
   {
-    id: 'digital-marketing', num: '04',
+    id: 'digital-marketing', num: '04', image: socialAutomation,
     title: 'Digital Marketing',
     desc: 'Data-driven marketing strategies that increase visibility, engagement, and conversion.',
     bestFor: 'businesses that need more qualified traffic, not just more traffic.',
@@ -36,7 +37,7 @@ const services = [
     icon: <path d="M4 19V13M10 19V9M16 19V5M4 19H20" stroke="#38bdf8" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />,
   },
   {
-    id: 'infrastructure', num: '05',
+    id: 'infrastructure', num: '05', image: forexVps,
     title: 'Infrastructure Management',
     desc: 'Reliable IT infrastructure solutions that ensure security, scalability, and performance.',
     bestFor: "teams that need uptime and security they don't have to think about.",
@@ -44,7 +45,7 @@ const services = [
     icon: <path d="M4 8V6a2 2 0 012-2h12a2 2 0 012 2v2M4 8h16M4 8v10a2 2 0 002 2h12a2 2 0 002-2V8" stroke="#38bdf8" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />,
   },
   {
-    id: 'ai-agents', num: '06', badge: 'New',
+    id: 'ai-agents', num: '06', badge: 'New', image: aiWorkforce,
     title: 'AI Agents',
     desc: 'Intelligent AI-powered agents to automate tasks and enhance customer experience.',
     bestFor: 'teams ready to automate repetitive support or workflow tasks.',
@@ -186,6 +187,10 @@ const Services: React.FC = () => {
               className="reveal bg-gray-900 border border-white/10 rounded-2xl p-8 sm:p-10 scroll-mt-20"
               style={{ ['--reveal-delay' as string]: `${i * 40}ms` }}
             >
+              <div className="-mx-8 -mt-8 sm:-mx-10 sm:-mt-10 mb-8 relative aspect-[3/1] overflow-hidden rounded-t-2xl">
+                <img src={svc.image} alt={svc.title} loading="lazy" className="w-full h-full object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40 to-transparent pointer-events-none" />
+              </div>
               <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-10 items-start">
                 {/* left */}
                 <div>

@@ -1,12 +1,11 @@
 import React, { useEffect } from 'react';
-import { Link, useParams, useNavigate } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, ExternalLink, Calendar, User, Tag } from 'lucide-react';
 import { projects } from '../data/projects';
 import { DeviceMockup } from '../components/DeviceMockup';
 
 const ProjectDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
-  const navigate = useNavigate();
 
   const project = projects.find((p) => p.id === id);
   const currentIndex = projects.findIndex((p) => p.id === id);

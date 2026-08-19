@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { ArrowRight, MapPin, Phone, Mail, Clock, ChevronDown } from 'lucide-react';
+import { dataSystems } from '../img/images';
 
 const CONTACT_ENDPOINT =
   (import.meta as { env?: { VITE_CONTACT_ENDPOINT?: string } }).env?.VITE_CONTACT_ENDPOINT ??
@@ -111,6 +112,10 @@ const Contact: React.FC = () => {
 
           {/* info column */}
           <div className="reveal">
+            <div className="rounded-2xl overflow-hidden border border-white/10 mb-8 relative">
+              <img src={dataSystems} alt="" aria-hidden="true" loading="lazy" className="w-full h-44 object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-gray-950/70 to-transparent pointer-events-none" />
+            </div>
             <h2 className="font-bold text-white text-xl mb-8" style={{ fontFamily: 'Manrope, Inter, system-ui' }}>Reach us directly</h2>
             <div className="space-y-4">
               {[

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { MapPin, Briefcase, Clock, Search, ChevronDown, ArrowRight, Laptop, Users, Timer } from 'lucide-react';
+import { callCenter, team1, team2, team3 } from '../img/images';
 
 const departments = [
   { id: 'all',            name: 'All Departments' },
@@ -71,7 +72,7 @@ const Careers: React.FC = () => {
       <section
         className="relative bg-gray-950 pt-36 pb-24 overflow-hidden"
         style={{
-          backgroundImage: 'url(https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1920)',
+          backgroundImage: `url(${callCenter})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
@@ -111,6 +112,25 @@ const Careers: React.FC = () => {
                 </div>
                 <h3 className="font-bold text-white text-base mb-2" style={{ fontFamily: 'Manrope, Inter, system-ui' }}>{title}</h3>
                 <p className="text-gray-500 text-sm leading-relaxed">{desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── LIFE AT VORTEXX ── */}
+      <section className="bg-gray-950 pt-2 pb-20">
+        <div className="max-w-[1152px] mx-auto px-8">
+          <div className="reveal grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {[team1, team2, team3].map((src, i) => (
+              <div key={i} className="relative overflow-hidden rounded-2xl border border-white/10 group">
+                <img
+                  src={src}
+                  alt="Life at VORTEXX"
+                  loading="lazy"
+                  className="w-full h-full object-cover aspect-[4/3] transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-950/60 to-transparent pointer-events-none" />
               </div>
             ))}
           </div>
