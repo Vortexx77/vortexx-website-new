@@ -43,9 +43,9 @@ const positions = [
 ];
 
 const Careers: React.FC = () => {
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm]   = useState('');
   const [selectedDept, setSelectedDept] = useState('all');
-  const [expanded, setExpanded] = useState<number | null>(null);
+  const [expanded, setExpanded]       = useState<number | null>(null);
 
   useEffect(() => {
     document.title = 'Careers | VORTEXX';
@@ -63,42 +63,42 @@ const Careers: React.FC = () => {
     return matchSearch && matchDept;
   });
 
-  const inputCls = 'w-full bg-gray-950 border border-white/10 rounded-xl text-white placeholder:text-gray-600 px-4 py-3 text-sm focus:outline-none focus:border-sky-500/60 transition-colors';
-
   return (
     <div className="overflow-x-hidden">
 
       {/* ── HERO ── */}
-      <section
-        className="relative bg-gray-950 pt-36 pb-24 overflow-hidden"
-        style={{
-          backgroundImage: `url(${callCenter})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      >
-        <div className="absolute inset-0 bg-gray-950/85" />
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-sky-600/10 rounded-full blur-[130px] pointer-events-none z-10" />
-        <div className="max-w-[1152px] mx-auto px-8 relative z-20">
-          <p className="text-[11px] font-mono text-sky-400 tracking-[0.2em] uppercase mb-6">Join Our Team</p>
-          <h1 className="font-black text-white leading-none tracking-tight mb-7" style={{ fontSize: 'clamp(42px, 5.5vw, 74px)' }}>
+      <section style={{
+        background: 'var(--bg)', paddingTop: 140, paddingBottom: 96,
+        position: 'relative', overflow: 'hidden',
+        backgroundImage: `url(${callCenter})`,
+        backgroundSize: 'cover', backgroundPosition: 'center',
+      }}>
+        <div style={{ position: 'absolute', inset: 0, background: 'rgba(5,8,15,0.85)' }} />
+        <div className="absolute pointer-events-none"
+          style={{ top: 0, right: 0, width: 500, height: 500, background: 'rgba(56,189,248,0.08)', borderRadius: '50%', filter: 'blur(130px)', zIndex: 1 }}
+        />
+        <div className="wrap relative z-10">
+          <p className="eyebrow mb-6">Join Our Team</p>
+          <h1 style={{ fontFamily: 'var(--display)', fontWeight: 900, fontSize: 'clamp(42px,5.5vw,74px)', color: 'var(--text)', lineHeight: 1, letterSpacing: '-0.03em', marginBottom: 24 }}>
             Work that matters.<br />
-            <span className="text-sky-400">Team that delivers.</span>
+            <span style={{ color: 'var(--primary-ctr)' }}>Team that delivers.</span>
           </h1>
-          <p className="text-white/50 text-lg leading-relaxed max-w-xl font-light">
+          <p style={{ color: 'var(--text-muted)', fontSize: 17, maxWidth: 520, lineHeight: 1.7, fontWeight: 300 }}>
             We're always looking for talented individuals who share our passion for technology,
             craft, and building things that genuinely help businesses grow.
           </p>
         </div>
-        <div className="absolute bottom-0 inset-x-0 h-16 bg-gradient-to-t from-gray-900 to-transparent pointer-events-none z-10" />
+        <div className="absolute bottom-0 inset-x-0 h-16 pointer-events-none"
+          style={{ background: 'linear-gradient(to top, var(--surface-low), transparent)' }}
+        />
       </section>
 
       {/* ── WHY JOIN US ── */}
-      <section className="bg-gray-900 border-y border-white/10 py-20">
-        <div className="max-w-[1152px] mx-auto px-8">
+      <section style={{ background: 'var(--surface-low)', borderTop: '1px solid var(--stroke)', borderBottom: '1px solid var(--stroke)', padding: '80px 0' }}>
+        <div className="wrap">
           <div className="reveal mb-12">
-            <p className="text-[11px] font-mono text-sky-400 tracking-[0.2em] uppercase mb-4">Why VORTEXX?</p>
-            <h2 className="font-black text-white" style={{ fontSize: 'clamp(26px, 3vw, 40px)', letterSpacing: '-0.025em' }}>Benefits & Culture</h2>
+            <p className="eyebrow mb-4">Why VORTEXX?</p>
+            <h2 style={{ fontFamily: 'var(--display)', fontWeight: 900, fontSize: 'clamp(26px,3vw,40px)', letterSpacing: '-0.025em', color: 'var(--text)' }}>Benefits &amp; Culture</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {[
@@ -106,12 +106,12 @@ const Careers: React.FC = () => {
               { Icon: Users,  title: 'Collaborative Culture', desc: 'Join a team that values creativity, honest feedback, and shared ownership.' },
               { Icon: Timer,  title: 'Flexible Hours',        desc: 'We care about output and ownership, not when you clocked in.' },
             ].map(({ Icon, title, desc }, i) => (
-              <div key={i} className="reveal bg-gray-950 border border-white/10 rounded-2xl p-7" style={{ ['--reveal-delay' as string]: `${i * 70}ms` }}>
-                <div className="w-10 h-10 rounded-xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center mb-5">
-                  <Icon size={18} className="text-sky-400" />
+              <div key={i} className="reveal vx-card rounded-2xl" style={{ padding: 28, ['--reveal-delay' as string]: `${i * 70}ms` }}>
+                <div style={{ width: 40, height: 40, borderRadius: 12, background: 'rgba(56,189,248,0.10)', border: '1px solid rgba(56,189,248,0.20)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 18 }}>
+                  <Icon size={17} style={{ color: 'var(--primary-ctr)' }} />
                 </div>
-                <h3 className="font-bold text-white text-base mb-2" style={{ fontFamily: 'Manrope, Inter, system-ui' }}>{title}</h3>
-                <p className="text-gray-500 text-sm leading-relaxed">{desc}</p>
+                <h3 style={{ fontFamily: 'var(--display)', fontWeight: 700, fontSize: 16, color: 'var(--text)', marginBottom: 8 }}>{title}</h3>
+                <p style={{ color: 'var(--text-muted)', fontSize: 13.5, lineHeight: 1.65 }}>{desc}</p>
               </div>
             ))}
           </div>
@@ -119,18 +119,17 @@ const Careers: React.FC = () => {
       </section>
 
       {/* ── LIFE AT VORTEXX ── */}
-      <section className="bg-gray-950 pt-2 pb-20">
-        <div className="max-w-[1152px] mx-auto px-8">
+      <section style={{ background: 'var(--bg)', padding: '8px 0 64px' }}>
+        <div className="wrap">
           <div className="reveal grid grid-cols-1 sm:grid-cols-3 gap-4">
             {[team1, team2, team3].map((src, i) => (
-              <div key={i} className="relative overflow-hidden rounded-2xl border border-white/10 group">
-                <img
-                  src={src}
-                  alt="Life at VORTEXX"
-                  loading="lazy"
-                  className="w-full h-full object-cover aspect-[4/3] transition-transform duration-500 group-hover:scale-105"
+              <div key={i} style={{ position: 'relative', overflow: 'hidden', borderRadius: 16, border: '1px solid var(--stroke)' }}>
+                <img src={src} alt="Life at VORTEXX" loading="lazy"
+                  style={{ width: '100%', aspectRatio: '4/3', objectFit: 'cover', display: 'block', transition: 'transform 0.5s ease' }}
+                  onMouseEnter={e => ((e.target as HTMLImageElement).style.transform = 'scale(1.05)')}
+                  onMouseLeave={e => ((e.target as HTMLImageElement).style.transform = 'scale(1)')}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-gray-950/60 to-transparent pointer-events-none" />
+                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(5,8,15,0.5), transparent)', pointerEvents: 'none' }} />
               </div>
             ))}
           </div>
@@ -138,99 +137,81 @@ const Careers: React.FC = () => {
       </section>
 
       {/* ── OPEN POSITIONS ── */}
-      <section className="bg-gray-950 py-20">
-        <div className="max-w-[1152px] mx-auto px-8">
-          <div className="reveal flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-10">
-            <div>
-              <p className="text-[11px] font-mono text-sky-400 tracking-[0.2em] uppercase mb-3">Open Positions</p>
-              <h2 className="font-black text-white" style={{ fontSize: 'clamp(26px, 3vw, 40px)', letterSpacing: '-0.025em' }}>Current opportunities.</h2>
-            </div>
+      <section style={{ background: 'var(--surface-low)', borderTop: '1px solid var(--stroke)', padding: '80px 0' }}>
+        <div className="wrap">
+          <div className="reveal" style={{ marginBottom: 36 }}>
+            <p className="eyebrow mb-3">Open Positions</p>
+            <h2 style={{ fontFamily: 'var(--display)', fontWeight: 900, fontSize: 'clamp(26px,3vw,40px)', letterSpacing: '-0.025em', color: 'var(--text)' }}>Current opportunities.</h2>
           </div>
 
-          {/* search + filter */}
+          {/* Search + Filter */}
           <div className="reveal grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-            <div className="relative">
-              <Search size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-500" />
-              <input
-                type="text"
-                placeholder="Search positions…"
-                value={searchTerm}
-                onChange={e => setSearchTerm(e.target.value)}
-                className={`${inputCls} pl-10`}
-              />
+            <div style={{ position: 'relative' }}>
+              <Search size={14} style={{ position: 'absolute', left: 14, top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)' }} />
+              <input type="text" placeholder="Search positions…" value={searchTerm} onChange={e => setSearchTerm(e.target.value)}
+                className="vx-input" style={{ paddingLeft: 40 }} />
             </div>
-            <div className="relative">
-              <select
-                value={selectedDept}
-                onChange={e => setSelectedDept(e.target.value)}
-                className={`${inputCls} appearance-none pr-9`}
-              >
+            <div style={{ position: 'relative' }}>
+              <select value={selectedDept} onChange={e => setSelectedDept(e.target.value)} className="vx-input" style={{ appearance: 'none', paddingRight: 36 }}>
                 {departments.map(d => <option key={d.id} value={d.id}>{d.name}</option>)}
               </select>
-              <ChevronDown size={14} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none" />
+              <ChevronDown size={13} style={{ position: 'absolute', right: 12, top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)', pointerEvents: 'none' }} />
             </div>
           </div>
 
-          {/* listings */}
-          <div className="reveal space-y-4">
+          {/* Listings */}
+          <div className="reveal" style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
             {filtered.map(pos => (
-              <div key={pos.id} className="bg-gray-900 border border-white/10 rounded-2xl overflow-hidden">
-                {/* top */}
-                <div className="p-7">
-                  <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+              <div key={pos.id} className="glass-card rounded-2xl overflow-hidden">
+                <div style={{ padding: '28px 32px' }}>
+                  <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-5">
                     <div>
-                      <h3 className="font-bold text-white text-lg mb-3" style={{ fontFamily: 'Manrope, Inter, system-ui' }}>{pos.title}</h3>
-                      <div className="flex flex-wrap gap-2">
+                      <h3 style={{ fontFamily: 'var(--display)', fontWeight: 700, fontSize: 18, color: 'var(--text)', marginBottom: 12 }}>{pos.title}</h3>
+                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
                         {[
                           { Icon: MapPin,    text: pos.location },
                           { Icon: Briefcase, text: pos.type },
                           { Icon: Clock,     text: pos.experience },
                         ].map(({ Icon, text }) => (
-                          <span key={text} className="inline-flex items-center gap-1.5 text-xs font-mono text-gray-400 border border-white/10 bg-gray-950 px-3 py-1.5 rounded-full">
-                            <Icon size={11} className="text-sky-400" /> {text}
+                          <span key={text} style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontFamily: 'var(--mono)', fontSize: 11, color: 'var(--text-muted)', border: '1px solid var(--stroke)', background: 'var(--bg-2)', padding: '5px 12px', borderRadius: 999 }}>
+                            <Icon size={10} style={{ color: 'var(--primary-ctr)' }} /> {text}
                           </span>
                         ))}
                       </div>
                     </div>
-                    <Link
-                      to={`/contact?position=${encodeURIComponent(pos.title)}`}
-                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-sky-500 text-white text-sm font-bold hover:bg-sky-400 transition-colors shrink-0"
-                    >
-                      Apply Now <ArrowRight size={14} />
+                    <Link to={`/contact?position=${encodeURIComponent(pos.title)}`} className="btn btn-primary btn-sm" style={{ flexShrink: 0 }}>
+                      Apply Now <ArrowRight size={13} />
                     </Link>
                   </div>
-                  <p className="text-gray-400 text-sm leading-relaxed mt-4">{pos.description}</p>
+                  <p style={{ color: 'var(--text-muted)', fontSize: 14, lineHeight: 1.7, marginTop: 14 }}>{pos.description}</p>
                 </div>
 
-                {/* expandable details */}
-                <div className="border-t border-white/10">
+                <div style={{ borderTop: '1px solid var(--stroke)' }}>
                   <button
-                    className="w-full flex items-center justify-between px-7 py-4 text-sm text-gray-500 hover:text-white transition-colors"
+                    style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '14px 32px', background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text-muted)', fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.12em', textTransform: 'uppercase' }}
                     onClick={() => setExpanded(expanded === pos.id ? null : pos.id)}
                   >
-                    <span className="font-mono text-[11px] tracking-widest uppercase">
-                      {expanded === pos.id ? 'Hide details' : 'View details'}
-                    </span>
-                    <ChevronDown size={15} className={`transition-transform ${expanded === pos.id ? 'rotate-180' : ''}`} />
+                    {expanded === pos.id ? 'Hide details' : 'View details'}
+                    <ChevronDown size={14} style={{ transform: expanded === pos.id ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }} />
                   </button>
                   {expanded === pos.id && (
-                    <div className="bg-gray-950 px-7 pb-7 grid grid-cols-1 sm:grid-cols-2 gap-8">
+                    <div style={{ background: 'var(--bg-2)', padding: '20px 32px 28px', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 28 }}>
                       <div>
-                        <h4 className="text-white font-semibold text-sm mb-4" style={{ fontFamily: 'Manrope, Inter, system-ui' }}>Responsibilities</h4>
-                        <ul className="space-y-2">
+                        <h4 style={{ fontFamily: 'var(--display)', fontWeight: 700, fontSize: 13.5, color: 'var(--text)', marginBottom: 14 }}>Responsibilities</h4>
+                        <ul style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                           {pos.responsibilities.map(item => (
-                            <li key={item} className="flex items-start gap-2 text-sm text-gray-400">
-                              <span className="text-sky-400 mt-0.5 shrink-0">•</span>{item}
+                            <li key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: 9, fontSize: 13.5, color: 'var(--text-muted)' }}>
+                              <span style={{ color: 'var(--primary-ctr)', marginTop: 2, flexShrink: 0 }}>•</span>{item}
                             </li>
                           ))}
                         </ul>
                       </div>
                       <div>
-                        <h4 className="text-white font-semibold text-sm mb-4" style={{ fontFamily: 'Manrope, Inter, system-ui' }}>Requirements</h4>
-                        <ul className="space-y-2">
+                        <h4 style={{ fontFamily: 'var(--display)', fontWeight: 700, fontSize: 13.5, color: 'var(--text)', marginBottom: 14 }}>Requirements</h4>
+                        <ul style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                           {pos.requirements.map(item => (
-                            <li key={item} className="flex items-start gap-2 text-sm text-gray-400">
-                              <span className="text-sky-400 mt-0.5 shrink-0">•</span>{item}
+                            <li key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: 9, fontSize: 13.5, color: 'var(--text-muted)' }}>
+                              <span style={{ color: 'var(--primary-ctr)', marginTop: 2, flexShrink: 0 }}>•</span>{item}
                             </li>
                           ))}
                         </ul>
@@ -241,9 +222,9 @@ const Careers: React.FC = () => {
               </div>
             ))}
             {filtered.length === 0 && (
-              <div className="text-center py-16 text-gray-500">
-                <p className="text-base font-semibold text-white mb-2">No positions found.</p>
-                <p className="text-sm">Try different search terms or check back soon.</p>
+              <div style={{ textAlign: 'center', padding: '64px 0', color: 'var(--text-muted)' }}>
+                <p style={{ fontFamily: 'var(--display)', fontSize: 16, fontWeight: 700, color: 'var(--text)', marginBottom: 8 }}>No positions found.</p>
+                <p style={{ fontFamily: 'var(--mono)', fontSize: 13 }}>Try different search terms or check back soon.</p>
               </div>
             )}
           </div>
@@ -251,12 +232,14 @@ const Careers: React.FC = () => {
       </section>
 
       {/* ── APPLICATION PROCESS ── */}
-      <section className="bg-gray-900 border-t border-white/10 py-20">
-        <div className="max-w-[1152px] mx-auto px-8">
+      <section style={{ background: 'var(--bg)', borderTop: '1px solid var(--stroke)', padding: '80px 0' }}>
+        <div className="wrap">
           <div className="reveal mb-12">
-            <p className="text-[11px] font-mono text-sky-400 tracking-[0.2em] uppercase mb-4">How to apply</p>
-            <h2 className="font-black text-white" style={{ fontSize: 'clamp(26px, 3vw, 40px)', letterSpacing: '-0.025em' }}>Application Process</h2>
-            <p className="text-gray-500 text-base mt-3 max-w-lg leading-relaxed">Our hiring process is designed to be transparent, quick, and respectful of your time.</p>
+            <p className="eyebrow mb-4">How to apply</p>
+            <h2 style={{ fontFamily: 'var(--display)', fontWeight: 900, fontSize: 'clamp(26px,3vw,40px)', letterSpacing: '-0.025em', color: 'var(--text)', marginBottom: 10 }}>Application Process</h2>
+            <p style={{ color: 'var(--text-muted)', fontSize: 15, maxWidth: 480, lineHeight: 1.7 }}>
+              Our hiring process is designed to be transparent, quick, and respectful of your time.
+            </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {[
@@ -265,10 +248,10 @@ const Careers: React.FC = () => {
               { step: '03', title: 'Interviews',     desc: 'Technical and cultural fit interviews with the team. No trick questions.' },
               { step: '04', title: 'Decision',       desc: 'Final decision and offer discussion. Clear, no ghosting.' },
             ].map((s, i) => (
-              <div key={i} className="reveal bg-gray-950 border border-white/10 rounded-2xl p-7" style={{ ['--reveal-delay' as string]: `${i * 70}ms` }}>
-                <div className="text-4xl font-black text-sky-400/30 mb-4" style={{ fontFamily: 'Manrope, Inter, system-ui' }}>{s.step}</div>
-                <h3 className="font-bold text-white text-base mb-2" style={{ fontFamily: 'Manrope, Inter, system-ui' }}>{s.title}</h3>
-                <p className="text-gray-500 text-sm leading-relaxed">{s.desc}</p>
+              <div key={i} className="reveal vx-card rounded-2xl" style={{ padding: 28, ['--reveal-delay' as string]: `${i * 70}ms` }}>
+                <div style={{ fontFamily: 'var(--display)', fontWeight: 900, fontSize: 42, color: 'rgba(56,189,248,0.25)', lineHeight: 1, marginBottom: 14 }}>{s.step}</div>
+                <h3 style={{ fontFamily: 'var(--display)', fontWeight: 700, fontSize: 16, color: 'var(--text)', marginBottom: 8 }}>{s.title}</h3>
+                <p style={{ color: 'var(--text-muted)', fontSize: 13.5, lineHeight: 1.65 }}>{s.desc}</p>
               </div>
             ))}
           </div>

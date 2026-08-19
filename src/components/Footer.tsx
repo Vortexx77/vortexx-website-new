@@ -9,6 +9,7 @@ const Footer: React.FC = () => {
     <footer className="site-footer">
       <div className="wrap">
         <div className="footer-top">
+          {/* Brand */}
           <div className="footer-brand">
             <Link to="/" className="logo">
               <span className="mark">
@@ -40,23 +41,15 @@ const Footer: React.FC = () => {
                   <path d="M17.53 3H21l-7.5 8.57L22 21h-6.9l-5.4-6.62L3.5 21H0l8.03-9.18L1 3h7.06l4.87 6.05L17.53 3zm-1.21 16.17h1.9L7.77 4.73H5.73l10.59 14.44z" />
                 </svg>
               </a>
-              <a
-                href="https://wa.me/256745231430"
-                aria-label="WhatsApp"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a href="https://wa.me/256745231430" aria-label="WhatsApp" target="_blank" rel="noopener noreferrer">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
-                  <path
-                    d="M21 11.5C21 16.19 16.97 20 12 20C10.6 20 9.28 19.7 8.1 19.16L3 20L4.4 15.8C3.53 14.55 3 13.08 3 11.5C3 6.81 7.03 3 12 3C16.97 3 21 6.81 21 11.5Z"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
+                  <path d="M21 11.5C21 16.19 16.97 20 12 20C10.6 20 9.28 19.7 8.1 19.16L3 20L4.4 15.8C3.53 14.55 3 13.08 3 11.5C3 6.81 7.03 3 12 3C16.97 3 21 6.81 21 11.5Z" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </a>
             </div>
           </div>
 
+          {/* Columns */}
           <div className="footer-cols">
             <div className="footer-col">
               <h4>Services</h4>

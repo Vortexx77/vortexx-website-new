@@ -9,25 +9,12 @@ const sections = [
   {
     title: '2. Information We Collect',
     content: `We collect information that you provide directly to us, including:`,
-    list: [
-      'Name and contact information',
-      'Company details',
-      'Communication preferences',
-      'Project requirements and specifications',
-      'Payment information',
-    ],
+    list: ['Name and contact information', 'Company details', 'Communication preferences', 'Project requirements and specifications', 'Payment information'],
   },
   {
     title: '3. How We Use Your Information',
     content: `We use the information we collect to:`,
-    list: [
-      'Provide and maintain our services',
-      'Process your transactions',
-      'Send you technical notices and support messages',
-      'Communicate with you about products, services, and events',
-      'Respond to your comments and questions',
-      'Protect against fraudulent or illegal activity',
-    ],
+    list: ['Provide and maintain our services', 'Process your transactions', 'Send you technical notices and support messages', 'Communicate with you about products, services, and events', 'Respond to your comments and questions', 'Protect against fraudulent or illegal activity'],
   },
   {
     title: '4. Information Sharing',
@@ -40,13 +27,7 @@ const sections = [
   {
     title: '6. Your Rights',
     content: `You have the right to:`,
-    list: [
-      'Access your personal information',
-      'Correct inaccurate information',
-      'Request deletion of your information',
-      'Object to processing of your information',
-      'Request transfer of your information',
-    ],
+    list: ['Access your personal information', 'Correct inaccurate information', 'Request deletion of your information', 'Object to processing of your information', 'Request transfer of your information'],
   },
   {
     title: '7. Contact Us',
@@ -60,40 +41,38 @@ const Privacy: React.FC = () => {
   }, []);
 
   return (
-    <div className="bg-gray-950 min-h-screen">
-
-      {/* ── HERO ── */}
-      <div className="border-b border-white/10 pt-36 pb-12">
-        <div className="max-w-[820px] mx-auto px-8">
-          <p className="text-[11px] font-mono text-sky-400 tracking-[0.2em] uppercase mb-5">Legal</p>
-          <h1 className="font-black text-white mb-3" style={{ fontSize: 'clamp(36px, 5vw, 56px)', letterSpacing: '-0.025em' }}>
+    <div style={{ background: 'var(--bg)', minHeight: '100vh' }}>
+      {/* Hero */}
+      <div style={{ borderBottom: '1px solid var(--stroke)', paddingTop: 140, paddingBottom: 48 }}>
+        <div style={{ maxWidth: 820, margin: '0 auto', padding: '0 40px' }}>
+          <p style={{ fontFamily: 'var(--mono)', fontSize: 10.5, color: 'var(--primary)', textTransform: 'uppercase', letterSpacing: '0.18em', marginBottom: 18 }}>Legal</p>
+          <h1 style={{ fontFamily: 'var(--display)', fontWeight: 900, fontSize: 'clamp(36px,5vw,56px)', letterSpacing: '-0.025em', color: 'var(--text)', marginBottom: 10 }}>
             Privacy Policy
           </h1>
-          <p className="text-gray-500 text-sm font-mono">Last updated: March 15, 2024</p>
+          <p style={{ fontFamily: 'var(--mono)', fontSize: 12, color: 'var(--text-muted)' }}>Last updated: March 15, 2024</p>
         </div>
       </div>
 
-      {/* ── CONTENT ── */}
-      <div className="py-16">
-        <div className="max-w-[820px] mx-auto px-8">
-
-          <p className="text-gray-400 text-base leading-relaxed mb-12">
+      {/* Content */}
+      <div style={{ padding: '64px 0' }}>
+        <div style={{ maxWidth: 820, margin: '0 auto', padding: '0 40px' }}>
+          <p style={{ color: 'var(--text-muted)', fontSize: 15.5, lineHeight: 1.75, marginBottom: 48 }}>
             This policy describes how VORTEXX collects, uses, and protects your personal
             information when you interact with our website and services.
           </p>
 
-          <div className="space-y-12">
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 44 }}>
             {sections.map(sec => (
-              <div key={sec.title}>
-                <h2 className="font-bold text-white text-lg mb-4 pt-6 border-t border-white/10" style={{ fontFamily: 'Manrope, Inter, system-ui' }}>
+              <div key={sec.title} style={{ borderTop: '1px solid var(--stroke)', paddingTop: 28 }}>
+                <h2 style={{ fontFamily: 'var(--display)', fontWeight: 700, fontSize: 17, color: 'var(--text)', marginBottom: 14 }}>
                   {sec.title}
                 </h2>
-                <p className="text-gray-400 text-base leading-relaxed whitespace-pre-line">{sec.content}</p>
+                <p style={{ color: 'var(--text-muted)', fontSize: 15, lineHeight: 1.75, whiteSpace: 'pre-line' }}>{sec.content}</p>
                 {sec.list && (
-                  <ul className="mt-3 space-y-2 pl-4">
+                  <ul style={{ marginTop: 12, display: 'flex', flexDirection: 'column', gap: 9, paddingLeft: 4 }}>
                     {sec.list.map(item => (
-                      <li key={item} className="flex items-start gap-2 text-gray-400 text-base">
-                        <span className="text-sky-400 mt-1 shrink-0">•</span>
+                      <li key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, color: 'var(--text-muted)', fontSize: 15 }}>
+                        <span style={{ color: 'var(--primary-ctr)', marginTop: 3, flexShrink: 0 }}>•</span>
                         {item}
                       </li>
                     ))}
@@ -103,13 +82,9 @@ const Privacy: React.FC = () => {
             ))}
           </div>
 
-          <div className="mt-16 pt-8 border-t border-white/10 flex flex-wrap gap-4">
-            <Link to="/contact" className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-sky-500 text-white text-sm font-bold hover:bg-sky-400 transition-colors">
-              Contact Us
-            </Link>
-            <Link to="/terms" className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-white/15 text-gray-400 text-sm font-medium hover:border-white/30 hover:text-white transition-colors">
-              Terms of Service
-            </Link>
+          <div style={{ marginTop: 56, paddingTop: 28, borderTop: '1px solid var(--stroke)', display: 'flex', flexWrap: 'wrap', gap: 14 }}>
+            <Link to="/contact" className="btn btn-primary btn-sm">Contact Us</Link>
+            <Link to="/terms" className="btn btn-secondary btn-sm">Terms of Service</Link>
           </div>
         </div>
       </div>

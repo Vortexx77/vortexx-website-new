@@ -16,10 +16,16 @@ const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen]         = useState(false);
   const [servicesOpen, setServicesOpen]     = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+  const [scrolled, setScrolled]            = useState(false);
   const dropdownRef = useRef<HTMLLIElement>(null);
   const location    = useLocation();
 
-  // close dropdown on outside click
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
   useEffect(() => {
     const handler = (e: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
@@ -30,7 +36,6 @@ const Header: React.FC = () => {
     return () => document.removeEventListener('mousedown', handler);
   }, []);
 
-  // close everything on route change
   useEffect(() => {
     setServicesOpen(false);
     setIsMenuOpen(false);
@@ -40,235 +45,199 @@ const Header: React.FC = () => {
   const isServicesActive = location.pathname.startsWith('/services');
 
   return (
-    <header className="fixed w-full top-0 z-50 transition-all duration-300 px-6 lg:px-8 pt-6">
-      <div className="bg-gray-900/50 backdrop-blur-xl rounded-[2rem] border border-white/20 max-w-[1152px] mx-auto shadow-2xl">
-        <div className="flex justify-between items-center w-full px-8 h-14">
+    <header
+      className={`site-header${scrolled ? ' scrolled' : ''}`}
+      style={{ paddingTop: 0, paddingBottom: 0 }}
+    >
+      <div className="site-nav">
+        {/* Logo */}
+        <Link to="/" className="logo">
+          <span className="mark">
+            <img src={logo} alt="VORTEXX Logo" />
+          </span>
+          <span className="logo-text">
+            VORTE<span className="x">XX</span>
+          </span>
+        </Link>
 
-          {/* Logo */}
-          <Link to="/" className="flex items-center gap-3 group cursor-pointer">
-            <div className="relative w-8 h-8 flex items-center justify-center transition-all duration-500 group-hover:scale-110 drop-shadow-lg">
-              <img alt="VORTEXX Logo" className="w-full h-full object-contain filter brightness-110 contrast-110" src={logo} />
-            </div>
-            <span className="text-lg font-black tracking-tight bg-gradient-to-r from-[#00668a] via-[#3abef9] to-[#7cd0ff] bg-clip-text text-transparent animate-gradient">
-              VORTEXX
-            </span>
-          </Link>
+        {/* Desktop nav */}
+        <nav className="nav-links" aria-label="Main navigation">
+          <NavLink to="/" end className={({ isActive }) => isActive ? 'active' : ''}>Home</NavLink>
+          <NavLink to="/about" className={({ isActive }) => isActive ? 'active' : ''}>About</NavLink>
 
-          {/* Desktop nav */}
-          <nav className="hidden md:block">
-            <ul className="flex items-center gap-8">
-
-              {/* Home */}
-              <li>
-                <NavLink to="/" end className={({ isActive }) =>
-                  `text-sm font-medium transition-colors duration-200 py-2 ${isActive ? 'text-[#3abef9] font-semibold' : 'text-gray-100 hover:text-[#3abef9]'}`
-                }>Home</NavLink>
-              </li>
-
-              {/* About */}
-              <li>
-                <NavLink to="/about" className={({ isActive }) =>
-                  `text-sm font-medium transition-colors duration-200 py-2 ${isActive ? 'text-[#3abef9] font-semibold' : 'text-gray-100 hover:text-[#3abef9]'}`
-                }>About</NavLink>
-              </li>
-
-              {/* Services — with dropdown */}
-              <li ref={dropdownRef} className="relative">
-                <button
-                  onClick={() => setServicesOpen(o => !o)}
-                  className={`flex items-center gap-1 text-sm font-medium transition-colors duration-200 py-2 ${
-                    isServicesActive || servicesOpen ? 'text-[#3abef9] font-semibold' : 'text-gray-100 hover:text-[#3abef9]'
-                  }`}
-                  aria-haspopup="true"
-                  aria-expanded={servicesOpen}
-                >
-                  Services
-                  <ChevronDown
-                    size={14}
-                    className={`transition-transform duration-200 ${servicesOpen ? 'rotate-180' : ''}`}
-                  />
-                </button>
-
-                {/* Dropdown panel */}
-                {servicesOpen && (
-                  <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-[520px] bg-gray-900/95 backdrop-blur-xl border border-white/15 rounded-2xl shadow-2xl overflow-hidden">
-                    {/* header row */}
-                    <div className="px-5 pt-4 pb-3 border-b border-white/10 flex items-center justify-between">
-                      <span className="text-[11px] font-mono text-sky-400 tracking-[0.2em] uppercase">What we offer</span>
-                      <Link
-                        to="/services"
-                        className="text-[11px] font-mono text-gray-400 hover:text-sky-400 transition-colors flex items-center gap-1"
-                      >
-                        All services <ArrowRight size={11} />
-                      </Link>
-                    </div>
-
-                    {/* service grid */}
-                    <div className="grid grid-cols-2 gap-px bg-white/5 p-px">
-                      {serviceItems.map(svc => {
-                        const Icon = svc.icon;
-                        return (
-                          <Link
-                            key={svc.id}
-                            to={`/services#${svc.id}`}
-                            className="group flex items-start gap-3 p-4 bg-gray-900/90 hover:bg-gray-800/90 transition-colors"
-                          >
-                            <div className="w-8 h-8 rounded-lg bg-sky-500/10 border border-sky-500/20 flex items-center justify-center shrink-0 mt-0.5 group-hover:bg-sky-500/20 transition-colors">
-                              <Icon size={14} className="text-sky-400" />
-                            </div>
-                            <div>
-                              <div className="text-white text-[13px] font-semibold leading-snug group-hover:text-sky-300 transition-colors" style={{ fontFamily: 'Manrope, Inter, system-ui' }}>
-                                {svc.label}
-                              </div>
-                              <div className="text-gray-500 text-[11px] mt-0.5 font-mono leading-snug">
-                                {svc.desc}
-                              </div>
-                            </div>
-                          </Link>
-                        );
-                      })}
-                    </div>
-
-                    {/* footer CTA */}
-                    <div className="px-5 py-3 border-t border-white/10 flex items-center justify-between">
-                      <span className="text-gray-500 text-xs font-mono">Not sure what you need?</span>
-                      <Link
-                        to="/contact"
-                        className="inline-flex items-center gap-1.5 text-xs font-semibold text-white bg-sky-500 hover:bg-sky-400 transition-colors px-3.5 py-1.5 rounded-full"
-                      >
-                        Talk to us <ArrowRight size={11} />
-                      </Link>
-                    </div>
-                  </div>
-                )}
-              </li>
-
-              {/* Portfolio */}
-              <li>
-                <NavLink to="/portfolio" className={({ isActive }) =>
-                  `text-sm font-medium transition-colors duration-200 py-2 ${isActive ? 'text-[#3abef9] font-semibold' : 'text-gray-100 hover:text-[#3abef9]'}`
-                }>Portfolio</NavLink>
-              </li>
-
-              {/* Contact */}
-              <li>
-                <NavLink to="/contact" className={({ isActive }) =>
-                  `text-sm font-medium transition-colors duration-200 py-2 ${isActive ? 'text-[#3abef9] font-semibold' : 'text-gray-100 hover:text-[#3abef9]'}`
-                }>Contact</NavLink>
-              </li>
-
-            </ul>
-          </nav>
-
-          {/* Desktop CTA */}
-          <div className="hidden md:block">
-            <Link
-              to="/contact"
-              className="bg-[#00668a] text-white px-6 py-2.5 rounded-2xl text-sm font-semibold tracking-wide hover:bg-[#004c69] transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5 flex items-center gap-2 group"
+          {/* Services dropdown */}
+          <li ref={dropdownRef} style={{ listStyle: 'none', position: 'relative' }}>
+            <button
+              onClick={() => setServicesOpen(o => !o)}
+              style={{
+                display: 'flex', alignItems: 'center', gap: 4,
+                fontSize: 14.5, background: 'none', border: 'none', cursor: 'pointer',
+                color: isServicesActive || servicesOpen ? 'var(--primary)' : 'var(--text-muted)',
+                fontFamily: 'inherit', padding: 0, transition: 'color 0.2s'
+              }}
+              aria-haspopup="true"
+              aria-expanded={servicesOpen}
             >
-              Start A Project
-              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </div>
+              Services
+              <ChevronDown size={13} style={{ transform: servicesOpen ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }} />
+            </button>
 
-          {/* Mobile hamburger */}
-          <button
-            className="md:hidden text-white"
-            onClick={() => setIsMenuOpen(o => !o)}
-            aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
-          >
-            {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </button>
-        </div>
+            {servicesOpen && (
+              <div style={{
+                position: 'absolute', top: 'calc(100% + 14px)', left: '50%',
+                transform: 'translateX(-50%)',
+                width: 520,
+                background: 'rgba(10,14,22,0.97)',
+                backdropFilter: 'blur(20px)',
+                border: '1px solid var(--stroke)',
+                borderRadius: 16,
+                boxShadow: '0 24px 64px -16px rgba(0,0,0,0.7)',
+                overflow: 'hidden', zIndex: 200
+              }}>
+                <div style={{
+                  padding: '12px 20px', borderBottom: '1px solid var(--stroke)',
+                  display: 'flex', justifyContent: 'space-between', alignItems: 'center'
+                }}>
+                  <span style={{ fontFamily: 'var(--mono)', fontSize: 10.5, color: 'var(--primary)', letterSpacing: '0.18em', textTransform: 'uppercase' }}>What we offer</span>
+                  <Link to="/services" style={{ fontFamily: 'var(--mono)', fontSize: 10.5, color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: 4 }}>
+                    All services <ArrowRight size={10} />
+                  </Link>
+                </div>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 1, background: 'var(--stroke)', padding: 1 }}>
+                  {serviceItems.map(svc => {
+                    const Icon = svc.icon;
+                    return (
+                      <Link
+                        key={svc.id}
+                        to={`/services#${svc.id}`}
+                        style={{
+                          display: 'flex', gap: 12, alignItems: 'flex-start',
+                          padding: '14px 16px',
+                          background: 'rgba(10,14,22,0.97)',
+                          transition: 'background 0.15s'
+                        }}
+                        onMouseEnter={e => (e.currentTarget.style.background = 'rgba(30,41,59,0.9)')}
+                        onMouseLeave={e => (e.currentTarget.style.background = 'rgba(10,14,22,0.97)')}
+                      >
+                        <div style={{
+                          width: 30, height: 30, borderRadius: 8,
+                          background: 'rgba(56,189,248,0.10)',
+                          border: '1px solid rgba(56,189,248,0.20)',
+                          display: 'flex', alignItems: 'center', justifyContent: 'center',
+                          flexShrink: 0, marginTop: 2
+                        }}>
+                          <Icon size={13} style={{ color: 'var(--primary-ctr)' }} />
+                        </div>
+                        <div>
+                          <div style={{ color: 'var(--text)', fontSize: 13, fontWeight: 600, fontFamily: 'var(--display)', lineHeight: 1.3 }}>{svc.label}</div>
+                          <div style={{ color: 'var(--text-muted)', fontSize: 11, fontFamily: 'var(--mono)', marginTop: 2 }}>{svc.desc}</div>
+                        </div>
+                      </Link>
+                    );
+                  })}
+                </div>
+                <div style={{ padding: '12px 20px', borderTop: '1px solid var(--stroke)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <span style={{ fontFamily: 'var(--mono)', fontSize: 11, color: 'var(--text-muted)' }}>Not sure what you need?</span>
+                  <Link to="/contact" style={{
+                    display: 'inline-flex', alignItems: 'center', gap: 5,
+                    fontSize: 11.5, fontWeight: 700, fontFamily: 'var(--display)',
+                    color: 'var(--on-primary-ctr)',
+                    background: 'var(--primary-ctr)',
+                    padding: '6px 14px', borderRadius: 999
+                  }}>
+                    Talk to us <ArrowRight size={10} />
+                  </Link>
+                </div>
+              </div>
+            )}
+          </li>
+
+          <NavLink to="/portfolio" className={({ isActive }) => isActive ? 'active' : ''}>Portfolio</NavLink>
+          <NavLink to="/contact" className={({ isActive }) => isActive ? 'active' : ''}>Contact</NavLink>
+        </nav>
+
+        {/* Desktop CTA */}
+        <Link to="/contact" className="nav-cta" style={{ display: 'none' }}
+          aria-hidden="true"
+        >
+          Start A Project
+        </Link>
+        <Link
+          to="/contact"
+          className="nav-cta"
+          style={{ display: 'block' }}
+        >
+          Start A Project
+        </Link>
+
+        {/* Mobile toggle */}
+        <button
+          className="nav-toggle"
+          onClick={() => setIsMenuOpen(o => !o)}
+          aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+        >
+          {isMenuOpen ? <X size={22} /> : <Menu size={22} />}
+        </button>
       </div>
 
-      {/* ── Mobile Navigation ── */}
-      {isMenuOpen && (
-        <div className="md:hidden mt-2">
-          <div className="bg-gray-900/95 backdrop-blur-xl rounded-[2rem] border border-white/20 p-6 shadow-2xl">
-            <ul className="flex flex-col space-y-1">
+      {/* Mobile menu */}
+      <div className={`mobile-menu${isMenuOpen ? ' open' : ''}`}>
+        <NavLink to="/" end onClick={() => setIsMenuOpen(false)} className={({ isActive }) => isActive ? 'active' : ''}>Home</NavLink>
+        <NavLink to="/about" onClick={() => setIsMenuOpen(false)} className={({ isActive }) => isActive ? 'active' : ''}>About</NavLink>
 
-              <li>
-                <NavLink to="/" end onClick={() => setIsMenuOpen(false)}
-                  className={({ isActive }) => `block px-3 py-2.5 rounded-xl text-base font-medium ${isActive ? 'text-sky-400 bg-sky-400/10' : 'text-gray-200 hover:text-white hover:bg-white/5'} transition-colors`}>
-                  Home
-                </NavLink>
-              </li>
+        <div>
+          <button
+            onClick={() => setMobileServicesOpen(o => !o)}
+            style={{
+              width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+              background: 'none', border: 'none', cursor: 'pointer', padding: 0,
+              fontSize: 15, color: isServicesActive || mobileServicesOpen ? 'var(--text)' : 'var(--text-muted)',
+              fontFamily: 'var(--body)'
+            }}
+          >
+            Services
+            <ChevronDown size={15} style={{ transform: mobileServicesOpen ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s', color: 'var(--text-muted)' }} />
+          </button>
 
-              <li>
-                <NavLink to="/about" onClick={() => setIsMenuOpen(false)}
-                  className={({ isActive }) => `block px-3 py-2.5 rounded-xl text-base font-medium ${isActive ? 'text-sky-400 bg-sky-400/10' : 'text-gray-200 hover:text-white hover:bg-white/5'} transition-colors`}>
-                  About
-                </NavLink>
-              </li>
-
-              {/* Mobile Services accordion */}
-              <li>
-                <button
-                  onClick={() => setMobileServicesOpen(o => !o)}
-                  className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-base font-medium transition-colors ${
-                    isServicesActive || mobileServicesOpen ? 'text-sky-400 bg-sky-400/10' : 'text-gray-200 hover:text-white hover:bg-white/5'
-                  }`}
-                >
-                  Services
-                  <ChevronDown size={16} className={`transition-transform duration-200 ${mobileServicesOpen ? 'rotate-180' : ''}`} />
-                </button>
-
-                {mobileServicesOpen && (
-                  <div className="mt-1 ml-3 space-y-0.5 border-l border-white/10 pl-4">
-                    {serviceItems.map(svc => {
-                      const Icon = svc.icon;
-                      return (
-                        <Link
-                          key={svc.id}
-                          to={`/services#${svc.id}`}
-                          onClick={() => setIsMenuOpen(false)}
-                          className="flex items-center gap-2.5 px-2 py-2 rounded-lg text-sm text-gray-400 hover:text-sky-400 hover:bg-sky-400/5 transition-colors"
-                        >
-                          <Icon size={13} className="text-sky-500 shrink-0" />
-                          {svc.label}
-                        </Link>
-                      );
-                    })}
-                    <Link
-                      to="/services"
-                      onClick={() => setIsMenuOpen(false)}
-                      className="flex items-center gap-2 px-2 py-2 rounded-lg text-sm text-sky-400 font-semibold hover:bg-sky-400/5 transition-colors"
-                    >
-                      All Services <ArrowRight size={12} />
-                    </Link>
-                  </div>
-                )}
-              </li>
-
-              <li>
-                <NavLink to="/portfolio" onClick={() => setIsMenuOpen(false)}
-                  className={({ isActive }) => `block px-3 py-2.5 rounded-xl text-base font-medium ${isActive ? 'text-sky-400 bg-sky-400/10' : 'text-gray-200 hover:text-white hover:bg-white/5'} transition-colors`}>
-                  Portfolio
-                </NavLink>
-              </li>
-
-              <li>
-                <NavLink to="/contact" onClick={() => setIsMenuOpen(false)}
-                  className={({ isActive }) => `block px-3 py-2.5 rounded-xl text-base font-medium ${isActive ? 'text-sky-400 bg-sky-400/10' : 'text-gray-200 hover:text-white hover:bg-white/5'} transition-colors`}>
-                  Contact
-                </NavLink>
-              </li>
-
-              <li className="pt-3 border-t border-white/10 mt-2">
-                <Link
-                  to="/contact"
-                  onClick={() => setIsMenuOpen(false)}
-                  className="block w-full text-center bg-[#00668a] text-white px-6 py-3 rounded-2xl text-sm font-semibold tracking-wide hover:bg-[#004c69] transition-all"
-                >
-                  Start A Project
-                </Link>
-              </li>
-
-            </ul>
-          </div>
+          {mobileServicesOpen && (
+            <div style={{ marginTop: 12, paddingLeft: 16, borderLeft: '1px solid var(--stroke)', display: 'flex', flexDirection: 'column', gap: 10 }}>
+              {serviceItems.map(svc => {
+                const Icon = svc.icon;
+                return (
+                  <Link
+                    key={svc.id}
+                    to={`/services#${svc.id}`}
+                    onClick={() => setIsMenuOpen(false)}
+                    style={{ display: 'flex', alignItems: 'center', gap: 9, fontSize: 13.5, color: 'var(--text-muted)' }}
+                  >
+                    <Icon size={13} style={{ color: 'var(--primary-ctr)', flexShrink: 0 }} />
+                    {svc.label}
+                  </Link>
+                );
+              })}
+              <Link
+                to="/services"
+                onClick={() => setIsMenuOpen(false)}
+                style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 13.5, fontWeight: 700, color: 'var(--primary)' }}
+              >
+                All Services <ArrowRight size={12} />
+              </Link>
+            </div>
+          )}
         </div>
-      )}
+
+        <NavLink to="/portfolio" onClick={() => setIsMenuOpen(false)} className={({ isActive }) => isActive ? 'active' : ''}>Portfolio</NavLink>
+        <NavLink to="/contact" onClick={() => setIsMenuOpen(false)} className={({ isActive }) => isActive ? 'active' : ''}>Contact</NavLink>
+
+        <Link
+          to="/contact"
+          onClick={() => setIsMenuOpen(false)}
+          className="nav-cta"
+          style={{ textAlign: 'center' }}
+        >
+          Start A Project
+        </Link>
+      </div>
     </header>
   );
 };

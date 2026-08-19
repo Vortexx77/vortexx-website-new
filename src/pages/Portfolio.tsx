@@ -9,7 +9,6 @@ const Portfolio: React.FC = () => {
 
   useEffect(() => {
     document.title = 'Portfolio | VORTEXX';
-
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -29,154 +28,136 @@ const Portfolio: React.FC = () => {
 
   return (
     <div className="overflow-x-hidden">
-      {/* ── HERO ─────────────────────────────────────────────────────────── */}
-      <section className="relative pt-36 pb-20 overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-[#32b3f5]/10 rounded-full blur-[120px]" />
-        </div>
 
-        <div className="max-w-[1152px] mx-auto px-8 relative z-10 text-center">
-          <p className="inline-flex items-center gap-2.5 font-mono text-xs tracking-[0.14em] uppercase text-[#7dd3ff] mb-5">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#7dd3ff] shadow-[0_0_8px_#7dd3ff]" />
-            Our Work
-          </p>
-          <h1
-            className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-[1.1] mb-6"
-            style={{ letterSpacing: '-0.02em' }}
-          >
+      {/* ── HERO ── */}
+      <section style={{ background: 'var(--bg)', paddingTop: 140, paddingBottom: 80, position: 'relative', overflow: 'hidden' }}>
+        <div className="absolute inset-0 pointer-events-none bg-grid-pattern" style={{ opacity: 0.18 }} />
+        <div className="absolute pointer-events-none"
+          style={{ top: '25%', left: '50%', transform: 'translate(-50%,-50%)', width: 800, height: 800, background: 'rgba(56,189,248,0.09)', borderRadius: '50%', filter: 'blur(120px)' }}
+        />
+        <div className="wrap relative z-10 text-center">
+          <div className="exp-badge w-fit mx-auto mb-6">
+            <span className="dot" />
+            Proven Excellence
+          </div>
+          <h1 style={{ fontFamily: 'var(--display)', fontWeight: 900, fontSize: 'clamp(38px,5.5vw,68px)', color: 'var(--text)', letterSpacing: '-0.025em', lineHeight: 1.1, marginBottom: 20 }}>
             Projects That{' '}
-            <span className="text-[#32b3f5]">Speak for Themselves</span>
+            <span style={{ color: 'var(--primary-ctr)' }}>Speak for Themselves</span>
           </h1>
-          <p className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
+          <p style={{ color: 'var(--text-muted)', fontSize: 17, maxWidth: 600, margin: '0 auto 36px', lineHeight: 1.7, fontWeight: 300 }}>
             From construction firms to NGOs, SACCOs to travel companies — every project we build
             is crafted with precision, purpose, and performance in mind.
           </p>
 
-          {/* Stats row */}
-          <div className="inline-grid grid-cols-3 divide-x divide-white/10 border border-white/10 rounded-2xl bg-white/[0.03] overflow-hidden backdrop-blur-sm">
+          {/* Stats */}
+          <div style={{ display: 'inline-grid', gridTemplateColumns: 'repeat(3,1fr)', border: '1px solid var(--stroke)', borderRadius: 16, background: 'rgba(255,255,255,0.02)', overflow: 'hidden', backdropFilter: 'blur(8px)', divideX: '1px solid var(--stroke)' }}>
             {[
-              { value: '11+', label: 'Projects Live' },
-              { value: '8', label: 'Industries' },
+              { value: '11+',  label: 'Projects Live' },
+              { value: '8',    label: 'Industries' },
               { value: '100%', label: 'On-Time Delivery' },
-            ].map((s) => (
-              <div key={s.label} className="px-8 py-4 text-center">
-                <strong className="block font-black text-2xl text-[#7dd3ff]">{s.value}</strong>
-                <span className="text-[10px] font-mono text-gray-500 uppercase tracking-widest">
-                  {s.label}
-                </span>
+            ].map((s, i) => (
+              <div key={s.label} style={{ padding: '18px 28px', textAlign: 'center', borderRight: i < 2 ? '1px solid var(--stroke)' : 'none' }}>
+                <strong style={{ display: 'block', fontFamily: 'var(--display)', fontWeight: 900, fontSize: 24, color: 'var(--primary)', letterSpacing: '-0.02em' }}>{s.value}</strong>
+                <span style={{ fontFamily: 'var(--mono)', fontSize: 10, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.12em' }}>{s.label}</span>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── FILTER PILLS ─────────────────────────────────────────────────── */}
-      <div className="max-w-[1152px] mx-auto px-8 pb-10">
-        <div className="flex flex-wrap gap-2">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setActiveCategory(cat)}
-              className={`px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 border ${
-                activeCategory === cat
-                  ? 'bg-[#32b3f5] text-gray-900 border-[#32b3f5] font-bold shadow-[0_0_18px_rgba(50,179,245,0.4)]'
-                  : 'border-white/10 text-gray-400 bg-white/[0.03] hover:border-[#32b3f5]/50 hover:text-white'
-              }`}
-            >
-              {cat}
-            </button>
-          ))}
+      {/* ── FILTER PILLS ── */}
+      <div style={{ background: 'var(--surface-low)', borderBottom: '1px solid var(--stroke)', padding: '20px 0' }}>
+        <div className="wrap">
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setActiveCategory(cat)}
+                className={`filter-pill${activeCategory === cat ? ' active' : ''}`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 
-      {/* ── PROJECT GRID ──────────────────────────────────────────────────── */}
-      <div className="max-w-[1152px] mx-auto px-8 pb-24">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {filtered.map((project, idx) => (
-            <Link
-              key={project.id}
-              to={`/portfolio/${project.id}`}
-              className="group reveal-on-scroll opacity-0 translate-y-6 transition-all duration-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#32b3f5]"
-              style={{ transitionDelay: `${(idx % 6) * 60}ms` }}
-            >
-              <div className="rounded-2xl overflow-hidden border border-white/[0.08] bg-[#101728] hover:border-[#32b3f5]/50 hover:-translate-y-1.5 transition-all duration-300 shadow-lg hover:shadow-[0_20px_40px_-10px_rgba(50,179,245,0.18)]">
-                {/* Mockup visual */}
-                <div className="aspect-[4/3] overflow-hidden relative">
-                  <DeviceMockup project={project} />
-                  {/* hover overlay */}
-                  <div className="absolute inset-0 bg-[#32b3f5]/0 group-hover:bg-[#32b3f5]/10 transition-colors duration-300 flex items-center justify-center">
-                    <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/10 backdrop-blur-sm border border-white/20 text-white text-xs font-semibold px-4 py-2 rounded-full flex items-center gap-1.5">
-                      View Project <ArrowRight size={12} />
+      {/* ── PROJECT GRID ── */}
+      <div style={{ background: 'var(--bg)', padding: '64px 0 96px' }}>
+        <div className="wrap">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {filtered.map((project, idx) => (
+              <Link
+                key={project.id}
+                to={`/portfolio/${project.id}`}
+                className="group reveal-on-scroll opacity-0 translate-y-6 transition-all duration-700"
+                style={{ transitionDelay: `${(idx % 6) * 60}ms` }}
+              >
+                <div className="rounded-2xl overflow-hidden vx-card glow-hover transition-all duration-300">
+                  {/* Mockup */}
+                  <div style={{ aspectRatio: '4/3', overflow: 'hidden', position: 'relative' }}>
+                    <DeviceMockup project={project} />
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                      style={{ background: 'rgba(56,189,248,0.07)' }}
+                    >
+                      <span style={{ background: 'rgba(255,255,255,0.08)', backdropFilter: 'blur(10px)', border: '1px solid rgba(255,255,255,0.18)', color: 'var(--text)', fontSize: 11.5, fontWeight: 700, padding: '8px 16px', borderRadius: 999, display: 'flex', alignItems: 'center', gap: 6 }}>
+                        View Project <ArrowRight size={11} />
+                      </span>
+                    </div>
+                  </div>
+                  {/* Body */}
+                  <div style={{ padding: '18px 20px' }}>
+                    <h3 style={{ fontFamily: 'var(--display)', fontWeight: 700, fontSize: 15.5, color: 'var(--text)', marginBottom: 8, lineHeight: 1.3 }}>
+                      {project.title}
+                    </h3>
+                    <span style={{
+                      display: 'inline-block', padding: '4px 10px', borderRadius: 999,
+                      fontFamily: 'var(--mono)', fontSize: 10.5,
+                      background: `${project.accentColor}15`,
+                      border: `1px solid ${project.accentColor}40`,
+                      color: project.accentColor,
+                    }}>
+                      {project.category}
                     </span>
                   </div>
                 </div>
-
-                {/* Card body */}
-                <div className="p-5">
-                  <h3 className="text-white font-bold text-base leading-snug mb-2 group-hover:text-[#7dd3ff] transition-colors">
-                    {project.title}
-                  </h3>
-                  <span
-                    className="inline-block px-2.5 py-1 rounded-full text-[11px] font-mono border"
-                    style={{
-                      background: `${project.accentColor}15`,
-                      borderColor: `${project.accentColor}40`,
-                      color: project.accentColor,
-                    }}
-                  >
-                    {project.category}
-                  </span>
-                </div>
-              </div>
-            </Link>
-          ))}
-        </div>
-
-        {filtered.length === 0 && (
-          <div className="text-center py-24 text-gray-500">
-            <p className="text-lg font-semibold">No projects in this category yet.</p>
-            <p className="text-sm mt-2">Check back soon — we're always building.</p>
+              </Link>
+            ))}
           </div>
-        )}
+
+          {filtered.length === 0 && (
+            <div style={{ textAlign: 'center', padding: '80px 0', color: 'var(--text-muted)' }}>
+              <p style={{ fontFamily: 'var(--display)', fontSize: 17, fontWeight: 700, marginBottom: 8 }}>No projects in this category yet.</p>
+              <p style={{ fontFamily: 'var(--mono)', fontSize: 13 }}>Check back soon — we're always building.</p>
+            </div>
+          )}
+        </div>
       </div>
 
-      {/* ── CTA STRIP ─────────────────────────────────────────────────────── */}
-      <section className="py-20 px-8 relative overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-[#32b3f5]/10 rounded-full blur-[100px]" />
-        </div>
-        <div className="max-w-[1152px] mx-auto relative z-10">
-          <div className="bg-[#090d18] border border-white/10 rounded-2xl p-10 md:p-16 text-center hover:border-[#32b3f5]/30 transition-colors">
-            <p className="inline-flex items-center gap-2 font-mono text-xs tracking-[0.14em] uppercase text-[#7dd3ff] mb-4">
-              <span className="relative flex h-1.5 w-1.5">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#7dd3ff] opacity-75" />
-                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-[#7dd3ff]" />
-              </span>
+      {/* ── CTA STRIP ── */}
+      <section style={{ background: 'var(--surface-low)', padding: '80px 40px', borderTop: '1px solid var(--stroke)', position: 'relative', overflow: 'hidden' }}>
+        <div className="absolute inset-0 pointer-events-none"
+          style={{ background: 'radial-gradient(ellipse 800px 400px at 50% 50%, rgba(56,189,248,0.09), transparent 70%)' }}
+        />
+        <div style={{ maxWidth: 1280, margin: '0 auto', position: 'relative', zIndex: 10 }}>
+          <div className="glass-card rounded-2xl reveal" style={{ padding: '64px 40px', textAlign: 'center' }}>
+            <div className="exp-badge mx-auto w-fit mb-5">
+              <span className="dot" />
               Ready to Launch
-            </p>
-            <h2
-              className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-5 leading-tight"
-              style={{ letterSpacing: '-0.02em' }}
-            >
+            </div>
+            <h2 style={{ fontFamily: 'var(--display)', fontWeight: 900, fontSize: 'clamp(28px,4vw,50px)', color: 'var(--text)', letterSpacing: '-0.025em', lineHeight: 1.1, marginBottom: 16 }}>
               Ready to Launch a Website That{' '}
-              <span className="text-[#32b3f5]">Actually Works?</span>
+              <span style={{ color: 'var(--primary-ctr)' }}>Actually Works?</span>
             </h2>
-            <p className="text-gray-400 max-w-xl mx-auto mb-8 text-sm sm:text-base leading-relaxed">
+            <p style={{ color: 'var(--text-muted)', fontSize: 15, maxWidth: 500, margin: '0 auto 32px', lineHeight: 1.7 }}>
               Join our growing list of happy clients. Let's build something remarkable together —
               on time, on budget, and beyond expectations.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                to="/contact"
-                className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl bg-[#32b3f5] text-gray-900 text-sm font-bold hover:bg-[#7dd3ff] hover:-translate-y-0.5 transition-all shadow-[0_0_24px_rgba(50,179,245,0.35)]"
-              >
-                Start Your Project
-                <ArrowRight size={16} />
+              <Link to="/contact" className="btn btn-primary">
+                Start Your Project <ArrowRight size={15} />
               </Link>
-              <Link
-                to="/services"
-                className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl border border-white/15 text-gray-300 text-sm font-semibold hover:border-white/30 hover:bg-white/5 transition-all"
-              >
+              <Link to="/services" className="btn btn-secondary">
                 Explore Services
               </Link>
             </div>

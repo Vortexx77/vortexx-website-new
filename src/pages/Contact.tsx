@@ -84,152 +84,179 @@ const Contact: React.FC = () => {
     }
   };
 
-  const inputCls = 'w-full bg-gray-950 border border-white/10 rounded-xl text-white placeholder:text-gray-600 px-4 py-3 text-sm focus:outline-none focus:border-sky-500/60 transition-colors';
-  const labelCls = 'block text-sm text-gray-400 font-medium mb-1.5';
-
   return (
     <div className="overflow-x-hidden">
 
       {/* ── HERO ── */}
-      <section className="relative bg-gray-950 pt-36 pb-20 overflow-hidden">
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-sky-600/10 rounded-full blur-[130px] pointer-events-none" />
-        <div className="max-w-[1152px] mx-auto px-8 relative z-10">
-          <p className="text-[11px] font-mono text-sky-400 tracking-[0.2em] uppercase mb-6">Get in touch</p>
-          <h1 className="font-black text-white leading-none tracking-tight mb-6" style={{ fontSize: 'clamp(44px, 6vw, 76px)' }}>
-            Let's build something <span className="text-sky-400">great.</span>
+      <section style={{ background: 'var(--bg)', paddingTop: 140, paddingBottom: 80, position: 'relative', overflow: 'hidden' }}>
+        <div className="absolute inset-0 pointer-events-none"
+          style={{ background: 'radial-gradient(ellipse at top, rgba(56,189,248,0.10) 0%, var(--bg) 70%)' }}
+        />
+        <div className="wrap relative z-10 text-center">
+          <h1 style={{
+            fontFamily: 'var(--display)', fontWeight: 900,
+            fontSize: 'clamp(44px,6vw,76px)', letterSpacing: '-0.03em',
+            lineHeight: 1, marginBottom: 20,
+            background: 'linear-gradient(to right, var(--text), var(--text-subtle))',
+            WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
+          }}>
+            Connect with Our Experts
           </h1>
-          <p className="text-white/50 text-lg leading-relaxed max-w-xl font-light">
-            Tell us what you're working on. Our team will get back to you with next steps.
-            No lengthy sales process, just a conversation about what you need.
+          <p style={{ color: 'var(--text-muted)', fontSize: 17, maxWidth: 560, margin: '0 auto', lineHeight: 1.7, fontWeight: 300 }}>
+            Global presence, localized expertise. Reach out to discuss your next initiative
+            with our team. No lengthy sales process, just a conversation about what you need.
           </p>
         </div>
-        <div className="absolute bottom-0 inset-x-0 h-12 bg-gradient-to-t from-gray-900 to-transparent pointer-events-none" />
+        <div className="absolute bottom-0 inset-x-0 h-12 pointer-events-none"
+          style={{ background: 'linear-gradient(to top, var(--surface-low), transparent)' }}
+        />
       </section>
 
       {/* ── CONTACT GRID ── */}
-      <section className="bg-gray-950 pt-10 pb-24">
-        <div className="max-w-[1152px] mx-auto px-8 grid grid-cols-1 lg:grid-cols-[1fr_1.6fr] gap-12">
+      <section style={{ background: 'var(--surface-low)', padding: '40px 0 96px' }}>
+        <div className="wrap grid grid-cols-1 lg:grid-cols-5 gap-12">
 
-          {/* info column */}
-          <div className="reveal">
-            <div className="rounded-2xl overflow-hidden border border-white/10 mb-8 relative">
-              <img src={dataSystems} alt="" aria-hidden="true" loading="lazy" className="w-full h-44 object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-gray-950/70 to-transparent pointer-events-none" />
+          {/* Info column */}
+          <div className="reveal lg:col-span-2">
+            <div style={{ borderRadius: 16, overflow: 'hidden', border: '1px solid var(--stroke)', marginBottom: 28, position: 'relative' }}>
+              <img src={dataSystems} alt="" aria-hidden="true" loading="lazy" style={{ width: '100%', height: 176, objectFit: 'cover', display: 'block' }} />
+              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(10,14,22,0.65), transparent)', pointerEvents: 'none' }} />
             </div>
-            <h2 className="font-bold text-white text-xl mb-8" style={{ fontFamily: 'Manrope, Inter, system-ui' }}>Reach us directly</h2>
-            <div className="space-y-4">
+            <h2 style={{ fontFamily: 'var(--display)', fontWeight: 700, fontSize: 20, color: 'var(--text)', marginBottom: 24 }}>Reach us directly</h2>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
               {[
                 { Icon: MapPin, title: 'Location',      body: 'Bukasa-Bugiri, Kawuku\nKampala, Uganda' },
                 { Icon: Phone,  title: 'Phone',         body: '(+256) 745-231430\n(+256) 790-956548' },
                 { Icon: Mail,   title: 'Email',         body: 'thevortexxinfo@gmail.com' },
                 { Icon: Clock,  title: 'Working Hours', body: 'Mon – Fri: 9:00 AM – 6:00 PM\nSat: 10:00 AM – 4:00 PM · Sun: Closed' },
               ].map(({ Icon, title, body }) => (
-                <div key={title} className="flex items-start gap-4 bg-gray-900 border border-white/10 rounded-xl p-5">
-                  <div className="w-9 h-9 bg-sky-500/10 border border-sky-500/20 rounded-lg flex items-center justify-center shrink-0 mt-0.5">
-                    <Icon size={16} className="text-sky-400" />
+                <div key={title} className="glass-panel" style={{ borderRadius: 14, padding: '16px 18px', display: 'flex', gap: 14, alignItems: 'flex-start' }}>
+                  <div style={{ width: 36, height: 36, borderRadius: 10, background: 'rgba(56,189,248,0.10)', border: '1px solid rgba(56,189,248,0.20)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: 2 }}>
+                    <Icon size={15} style={{ color: 'var(--primary-ctr)' }} />
                   </div>
                   <div>
-                    <h3 className="text-white text-sm font-semibold mb-1" style={{ fontFamily: 'Manrope, Inter, system-ui' }}>{title}</h3>
-                    <p className="text-gray-400 text-sm leading-relaxed whitespace-pre-line">{body}</p>
+                    <h3 style={{ fontFamily: 'var(--display)', fontWeight: 700, fontSize: 13.5, color: 'var(--text)', marginBottom: 4 }}>{title}</h3>
+                    <p style={{ fontFamily: 'var(--body)', fontSize: 13, color: 'var(--text-muted)', lineHeight: 1.65, whiteSpace: 'pre-line' }}>{body}</p>
                   </div>
                 </div>
               ))}
             </div>
 
-            <div className="mt-8 bg-gray-900 border border-white/10 rounded-xl p-5">
-              <p className="text-gray-500 text-xs font-mono uppercase tracking-widest mb-3">Prefer WhatsApp?</p>
-              <a
-                href="https://wa.me/256745231430"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-sky-400 text-sm font-semibold hover:text-sky-300 transition-colors"
+            <div className="glass-panel" style={{ borderRadius: 14, padding: '16px 18px', marginTop: 12 }}>
+              <p style={{ fontFamily: 'var(--mono)', fontSize: 10.5, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 10 }}>Prefer WhatsApp?</p>
+              <a href="https://wa.me/256745231430" target="_blank" rel="noopener noreferrer"
+                style={{ display: 'inline-flex', alignItems: 'center', gap: 7, color: 'var(--primary)', fontWeight: 700, fontSize: 14 }}
               >
-                Chat with us → <ArrowRight size={14} />
+                Chat with us <ArrowRight size={13} />
               </a>
             </div>
           </div>
 
-          {/* form column */}
-          <div className="reveal">
-            <form onSubmit={handleSubmit} noValidate className="bg-gray-900 border border-white/10 rounded-2xl p-8">
-              <h2 className="font-bold text-white text-xl mb-8" style={{ fontFamily: 'Manrope, Inter, system-ui' }}>Send us a message</h2>
+          {/* Form column */}
+          <div className="reveal lg:col-span-3">
+            <form onSubmit={handleSubmit} noValidate className="glass-card rounded-2xl" style={{ padding: 36 }}>
+              <h2 style={{ fontFamily: 'var(--display)', fontWeight: 700, fontSize: 20, color: 'var(--text)', marginBottom: 28 }}>Send a Message</h2>
 
               {status === 'success' && (
-                <div className="bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 rounded-xl p-4 mb-6 text-sm">
+                <div style={{ background: 'rgba(45,212,191,0.10)', border: '1px solid rgba(45,212,191,0.30)', color: '#2DD4BF', borderRadius: 12, padding: '14px 16px', marginBottom: 22, fontSize: 13.5 }}>
                   Thanks for reaching out. Your message has been sent. We'll get back to you within 24 hours.
                 </div>
               )}
               {status === 'error' && (
-                <div className="bg-red-500/10 border border-red-500/30 text-red-400 rounded-xl p-4 mb-6 text-sm">{errorMsg}</div>
+                <div style={{ background: 'rgba(255,180,171,0.10)', border: '1px solid rgba(255,180,171,0.30)', color: 'var(--error)', borderRadius: 12, padding: '14px 16px', marginBottom: 22, fontSize: 13.5 }}>{errorMsg}</div>
               )}
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
                 <div>
-                  <label htmlFor="name" className={labelCls}>Full Name *</label>
-                  <input id="name" name="name" type="text" value={form.name} onChange={handleChange} placeholder="Jane Doe" required className={inputCls} />
+                  <label htmlFor="name" className="vx-label">Full Name *</label>
+                  <input id="name" name="name" type="text" value={form.name} onChange={handleChange} placeholder="Jane Doe" required className="vx-input" />
                 </div>
                 <div>
-                  <label htmlFor="email" className={labelCls}>Email Address *</label>
-                  <input id="email" name="email" type="email" value={form.email} onChange={handleChange} placeholder="jane@company.com" required className={inputCls} />
+                  <label htmlFor="email" className="vx-label">Business Email *</label>
+                  <input id="email" name="email" type="email" value={form.email} onChange={handleChange} placeholder="jane@company.com" required className="vx-input" />
                 </div>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
                 <div>
-                  <label htmlFor="phone" className={labelCls}>Phone</label>
-                  <input id="phone" name="phone" type="tel" value={form.phone} onChange={handleChange} placeholder="(+256) 700-000000" className={inputCls} />
+                  <label htmlFor="phone" className="vx-label">Phone</label>
+                  <input id="phone" name="phone" type="tel" value={form.phone} onChange={handleChange} placeholder="(+256) 700-000000" className="vx-input" />
                 </div>
                 <div>
-                  <label htmlFor="service" className={labelCls}>Service Interested In</label>
-                  <div className="relative">
-                    <select id="service" name="service" value={form.service} onChange={handleChange} className={`${inputCls} appearance-none pr-9`}>
+                  <label htmlFor="service" className="vx-label">Service Interest</label>
+                  <div style={{ position: 'relative' }}>
+                    <select id="service" name="service" value={form.service} onChange={handleChange} className="vx-input" style={{ appearance: 'none', paddingRight: 36 }}>
                       <option value="">Select a service</option>
                       {serviceOptions.map(s => <option key={s} value={s}>{s}</option>)}
                     </select>
-                    <ChevronDown size={14} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none" />
+                    <ChevronDown size={13} style={{ position: 'absolute', right: 12, top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)', pointerEvents: 'none' }} />
                   </div>
                 </div>
               </div>
 
               <div className="mb-5">
-                <label htmlFor="subject" className={labelCls}>Subject *</label>
-                <input id="subject" name="subject" type="text" value={form.subject} onChange={handleChange} placeholder="Project inquiry" required className={inputCls} />
+                <label htmlFor="subject" className="vx-label">Subject *</label>
+                <input id="subject" name="subject" type="text" value={form.subject} onChange={handleChange} placeholder="Project inquiry" required className="vx-input" />
               </div>
 
               <div className="mb-7">
-                <label htmlFor="message" className={labelCls}>Message *</label>
-                <textarea id="message" name="message" value={form.message} onChange={handleChange} placeholder="Tell us about your project or inquiry…" required rows={5} className={`${inputCls} resize-none`} />
+                <label htmlFor="message" className="vx-label">Message *</label>
+                <textarea id="message" name="message" value={form.message} onChange={handleChange} placeholder="How can we help you achieve your goals?" required rows={5} className="vx-input" style={{ resize: 'none' }} />
               </div>
 
               <button
                 type="submit"
                 disabled={status === 'sending'}
-                className="w-full bg-sky-500 text-white py-3.5 rounded-xl font-bold text-sm hover:bg-sky-400 transition-colors disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                className="btn btn-primary"
+                style={{ width: '100%', justifyContent: 'center', opacity: status === 'sending' ? 0.65 : 1, cursor: status === 'sending' ? 'not-allowed' : 'pointer' }}
               >
-                {status === 'sending' ? 'Sending…' : <>Send Message <ArrowRight size={15} /></>}
+                {status === 'sending' ? 'Sending…' : <><span>Send Message</span> <ArrowRight size={14} /></>}
               </button>
             </form>
           </div>
         </div>
       </section>
 
+      {/* ── MAP ── */}
+      <section style={{ background: 'var(--surface-low)', borderTop: '1px solid var(--stroke)', padding: '0 0 64px' }}>
+        <div className="wrap reveal">
+          <div style={{
+            borderRadius: 16,
+            overflow: 'hidden',
+            border: '1px solid var(--stroke)',
+            boxShadow: '0 20px 48px -16px rgba(0,0,0,0.55)',
+          }}>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d5869.566001949094!2d32.566300051431845!3d0.12380223255422036!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sug!4v1787146900246!5m2!1sen!2sug"
+              width="100%"
+              height="420"
+              style={{ border: 0, display: 'block', filter: 'invert(90%) hue-rotate(180deg)' }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="strict-origin-when-cross-origin"
+              title="VORTEXX Location Map"
+            />
+          </div>
+        </div>
+      </section>
+
       {/* ── FAQ ── */}
-      <section className="bg-gray-900 border-y border-white/10 py-20">
-        <div className="max-w-[1152px] mx-auto px-8 grid grid-cols-1 lg:grid-cols-[1fr_1.8fr] gap-16">
+      <section style={{ background: 'var(--bg)', borderTop: '1px solid var(--stroke)', padding: '80px 0' }}>
+        <div className="wrap grid grid-cols-1 lg:grid-cols-3 gap-16">
           <div className="reveal">
-            <p className="text-[11px] font-mono text-sky-400 tracking-[0.2em] uppercase mb-5">FAQ</p>
-            <h2 className="font-black text-white" style={{ fontSize: 'clamp(24px, 3vw, 38px)', letterSpacing: '-0.025em' }}>
+            <p className="eyebrow mb-5">FAQ</p>
+            <h2 style={{ fontFamily: 'var(--display)', fontWeight: 900, fontSize: 'clamp(24px,3vw,38px)', letterSpacing: '-0.025em', color: 'var(--text)' }}>
               Common questions.
             </h2>
           </div>
-          <div className="reveal divide-y divide-white/10">
+          <div className="reveal lg:col-span-2" style={{ borderTop: '1px solid var(--stroke)' }}>
             {faqs.map(f => (
-              <details key={f.q} className="group py-5">
-                <summary className="flex justify-between items-center cursor-pointer list-none gap-4">
-                  <span className="text-white font-semibold text-base leading-snug" style={{ fontFamily: 'Manrope, Inter, system-ui' }}>{f.q}</span>
-                  <ChevronDown size={16} className="text-gray-500 shrink-0 group-open:rotate-180 transition-transform" />
+              <details key={f.q} className="group" style={{ borderBottom: '1px solid var(--stroke)', padding: '20px 0' }}>
+                <summary style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', cursor: 'pointer', listStyle: 'none', gap: 16 }}>
+                  <span style={{ fontFamily: 'var(--display)', fontWeight: 600, fontSize: 15.5, color: 'var(--text)', lineHeight: 1.4 }}>{f.q}</span>
+                  <ChevronDown size={15} style={{ color: 'var(--text-muted)', flexShrink: 0, transition: 'transform 0.2s' }} />
                 </summary>
-                <p className="text-gray-400 text-sm leading-relaxed pt-4">{f.a}</p>
+                <p style={{ color: 'var(--text-muted)', fontSize: 14, lineHeight: 1.7, paddingTop: 14 }}>{f.a}</p>
               </details>
             ))}
           </div>

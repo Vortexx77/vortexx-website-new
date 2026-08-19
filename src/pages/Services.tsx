@@ -57,10 +57,10 @@ const services = [
 const capabilities = ['Website Hosting', 'Mobile App Development', 'E-commerce Solutions', 'Database Management', 'Cybersecurity', 'Cloud Solutions', 'Data Analytics'];
 
 const processSteps = [
-  ['01', 'Discovery',       'We start by understanding your business, goals, and challenges through in-depth consultations.'],
-  ['02', 'Strategy',        'Based on our findings, we develop a tailored strategy and roadmap for your solution.'],
-  ['03', 'Implementation',  'Our team brings the strategy to life with meticulous attention to detail.'],
-  ['04', 'Optimization',    'We continuously refine and improve your solution based on performance data and feedback.'],
+  ['01', 'Discovery',      'We start by understanding your business, goals, and challenges through in-depth consultations.'],
+  ['02', 'Strategy',       'Based on our findings, we develop a tailored strategy and roadmap for your solution.'],
+  ['03', 'Implementation', 'Our team brings the strategy to life with meticulous attention to detail.'],
+  ['04', 'Optimization',   'We continuously refine and improve your solution based on performance data and feedback.'],
 ];
 
 const techStack = [
@@ -89,7 +89,6 @@ const Services: React.FC = () => {
     const targets = navLinks
       .map(a => document.querySelector(a.getAttribute('href') || ''))
       .filter((el): el is Element => Boolean(el));
-    if (!targets.length) return;
 
     const spy = new IntersectionObserver(
       (entries) => {
@@ -119,38 +118,53 @@ const Services: React.FC = () => {
     <div className="overflow-x-hidden">
 
       {/* ── HERO ── */}
-      <section className="relative bg-gray-950 pt-36 pb-20 overflow-hidden">
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-sky-600/10 rounded-full blur-[140px] pointer-events-none" />
-        <div className="max-w-[1152px] mx-auto px-8 relative z-10">
-          <p className="text-[11px] font-mono text-sky-400 tracking-[0.2em] uppercase mb-6">Our Services</p>
-          <h1 className="font-black text-white leading-none tracking-tight mb-7" style={{ fontSize: 'clamp(44px, 6vw, 78px)' }}>
+      <section style={{ background: 'var(--bg)', paddingTop: 140, paddingBottom: 80, position: 'relative', overflow: 'hidden' }}>
+        <div className="absolute inset-0 pointer-events-none"
+          style={{ background: 'radial-gradient(ellipse 900px 600px at 80% 30%, rgba(56,189,248,0.10), transparent 65%)' }}
+        />
+        <div className="wrap relative z-10">
+          <p className="eyebrow mb-6">Our Services</p>
+          <h1 style={{ fontFamily: 'var(--display)', fontWeight: 900, fontSize: 'clamp(44px,6vw,78px)', color: 'var(--text)', lineHeight: 1, letterSpacing: '-0.03em', marginBottom: 24 }}>
             Comprehensive<br />Tech Solutions.
           </h1>
-          <p className="text-white/50 text-lg leading-relaxed max-w-xl font-light mb-12">
+          <p style={{ color: 'var(--text-muted)', fontSize: 17, maxWidth: 560, marginBottom: 44, lineHeight: 1.7, fontWeight: 300 }}>
             Six disciplines, one standard of work. We provide end-to-end technology services
             designed to help your business thrive in today's digital landscape.
           </p>
           <div className="flex flex-wrap gap-4">
-            <a href="#web-design" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-sky-500 text-white text-sm font-bold hover:bg-sky-400 transition-colors">
+            <a href="#web-design" className="btn btn-primary">
               Explore Services <ArrowRight size={15} />
             </a>
-            <Link to="/contact" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full border border-white/20 text-white/70 text-sm font-medium hover:border-white/40 hover:text-white transition-colors">
+            <Link to="/contact" className="btn btn-secondary">
               Book a Consultation
             </Link>
           </div>
         </div>
-        <div className="absolute bottom-0 inset-x-0 h-12 bg-gradient-to-t from-gray-900 to-transparent pointer-events-none" />
+        <div className="absolute bottom-0 inset-x-0 h-12 pointer-events-none"
+          style={{ background: 'linear-gradient(to top, var(--surface-low), transparent)' }}
+        />
       </section>
 
       {/* ── STICKY QUICK NAV ── */}
-      <div className="bg-gray-900 border-b border-white/10 sticky top-0 z-40 overflow-x-auto">
-        <div className="max-w-[1152px] mx-auto px-8 py-0">
-          <div id="quickNav" className="flex gap-1 py-3">
+      <div style={{
+        background: 'rgba(10,14,22,0.95)',
+        backdropFilter: 'blur(16px)',
+        borderBottom: '1px solid var(--stroke)',
+        position: 'sticky', top: 0, zIndex: 40,
+        overflowX: 'auto',
+      }}>
+        <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 40px' }}>
+          <div id="quickNav" style={{ display: 'flex', gap: 4, padding: '10px 0' }}>
             {quickNav.map(([id, label]) => (
               <a
                 key={id}
                 href={`#${id}`}
-                className="px-4 py-2 rounded-full text-sm font-mono text-gray-500 hover:text-white whitespace-nowrap transition-colors [&.active]:text-sky-400 [&.active]:bg-sky-400/10"
+                style={{
+                  padding: '8px 16px', borderRadius: 999, fontSize: 12.5,
+                  fontFamily: 'var(--mono)', color: 'var(--text-muted)', whiteSpace: 'nowrap',
+                  transition: 'color 0.2s, background 0.2s',
+                }}
+                className="[&.active]:text-[var(--primary)] [&.active]:bg-[rgba(56,189,248,0.10)]"
               >
                 {label}
               </a>
@@ -159,18 +173,18 @@ const Services: React.FC = () => {
         </div>
       </div>
 
-      {/* ── VALUE STRIP — white island ── */}
-      <div className="bg-white border-b border-gray-100">
-        <div className="max-w-[1152px] mx-auto px-8 reveal">
-          <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-gray-100 py-12">
+      {/* ── VALUE STRIP ── */}
+      <div style={{ background: 'var(--surface-low)', borderBottom: '1px solid var(--stroke)' }}>
+        <div className="wrap reveal">
+          <div className="grid grid-cols-1 md:grid-cols-3" style={{ borderLeft: '1px solid var(--stroke)' }}>
             {[
               { title: 'Innovation-Led',   desc: 'We explore new technologies and approaches to deliver cutting-edge solutions.' },
               { title: 'Client-Focused',   desc: 'We build around your unique needs and goals, not a one-size-fits-all template.' },
               { title: 'Held to Excellence', desc: 'The highest standard of quality and craft, in every engagement we take on.' },
             ].map((item, i) => (
-              <div key={i} className="px-8 first:pl-0 last:pr-0 py-6 md:py-0">
-                <h4 className="font-bold text-gray-900 text-base mb-2" style={{ fontFamily: 'Manrope, Inter, system-ui' }}>{item.title}</h4>
-                <p className="text-gray-500 text-sm leading-relaxed">{item.desc}</p>
+              <div key={i} style={{ padding: '36px 32px', borderRight: '1px solid var(--stroke)', borderBottom: 0 }}>
+                <h4 style={{ fontFamily: 'var(--display)', fontWeight: 700, fontSize: 15, color: 'var(--text)', marginBottom: 8 }}>{item.title}</h4>
+                <p style={{ color: 'var(--text-muted)', fontSize: 13.5, lineHeight: 1.65 }}>{item.desc}</p>
               </div>
             ))}
           </div>
@@ -178,51 +192,57 @@ const Services: React.FC = () => {
       </div>
 
       {/* ── SERVICE CARDS ── */}
-      <div className="bg-gray-950 py-16">
-        <div className="max-w-[1152px] mx-auto px-8 space-y-6">
+      <div style={{ background: 'var(--bg)', padding: '64px 0' }}>
+        <div className="wrap" style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
           {services.map((svc, i) => (
             <div
               key={svc.id}
               id={svc.id}
-              className="reveal bg-gray-900 border border-white/10 rounded-2xl p-8 sm:p-10 scroll-mt-20"
-              style={{ ['--reveal-delay' as string]: `${i * 40}ms` }}
+              className="reveal glass-card rounded-2xl"
+              style={{ scrollMarginTop: 80, ['--reveal-delay' as string]: `${i * 40}ms`, overflow: 'hidden' }}
             >
-              <div className="-mx-8 -mt-8 sm:-mx-10 sm:-mt-10 mb-8 relative aspect-[3/1] overflow-hidden rounded-t-2xl">
-                <img src={svc.image} alt={svc.title} loading="lazy" className="w-full h-full object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40 to-transparent pointer-events-none" />
+              {/* Image banner */}
+              <div style={{ margin: 0, position: 'relative', aspectRatio: '4/1', overflow: 'hidden' }}>
+                <img src={svc.image} alt={svc.title} loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(10,14,22,0.9) 0%, rgba(10,14,22,0.3) 60%, transparent)' }} />
               </div>
-              <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-10 items-start">
-                {/* left */}
-                <div>
-                  <div className="flex items-center gap-3 mb-6">
-                    <span className="text-[11px] font-mono text-gray-500 tracking-widest">{svc.num}</span>
-                    {svc.badge && (
-                      <span className="text-[10px] font-mono text-sky-400 tracking-widest border border-sky-400/30 bg-sky-400/5 px-2.5 py-1 rounded-full">{svc.badge}</span>
-                    )}
+
+              <div style={{ padding: '36px 40px' }}>
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+                  {/* Left */}
+                  <div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 22 }}>
+                      <span style={{ fontFamily: 'var(--mono)', fontSize: 10.5, color: 'var(--text-muted)', letterSpacing: '0.12em' }}>{svc.num}</span>
+                      {svc.badge && (
+                        <span style={{ fontFamily: 'var(--mono)', fontSize: 10, color: 'var(--primary)', border: '1px solid rgba(56,189,248,0.30)', background: 'rgba(56,189,248,0.06)', padding: '4px 10px', borderRadius: 999 }}>{svc.badge}</span>
+                      )}
+                    </div>
+                    <div style={{ width: 40, height: 40, borderRadius: 12, background: 'rgba(56,189,248,0.10)', border: '1px solid rgba(56,189,248,0.20)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 18 }}>
+                      <svg viewBox="0 0 24 24" fill="none" width="20" height="20">{svc.icon}</svg>
+                    </div>
+                    <h2 style={{ fontFamily: 'var(--display)', fontWeight: 900, fontSize: 22, color: 'var(--text)', letterSpacing: '-0.02em', marginBottom: 14 }}>{svc.title}</h2>
+                    <p style={{ color: 'var(--text-muted)', fontSize: 15, lineHeight: 1.7, marginBottom: 12 }}>{svc.desc}</p>
+                    <p style={{ fontFamily: 'var(--mono)', fontSize: 11.5, color: 'var(--primary)', opacity: 0.8 }}>
+                      Best for: <span style={{ fontFamily: 'var(--body)', color: 'var(--text-muted)', fontWeight: 400 }}>{svc.bestFor}</span>
+                    </p>
                   </div>
-                  <div className="w-10 h-10 rounded-xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center mb-5">
-                    <svg viewBox="0 0 24 24" fill="none" width="20" height="20">{svc.icon}</svg>
+                  {/* Right */}
+                  <div>
+                    <p style={{ fontFamily: 'var(--mono)', fontSize: 10.5, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 16 }}>What's included</p>
+                    <ul style={{ display: 'flex', flexDirection: 'column', gap: 12, marginBottom: 28 }}>
+                      {svc.checks.map(c => (
+                        <li key={c} style={{ display: 'flex', alignItems: 'center', gap: 12, fontSize: 14, color: 'var(--text-subtle)' }}>
+                          <div style={{ width: 20, height: 20, borderRadius: '50%', background: 'rgba(56,189,248,0.10)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                            <Check size={10} style={{ color: 'var(--primary-ctr)' }} />
+                          </div>
+                          {c}
+                        </li>
+                      ))}
+                    </ul>
+                    <Link to="/contact" className="btn btn-secondary btn-sm">
+                      Get Started <ArrowRight size={13} />
+                    </Link>
                   </div>
-                  <h2 className="font-black text-white text-2xl mb-4" style={{ fontFamily: 'Manrope, Inter, system-ui', letterSpacing: '-0.02em' }}>{svc.title}</h2>
-                  <p className="text-gray-400 text-base leading-relaxed mb-4">{svc.desc}</p>
-                  <p className="text-sm text-sky-400/80 font-mono">Best for: <span className="text-gray-400 font-normal" style={{ fontFamily: 'inherit' }}>{svc.bestFor}</span></p>
-                </div>
-                {/* right */}
-                <div>
-                  <p className="text-[11px] font-mono text-gray-500 uppercase tracking-widest mb-4">What's included</p>
-                  <ul className="space-y-3 mb-8">
-                    {svc.checks.map(c => (
-                      <li key={c} className="flex items-center gap-3 text-sm text-gray-300">
-                        <div className="w-5 h-5 rounded-full bg-sky-500/10 flex items-center justify-center shrink-0">
-                          <Check size={11} className="text-sky-400" />
-                        </div>
-                        {c}
-                      </li>
-                    ))}
-                  </ul>
-                  <Link to="/contact" className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-white/15 text-white/70 text-sm font-medium hover:border-sky-400/40 hover:text-sky-400 transition-colors">
-                    Get Started <ArrowRight size={14} />
-                  </Link>
                 </div>
               </div>
             </div>
@@ -231,78 +251,79 @@ const Services: React.FC = () => {
       </div>
 
       {/* ── ADDITIONAL CAPABILITIES ── */}
-      <div className="bg-gray-900 border-y border-white/10 py-16">
-        <div className="max-w-[1152px] mx-auto px-8 reveal text-center">
-          <p className="text-[11px] font-mono text-sky-400 tracking-[0.2em] uppercase mb-4">Additional Capabilities</p>
-          <h2 className="font-black text-white mb-3" style={{ fontSize: 'clamp(24px, 3vw, 38px)', letterSpacing: '-0.02em' }}>
+      <div style={{ background: 'var(--surface-low)', borderTop: '1px solid var(--stroke)', borderBottom: '1px solid var(--stroke)', padding: '64px 0' }}>
+        <div className="wrap reveal" style={{ textAlign: 'center' }}>
+          <p className="eyebrow center mb-4">Additional Capabilities</p>
+          <h2 style={{ fontFamily: 'var(--display)', fontWeight: 900, fontSize: 'clamp(24px,3vw,38px)', letterSpacing: '-0.02em', color: 'var(--text)', marginBottom: 12 }}>
             Beyond our core services
           </h2>
-          <p className="text-gray-500 text-base max-w-xl mx-auto mb-8 leading-relaxed">
+          <p style={{ color: 'var(--text-muted)', fontSize: 15, maxWidth: 500, margin: '0 auto 28px', lineHeight: 1.7 }}>
             We offer specialized solutions to address your specific technology needs.
           </p>
-          <div className="flex flex-wrap gap-2 justify-center mb-8">
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, justifyContent: 'center', marginBottom: 28 }}>
             {capabilities.map(c => (
-              <span key={c} className="bg-gray-950 border border-white/10 text-gray-400 px-4 py-2 rounded-full text-sm font-mono">{c}</span>
+              <span key={c} style={{ fontFamily: 'var(--mono)', fontSize: 12.5, padding: '9px 18px', borderRadius: 999, border: '1px solid var(--stroke)', color: 'var(--text-muted)', background: 'var(--surface-elev)' }}>{c}</span>
             ))}
           </div>
-          <Link to="/contact" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-sky-500 text-white text-sm font-bold hover:bg-sky-400 transition-colors">
+          <Link to="/contact" className="btn btn-primary">
             Discuss Your Project <ArrowRight size={15} />
           </Link>
         </div>
       </div>
 
-      {/* ── PROCESS ── */}
-      <section className="bg-gray-950 py-24">
-        <div className="max-w-[1152px] mx-auto px-8 grid grid-cols-1 lg:grid-cols-[1fr_1.8fr] gap-16 items-start">
-          <div className="reveal">
-            <p className="text-[11px] font-mono text-sky-400 tracking-[0.2em] uppercase mb-5">Our Approach</p>
-            <h2 className="font-black text-white leading-[1.1] mb-5" style={{ fontSize: 'clamp(26px, 3vw, 40px)', letterSpacing: '-0.025em' }}>
-              How we work<br />with you.
+      {/* ── ENGAGEMENT MODEL (PROCESS) ── */}
+      <section style={{ background: 'var(--bg)', padding: '96px 0', position: 'relative', overflow: 'hidden' }}>
+        <div className="absolute inset-0 pointer-events-none"
+          style={{ background: 'radial-gradient(ellipse 800px 500px at 50% 50%, rgba(56,189,248,0.07), transparent 70%)' }}
+        />
+        <div className="wrap relative z-10">
+          <div style={{ textAlign: 'center', maxWidth: 640, margin: '0 auto 64px' }}>
+            <p className="eyebrow center mb-5">Our Approach</p>
+            <h2 style={{ fontFamily: 'var(--display)', fontWeight: 900, fontSize: 'clamp(26px,3vw,40px)', letterSpacing: '-0.025em', color: 'var(--text)', marginBottom: 14 }}>
+              Engagement Model
             </h2>
-            <p className="text-gray-500 text-sm leading-relaxed">
-              Our proven process ensures we deliver exceptional results that align with your
-              business goals and exceed your expectations.
+            <p style={{ color: 'var(--text-muted)', fontSize: 15.5, lineHeight: 1.7 }}>
+              A structured, iterative approach to delivering value and mitigating risk throughout the project lifecycle.
             </p>
           </div>
-          <div className="reveal space-y-0">
-            {processSteps.map(([num, title, desc], i) => (
-              <div key={num} className={`flex gap-6 ${i < processSteps.length - 1 ? 'pb-10 border-b border-white/10 mb-10' : ''}`}
-                style={{ ['--reveal-delay' as string]: `${i * 70}ms` }}>
-                <div className="shrink-0 pt-1">
-                  <div className="w-10 h-10 rounded-xl flex items-center justify-center font-mono text-sm font-bold text-sky-400 bg-sky-400/10 border border-sky-400/20">
-                    {num}
-                  </div>
+
+          {/* Step cards with connector line */}
+          <div style={{ position: 'relative' }}>
+            <div className="hidden md:block absolute"
+              style={{ top: '50%', left: 0, width: '100%', height: 1, background: 'var(--stroke)', zIndex: 0 }}
+            />
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-6 reveal" style={{ position: 'relative', zIndex: 10 }}>
+              {processSteps.map(([num, title, desc], i) => (
+                <div key={num} className="eng-step" style={{ ['--reveal-delay' as string]: `${i * 80}ms` }}>
+                  <div className="eng-step-num">{num}</div>
+                  <h4 className="eng-step h4" style={{ fontFamily: 'var(--display)', fontWeight: 700, fontSize: 18, marginTop: 18, marginBottom: 8, color: 'var(--text)' }}>{title}</h4>
+                  <p style={{ fontFamily: 'var(--body)', fontSize: 13.5, color: 'var(--text-muted)', lineHeight: 1.65 }}>{desc}</p>
                 </div>
-                <div>
-                  <h3 className="font-bold text-white text-lg mb-2" style={{ fontFamily: 'Manrope, Inter, system-ui' }}>{title}</h3>
-                  <p className="text-gray-500 text-sm leading-relaxed">{desc}</p>
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
       {/* ── TECH STACK ── */}
-      <section className="bg-gray-900 border-y border-white/10 py-20">
-        <div className="max-w-[1152px] mx-auto px-8">
+      <section style={{ background: 'var(--surface-low)', borderTop: '1px solid var(--stroke)', borderBottom: '1px solid var(--stroke)', padding: '80px 0' }}>
+        <div className="wrap">
           <div className="reveal mb-12">
-            <p className="text-[11px] font-mono text-sky-400 tracking-[0.2em] uppercase mb-4">Technologies</p>
-            <h2 className="font-black text-white" style={{ fontSize: 'clamp(26px, 3vw, 40px)', letterSpacing: '-0.025em' }}>
+            <p className="eyebrow mb-4">Technologies</p>
+            <h2 style={{ fontFamily: 'var(--display)', fontWeight: 900, fontSize: 'clamp(26px,3vw,40px)', letterSpacing: '-0.025em', color: 'var(--text)', marginBottom: 10 }}>
               Our Tech Stack
             </h2>
-            <p className="text-gray-500 text-base mt-3 max-w-lg leading-relaxed">
-              We leverage cutting-edge technologies to build robust, scalable, and future-proof
-              solutions for our clients.
+            <p style={{ color: 'var(--text-muted)', fontSize: 15, maxWidth: 480, lineHeight: 1.7 }}>
+              We leverage cutting-edge technologies to build robust, scalable, and future-proof solutions for our clients.
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {techStack.map((t, i) => (
-              <div key={t.head} className="reveal bg-gray-950 border border-white/10 rounded-xl p-6" style={{ ['--reveal-delay' as string]: `${i * 50}ms` }}>
-                <h4 className="font-bold text-white text-sm mb-4 font-mono tracking-wide">{t.head}</h4>
-                <div className="flex flex-wrap gap-1.5">
+              <div key={t.head} className="reveal vx-card" style={{ padding: 24, ['--reveal-delay' as string]: `${i * 50}ms` }}>
+                <h4 style={{ fontFamily: 'var(--mono)', fontWeight: 600, fontSize: 12, color: 'var(--text)', marginBottom: 16, textTransform: 'uppercase', letterSpacing: '0.08em' }}>{t.head}</h4>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 7 }}>
                   {t.items.map(item => (
-                    <span key={item} className="text-[11px] font-mono text-gray-400 border border-white/10 px-2.5 py-1 rounded-full">{item}</span>
+                    <span key={item} style={{ fontFamily: 'var(--mono)', fontSize: 11, color: 'var(--text-muted)', border: '1px solid var(--stroke)', padding: '4px 10px', borderRadius: 999, background: 'var(--bg-2)' }}>{item}</span>
                   ))}
                 </div>
               </div>
@@ -311,46 +332,49 @@ const Services: React.FC = () => {
         </div>
       </section>
 
-      {/* ── TESTIMONIAL — white island ── */}
-      <section className="bg-white py-20">
-        <div className="max-w-[820px] mx-auto px-8 reveal text-center">
-          <div className="text-sky-200 font-black leading-none mb-4 select-none" style={{ fontSize: '80px', fontFamily: 'Georgia, serif' }}>"</div>
-          <p className="font-semibold text-gray-900 leading-relaxed mb-8" style={{ fontSize: 'clamp(18px, 2.2vw, 26px)', fontFamily: 'Manrope, Inter, system-ui' }}>
+      {/* ── TESTIMONIAL ── */}
+      <section style={{ background: 'var(--bg)', padding: '80px 0' }}>
+        <div style={{ maxWidth: 820, margin: '0 auto', padding: '0 40px', textAlign: 'center' }} className="reveal">
+          <div style={{ fontFamily: 'Georgia, serif', fontSize: 80, color: 'rgba(56,189,248,0.22)', lineHeight: 1, marginBottom: 16, userSelect: 'none' }}>"</div>
+          <p style={{ fontFamily: 'var(--display)', fontWeight: 600, fontSize: 'clamp(18px,2.2vw,26px)', color: 'var(--text)', lineHeight: 1.6, marginBottom: 28 }}>
             VORTEXX's expertise in systems development and infrastructure management has been
             invaluable. They helped us migrate to a more robust system that supports our growth,
             and their ongoing support is top-notch.
           </p>
-          <div className="flex items-center justify-center gap-3">
-            <div className="w-11 h-11 rounded-full flex items-center justify-center font-black text-sm text-white" style={{ background: 'linear-gradient(135deg,#0ea5e9,#0369a1)', fontFamily: 'Manrope, Inter, system-ui' }}>JK</div>
-            <div className="text-left">
-              <strong className="block text-gray-900 text-sm font-bold" style={{ fontFamily: 'Manrope, Inter, system-ui' }}>Jennifer Kasuku</strong>
-              <span className="text-gray-400 text-xs font-mono">Client</span>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12 }}>
+            <div className="avatar" style={{ fontFamily: 'var(--display)', fontSize: 13 }}>JK</div>
+            <div style={{ textAlign: 'left' }}>
+              <strong style={{ display: 'block', fontFamily: 'var(--display)', fontWeight: 700, fontSize: 14, color: 'var(--text)' }}>Jennifer Kasuku</strong>
+              <span style={{ fontFamily: 'var(--mono)', fontSize: 11.5, color: 'var(--text-muted)' }}>Client</span>
             </div>
           </div>
         </div>
       </section>
 
       {/* ── CTA ── */}
-      <section className="bg-gray-50 py-20 px-8">
-        <div className="max-w-[1152px] mx-auto reveal">
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-10 lg:gap-20 items-center py-14 px-10 lg:px-16 rounded-2xl border border-gray-200 bg-white">
-            <div>
-              <p className="text-[11px] font-mono text-sky-500 tracking-[0.2em] uppercase mb-5">Ready to start</p>
-              <h2 className="font-black text-gray-900 leading-[1.1] mb-4" style={{ fontSize: 'clamp(26px, 3vw, 42px)', letterSpacing: '-0.025em' }}>
-                Ready to transform<br /><span className="text-sky-500">your business?</span>
-              </h2>
-              <p className="text-gray-400 text-base leading-relaxed max-w-lg">
-                Partner with VORTEXX to unlock your full digital potential. Our expert team is
-                ready to help you navigate the technology landscape.
-              </p>
-            </div>
-            <div className="flex flex-col gap-3 shrink-0 min-w-[200px]">
-              <Link to="/contact" className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl bg-gray-900 text-white text-sm font-bold hover:bg-sky-600 transition-colors">
-                Schedule a Consultation <ArrowRight size={15} />
-              </Link>
-              <a href="#web-design" className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl border border-gray-200 text-gray-600 text-sm font-medium hover:border-sky-300 hover:text-sky-600 transition-colors">
-                Explore Our Services
-              </a>
+      <section style={{ background: 'var(--surface-low)', padding: '80px 40px', borderTop: '1px solid var(--stroke)' }}>
+        <div style={{ maxWidth: 1280, margin: '0 auto' }} className="reveal">
+          <div className="glass-card rounded-2xl" style={{ padding: '56px 64px' }}>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-center">
+              <div>
+                <p className="eyebrow mb-5">Ready to start</p>
+                <h2 style={{ fontFamily: 'var(--display)', fontWeight: 900, fontSize: 'clamp(26px,3vw,42px)', letterSpacing: '-0.025em', lineHeight: 1.1, color: 'var(--text)', marginBottom: 14 }}>
+                  Ready to transform<br />
+                  <span style={{ color: 'var(--primary-ctr)' }}>your business?</span>
+                </h2>
+                <p style={{ color: 'var(--text-muted)', fontSize: 15, lineHeight: 1.7, maxWidth: 440 }}>
+                  Partner with VORTEXX to unlock your full digital potential. Our expert team is
+                  ready to help you navigate the technology landscape.
+                </p>
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 12, maxWidth: 240 }}>
+                <Link to="/contact" className="btn btn-primary" style={{ justifyContent: 'center' }}>
+                  Schedule a Consultation <ArrowRight size={14} />
+                </Link>
+                <a href="#web-design" className="btn btn-secondary btn-sm" style={{ justifyContent: 'center', textAlign: 'center' }}>
+                  Explore Our Services
+                </a>
+              </div>
             </div>
           </div>
         </div>
